@@ -2,8 +2,8 @@ This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./thesis.tex
-(thesis.tex
+**./cahier_des_charges.tex
+(cahier_des_charges.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
 (Latex/Classes/PhDthesisPSnPDF.cls
@@ -237,10 +237,10 @@ Package: nomencl 2005/09/22 v4.2 Nomenclature package (LN)
 \nomitemsep=\skip63
 )
 \@nomenclaturefile=\write3
-\openout3 = `thesis.nlo'.
+\openout3 = `cahier_des_charges.nlo'.
 
 
-Writing nomenclature file thesis.nlo
+Writing nomenclature file cahier_des_charges.nlo
 (C:\Program Files\MiKTeX\tex/generic/iftex\ifpdf.sty
 Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
 
@@ -503,10 +503,9 @@ Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
 \l__lipsum_a_int=\count297
 \l__lipsum_b_int=\count298
 
-(C:\Program Files\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex)) (thesis.aux
-(0_frontmatter/abstract.aux) (0_frontmatter/dedication.aux)
-(0_frontmatter/acknowledgement.aux) (sections/appendix.aux))
-\openout1 = `thesis.aux'.
+(C:\Program Files\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex))
+No file cahier_des_charges.aux.
+\openout1 = `cahier_des_charges.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
@@ -526,7 +525,6 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
-
 (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count299
@@ -577,12 +575,11 @@ Package caption Info: sidecap package v1.4d (or newer) detected on input line 5
 Package caption Info: supertabular package detected on input line 52.
 Package backref Info: ** backref set up for natbib ** on input line 52.
 Package hyperref Info: Link coloring OFF on input line 52.
- (thesis.out)
-(thesis.out)
 \@outlinefile=\write4
-\openout4 = `thesis.out'.
+\openout4 = `cahier_des_charges.out'.
 
- (C:\Program Files\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+
+(C:\Program Files\MiKTeX\tex/latex/pdflscape\pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
 
 (C:\Program Files\MiKTeX\tex/latex/pdflscape\pdflscape-nometadata.sty
@@ -594,7 +591,7 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-<Ressources/UParisCitelogo.jpg, id=63, 1842.885pt x 702.625pt>
+<Ressources/UParisCitelogo.jpg, id=3, 1842.885pt x 702.625pt>
 File: Ressources/UParisCitelogo.jpg Graphic file (type jpg)
 <use Ressources/UParisCitelogo.jpg>
 Package pdftex.def Info: Ressources/UParisCitelogo.jpg  used on input line 58.
@@ -634,9 +631,9 @@ ParisCitelogo.jpg>] [2]
 \openout2 = `0_frontmatter/acknowledgement.aux'.
 
  (0_frontmatter/acknowledgement.tex)
-(thesis.toc)
+No file cahier_des_charges.toc.
 \tf@toc=\write5
-\openout5 = `thesis.toc'.
+\openout5 = `cahier_des_charges.toc'.
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has 
@@ -665,9 +662,10 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.ii}) has
 l.179 \listoffigures
                     	% print list of figures [2
 
-] (thesis.lof)
+]
+No file cahier_des_charges.lof.
 \tf@lof=\write6
-\openout6 = `thesis.lof'.
+\openout6 = `cahier_des_charges.lof'.
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.iii}) ha
@@ -683,14 +681,14 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.iv}) has
 l.181 \listoftables
                      % print list of tables [4
 
-] (thesis.lot)
-\tf@lot=\write7
-\openout7 = `thesis.lot'.
-
- [5] [6
-
 ]
-(sections/intro.tex
+No file cahier_des_charges.lot.
+\tf@lot=\write7
+\openout7 = `cahier_des_charges.lot'.
+
+[5] [6
+
+] (sections/intro.tex
  1.
 ) (sections/background.tex [1
 
@@ -731,7 +729,7 @@ Package natbib Warning: Citation `wohlin12' on page 21 undefined on input line
 ]
  9.
 )
-No file thesis.bbl.
+No file cahier_des_charges.bbl.
 [25]
 \openout2 = `sections/appendix.aux'.
 
@@ -742,23 +740,34 @@ No file thesis.bbl.
 
 Package natbib Warning: There were undefined citations.
 
-(thesis.aux (0_frontmatter/abstract.aux) (0_frontmatter/dedication.aux)
-(0_frontmatter/acknowledgement.aux) (sections/appendix.aux))
+(cahier_des_charges.aux (0_frontmatter/abstract.aux)
+(0_frontmatter/dedication.aux) (0_frontmatter/acknowledgement.aux)
+(sections/appendix.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
-Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 63EDB5A9CACBDF25CEFAFE91AAE31BB2;1909.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `cahier_des_charges.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `cahier_des_charges.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  63EDB5A9CACBDF25CEFAFE91AAE31BB2;1909.
  ) 
 Here is how much of TeX's memory you used:
- 13983 strings out of 474486
- 226247 string characters out of 5753576
+ 13938 strings out of 474486
+ 225315 string characters out of 5753576
  1933542 words of memory out of 5000000
- 35928 multiletter control sequences out of 15000+600000
+ 35903 multiletter control sequences out of 15000+600000
  572196 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 105i,11n,107p,457b,513s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 105i,11n,107p,469b,513s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx10
 95.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ec
 bx2488.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
@@ -767,9 +776,9 @@ pi600\ecti1095.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecbx1440.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
 pen/ec/dpi600\ecbx2074.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/j
 knappen/ec/dpi600\ecrm1440.pk>
-Output written on thesis.pdf (37 pages, 302695 bytes).
+Output written on cahier_des_charges.pdf (37 pages, 288261 bytes).
 PDF statistics:
- 562 PDF objects out of 1000 (max. 8388607)
+ 481 PDF objects out of 1000 (max. 8388607)
  53 named destinations out of 1000 (max. 500000)
- 126 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
