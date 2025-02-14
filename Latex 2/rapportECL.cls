@@ -30,6 +30,7 @@
 \newcommand{\sujet}[1]{\renewcommand{\sujet}{#1}}
 \newcommand{\titre}[1]{\renewcommand{\titre}{#1}}
 \newcommand{\encadrant}[1]{\renewcommand{\encadrant}{#1}}
+\newcommand{\responsable}[1]{\renewcommand{\responsable}{#1}}
 \newcommand{\auteurs}[1]{\renewcommand{\auteurs}{#1}}
 
 \newcommand{\fairemarges}{
@@ -37,7 +38,7 @@
 \pagestyle{fancy}
 \fancyheadoffset{1cm}
 \setlength{\headheight}{2cm}
-\lhead{\includegraphics[scale=0.3]{logos/logo_ECL.jpg}} %Affichage de l'image au top de la page
+\lhead{\includegraphics[scale=0.3]{logos/logo2.png}} %Affichage de l'image au top de la page
 \rhead{\nouppercase{\leftmark}}
 \rfoot{\thepage}
 \cfoot{L2I1-Tamagotchi}
@@ -49,7 +50,7 @@
 
 \ThisLRCornerWallPaper{0.6}{logos/SteinECL.jpg}
 	\centering %Centraliser le contenu
-	\includegraphics[width=0.8\textwidth]{logos/logo.png}\par\vspace{1cm} %Insertion du logo
+	\includegraphics[width=0.8\textwidth]{logos/logo.jpg}\par\vspace{1cm} %Insertion du logo
 	{\scshape\LARGE Université Paris Cité \par} %Nom de l'université
 	\vspace{1.5cm}%Espace de 1,5cm
 	{\scshape\Large \UE \\ \sujet\par} %sous-titre
@@ -70,8 +71,10 @@
 		\begin{flushright} \large
 		\emph{\textbf{Encadrant :}} \\
 		 \encadrant \\
+		\emph{\textbf{Responsable de l'UE :}} \\
+		 \responsable \\
 		\end{flushright}
-	\end{minipage}\\[4cm]
+	\end{minipage}\\[3cm]
     
 	\vfill
 	{\large \today\par} %Affichage de la date
@@ -79,10 +82,6 @@
 \end{titlepage}
 }
 
-\newcommand{\sommaire}{
-\tableofcontents
-\newpage
-}
 
 \newcommand{\insererfigure}[4]{
 \begin{figure}[ht]

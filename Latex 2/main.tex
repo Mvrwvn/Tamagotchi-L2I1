@@ -1,5 +1,7 @@
 \documentclass{rapportECL}
 \usepackage{lipsum}
+\usepackage{hyperref}
+\usepackage{enumitem}
 \title{Rapport ECL - Template} %Titre du fichier
 
 \begin{document}
@@ -10,43 +12,164 @@
 \UE{UE Projet de programmation} %Nom de la UE
 \sujet{Projet L2I1 - Tamagotchi} %Nom du sujet
 
-\encadrant{Prénom \textsc{Nom}} %Nom de l'enseignant
+\encadrant{Camille \textsc{KURTZ}} %Nom de l'enseignant
+\responsable{David \textsc{JANISZEK}}
 
 \auteurs{Marwan \textsc{DENAGNON} \\
-		Prénom \textsc{Nom} \\ 
-		Prénom \textsc{Nom} } %Nom des élèves
+		Lina \textsc{BOUGUETTAYA} \\ 
+		Yasmine \textsc{DEHOUCHE} \\
+		Abhijeet \textsc{SINGH}} %Nom des élèves
 
 %----------- Initialisation -------------------
         
 \fairemarges %Afficher les marges
 \fairepagedegarde %Créer la page de garde
-\sommaire %Créer la table de matières
+\renewcommand{\contentsname}{Sommaire}
+\tableofcontents %Créer la table de matières
+\newpage
 
 
 %------------ Corps du rapport ----------------
 
 
-\section{Première section} 
+\section{Introduction} 
 
-\lipsum[3-4]%Effacer cette ligne et écrire le texte souhaité
+Dans le cadre de notre projet de L2 Informatique, nous avons développé une application innovante qui revisite le concept du Tamagotchi, cet animal virtuel interactif qui a marqué les esprits depuis les années 90. Notre ambition est de moderniser ce classique intemporel en intégrant des fonctionnalités inédites, adaptées aux technologies d’aujourd’hui, pour offrir une expérience à la fois plus immersive et plus engageante.
 
-\subsection{Subsection}
+Le Tamagotchi original, lancé dans les années 90, était un petit appareil électronique portable qui permettait aux utilisateurs de nourrir, divertir et prendre soin d’un animal virtuel. Avec l’évolution des technologies mobiles et des smartphones, nous avons l’opportunité de repenser complètement cette interaction. Notre application transforme cette expérience nostalgique en un compagnon virtuel moderne, connecté et accessible à tous.
 
-\lipsum[3-4] %Effacer cette ligne et écrire le texte souhaité
 
-\section{Deuxième section}
+\section{Guide de lecture}
 
-\lipsum[3-5] %Effacer cette ligne et écrire le texte souhaité
+\subsection{Maîtrise d’œuvre}
+\subsubsection{Responsable}
+Nom de l'encadrant : Kurtz Camille 
+
+Le maître d’œuvre analyse les propositions du groupe et supervise le développement de l'application web.
+l'application web.
+\subsubsection{Personnel administratif}
+\subsubsection{Personnel technique}
+Les personnes oeuvrant pour ce projet sont des étudiants en deuxième année de licence informatique :
+\begin{itemize}[label=\textbullet]
+\item Lina BOUGUETTAYA 
+\item Yasmine DEHOUCHE
+\item Marwan DENAGNON 
+\item Abhijeet SINGH
+\end{itemize}
+\section{Concepts de base}
+L’application ??? est un jeu mobile Android inspiré des Tamagotchis classiques, des gadgets qui, en appuyant sur des boutons situés autour d'un petit écran vidéo, permet de nourrir, laver et soigner l'animal virtuel pour qu'il « vive » le plus longtemps possible. L’objectif principale de ??? est de moderniser les Tamagotchis originaux, en ajoutant des fonctionnalités qui exploite les capacités technologiques de nos smartphones. Notre application sera développée à l’aide des techniques suivantes :
+\begin{itemize}[label=\textbullet]
+\item Java
+\item XML
+\item JSON
+\end{itemize}
+Vous pouvez retrouver la définition de ces termes dans la partie Glossaire (p ??).
+\section{Contexte}
+De nos jours, il n’est plus nécessaire d’acheter des jeux physiques. Tout type d’applications existent sur nos téléphones portables. Dans ce cadre, on souhaite développer un jeu emblématique des années 90, le Tamagotchi en version virtuelle. Ce projet vise à développer une application mobile android sur laquelle on peut prendre soin d’un animal fictif et le transmettre à quelqu’un d’autre lorsqu’on ne peut plus prendre soin de lui.
+Notre groupe de projet L2I1 est encadré par Mr Camille KURTZ, et composé de 4 étudiants:
+\begin{itemize}[label=\textbullet]
+\item Lina BOUGUETTAYA
+
+
+\item Yasmine DEHOUCHE
+
+
+\item Marwan DENAGNON
+
+
+\item Abhijeet SINGH
+\end{itemize}
+\section{Historique}
+Le Tamagotchi a été inventé en 1996 par l’entreprise japonaise Bandai, qui est une entreprise de jouets (un autre succès de Bandai est par exemple les jouets Power Rangers). 
+Tamagotchi traduit en français signifie « œuf » (tamago) « montre » (wotchi). Comme son nom l’indique il s’agit donc d’une sorte de montre (donc portable) dans laquelle on doit s’occuper d’un œuf afin qu’il éclose pour pouvoir jouer avec lui. 
+On peut le nourrir, le caresser, le nettoyer et faire divers mini-jeux en sa compagnie, le « but » principal du jeu est de maintenir son compagnon en bonne santé et de le faire vivre le plus longtemps possible, si l’on échoue, le jeu recommencera avec un nouvel œuf et donc un nouveau compagnon.
+\section{Description de la demande}
+\subsection{Les objectifs}
+Le projet à réaliser consiste à concevoir une application mobile sur Android appelée « Tamagotchi », où l’utilisateur aura pour but de s’occuper d’une créature virtuelle ayant plusieurs caractéristiques.
+Le tamagotchi sera caractérisé en premier lieu par une jauge de faim ayant pour états (Ok, affamé, mort). Ensuite, l’utilisateur devra pouvoir réaliser d’autres fonctionnalités sur sa créature telles que : guérir, dormir et laver, qui décriront ses différents états (malade, fatigué, sale).
+De plus, des interactions supplémentaires seront mises en place telles qu’une baisse de santé en cas de fatigue.
+Enfin, l’utilisateur devra avoir la possibilité de transférer son Tamagotchi à un autre utilisateur et de faire interagir deux Tamagotchis via NFC ou une base de données externe.
+\subsection{Produit du projet}
+L’application android créé sera un outil ludique de divertissement, permettant aux utilisateurs d’adopter un animal et d’en prendre soin. Ce projet a pour but d’offrir l’expérience nostalgique avec une touche moderne du jeu TAMAGOTCHI, en ciblant un public jeune et amateur de jeux mobiles. Elle permet aux joueurs d’adopter, nourrir, nettoyer, soigner et interagir avec son compagnon virtuel. Elle contiendra des fonctionnalités telles que la transmission des animaux via NFC. Le produit sera entièrement gratuit, exploitant des technologies open-source et des services sans frais pour donner un accès plus affordable à un public plus important.
+\subsection{Les fonctions du produit}
+\subsection{Critères d’acceptabilité et de réception}
+\begin{itemize}[label=\textbullet]
+\item L'utilisateur doit pouvoir nourrir, nettoyer et jouer avec son Tamagotchi.
+\item Les statistiques (faim, bonheur, santé, propreté) doivent évoluer en temps réel.
+\item L'interface doit être simple et facile à comprendre, même pour des enfants.
+\item Des tests utilisateurs doivent être réalisés pour valider l'expérience globale.
+\end{itemize}
+\section{Contraintes}
+\subsection{Contraintes de coûts}
+Ce projet a été conçu pour être entièrement gratuit, en utilisant des technologies et des services gratuits, afin de garantir qu'aucun coût ne soit engagé.
+\subsection{Contraintes de délais}
+Le projet se déroulera sur une période totale de 11 semaines et devra être finaliser le ????
+\subsection{Contraintes matérielles}
+La réalisation de ce projet inclue l’utilisation d’une interface tactile (Smartphone, tablette) fonctionnant sous Android afin de tester le jeu et d’ordinateurs pour le développement. Une connectivité mobile sera indispensable pour la synchronisation des données notamment pour le transfert et l’interaction entre Tamagotchis via NFC.
+De plus, une base de données locale et/ou externe pour assurer la persistance des informations et la gestion des interactions à distance.
+\subsection{Autres contraintes}
+\subsubsection{Contraintes techniques}
+\begin{itemize}[label=\textbullet]
+\item L’optimisation de la performance avec une gestion efficace des ressources (mémoire, CPU, GPU), afin d’éviter les ralentissements et les crashs.
+\item Minimiser la consommation d'énergie de l’appareil, en réduisant l’utilisation des animations et des capteurs de mouvements.
+\item Prévention d’un mode hors ligne pour que le jeu soit accessible à son utilisateur à tout moment, et une synchronisation dès que la connexion est rétablie.
+\item Adaptation de l’interface à différents types et tailles d’écrans.
+Fournir une sécurité avec un système de chiffrements des données sensibles, tel que lors des interactions via NFC.
+\end{itemize}
+\subsubsection{Contraintes fonctionnelles}
+\begin{itemize}[label=\textbullet]
+\item Notifications de rappel pour s’occuper de son animal.
+\item Prévoir un système de QR Code en cas d’instabilité avec la communication NFC.
+\end{itemize}
+\subsubsection{Contraintes légales et éthiques}
+\begin{itemize}[label=\textbullet]
+\item Respecter les règlements RGPD et Google Play Policy.
+\item Ajout d’une politique de confidentialité claire pour expliquer la collection de certaines données et pourquoi.
+\item Prendre en compte que l’application attire un jeune public, par conséquent éviter tout contenu inapproprié.
+\end{itemize}
+\section{Déroulement du projet}
+\subsection{Planification}
+\subsection{Ressources}
+\subsubsection{Ressources Matérielles}
+\begin{itemize}[label=\textbullet]
+ \item Ordinateurs fonctionnels, 
+ 
+ \item Logiciels de développement (IDE)
+
+ \item Un gestionnaire de version (Subversion) 
+
+ \item Connexion internet stable
+\end{itemize}
+\subsubsection{Ressources Humaines}
+Les étudiants composant le groupe L2I1
+
+\section{Annexes}
+
+\section{Glossaire}
+\begin{itemize}[label=\textbullet]
+\item Application mobile Android : application qui est disponible et manipulable sur un smartphone Android, l’applications et toutes les données nécessaires à son fonctionnement sont stockés en local.
+\item Java : Java est un langage de programmation orienté objet, robuste et utilisé pour le développement d'applications Android.
+\item XML : Extensible Markup Language est un langage de balisage utilisé pour structurer, stocker et échanger des données dans les interfaces Android et les configurations.
+\item JSON : JavaScript Object Notation est un format léger de structuration des données utilisé pour stocker et structurer des données dans une application sans nécessiter de communication avec un serveur. Il peut servir à enregistrer des préférences utilisateur, des configurations ou des bases de données locales.
+\end{itemize}
+
+\section{Références}
+\begin{itemize}[label=\textbullet]
+\item Tamagotchi Wiki \href{https://tamagotchi.fandom.com/wiki/Main_Page}{$https://tamagotchi.fandom.com/wiki/Main_Page$}
+\item Android Studio \href{https://developer.android.com/?hl=fr}{$https://developer.android.com/?hl=fr$}
+\item Json \href{https://www.json.org/json-en.html}{$https://www.json.org/json-en.html$}
+\end{itemize}
+
+\section{Index}
 
 %------------- Commandes utiles ----------------
 
-\section{Quelques commandes}
-
 Voici quelques commandes utiles :
+
 
 %------ Pour insérer et citer une image centralisée -----
 
-\insererfigure{logos/logo.png}{3cm}{Légende de la figure}{Label de la figure}
+\insererfigure{logos/logo.jpg}{3cm}{Légende de la figure}{Label de la figure}
 % Le premier argument est le chemin pour la photo
 % Le deuxième est la hauteur de la photo
 % Le troisième la légende
