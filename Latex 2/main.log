@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.10)  14 FEB 2025 23:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.10)  14 FEB 2025 23:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -575,35 +575,47 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \enit@inbox=\box68
 \enit@count@id=\count325
 \enitdp@description=\count326
+)
+(C:\Program Files\MiKTeX\tex/latex/titlesec\titlesec.sty
+Package: titlesec 2025/01/04 v2.17 Sectioning titles
+\ttl@box=\box69
+\beforetitleunit=\skip85
+\aftertitleunit=\skip86
+\ttl@plus=\dimen260
+\ttl@minus=\dimen261
+\ttl@toksa=\toks34
+\titlewidth=\dimen262
+\titlewidthlast=\dimen263
+\titlewidthfirst=\dimen264
 ) (main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Info: Redefining \degres on input line 7.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Info: Redefining \degres on input line 11.
 Package french.ldf Info: Setting StandardItemizeEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 7.
+(french.ldf)             reported on input line 11.
 Package french.ldf Info: Setting StandardEnumerateEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 7.
-LaTeX Info: Redefining \up on input line 7.
+(french.ldf)             reported on input line 11.
+LaTeX Info: Redefining \up on input line 11.
 
 (C:\Program Files\MiKTeX\tex/latex/translations/dicts\translations-basic-dictio
 nary-french.trsl
@@ -611,20 +623,20 @@ File: translations-basic-dictionary-french.trsl (french translation file `trans
 lations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `french'. on input line 7.
+or `french'. on input line 11.
  (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count327
-\scratchdimen=\dimen260
-\scratchbox=\box69
+\scratchdimen=\dimen265
+\scratchbox=\box70
 \nofMPsegments=\count328
 \nofMParguments=\count329
-\everyMPshowfont=\toks34
+\everyMPshowfont=\toks35
 \MPscratchCnt=\count330
-\MPscratchDim=\dimen261
+\MPscratchDim=\dimen266
 \MPnumerator=\count331
 \makeMPintoPDFobject=\count332
-\everyMPtoPDFconversion=\toks35
+\everyMPtoPDFconversion=\toks36
 ) (C:\Program Files\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -636,7 +648,7 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 7.
+Package hyperref Info: Link coloring OFF on input line 11.
  (main.out)
 (main.out)
 \@outlinefile=\write3
@@ -680,16 +692,16 @@ Package hyperref Info: Link coloring OFF on input line 7.
 \@nomenclaturefile=\write4
 \openout4 = `main.nlo'.
 
-Package nomencl Info: Writing nomenclature file main.nlo on input line 25.
-<logos/logo.jpg, id=127, 1842.885pt x 702.625pt>
+Package nomencl Info: Writing nomenclature file main.nlo on input line 29.
+<logos/logo.jpg, id=147, 1842.885pt x 702.625pt>
 File: logos/logo.jpg Graphic file (type jpg)
 <use logos/logo.jpg>
-Package pdftex.def Info: logos/logo.jpg  used on input line 26.
+Package pdftex.def Info: logos/logo.jpg  used on input line 30.
 (pdftex.def)             Requested size: 364.19667pt x 138.85pt.
-<logos/SteinECL.jpg, id=128, 376.90813pt x 565.61313pt>
+<logos/SteinECL.jpg, id=148, 376.90813pt x 565.61313pt>
 File: logos/SteinECL.jpg Graphic file (type jpg)
 <use logos/SteinECL.jpg>
-Package pdftex.def Info: logos/SteinECL.jpg  used on input line 26.
+Package pdftex.def Info: logos/SteinECL.jpg  used on input line 30.
 (pdftex.def)             Requested size: 337.8799pt x 507.04482pt.
 [1
 
@@ -698,68 +710,78 @@ CL.jpg> <./logos/logo.jpg>] (main.toc)
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
-<logos/logo2.png, id=171, 321.2pt x 122.4575pt>
+<logos/logo2.png, id=196, 321.2pt x 122.4575pt>
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 29.
+Package pdftex.def Info: logos/logo2.png  used on input line 33.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.29 \newpage
+l.33 \newpage
               [1 <./logos/logo2.png>]
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 70.
+Package pdftex.def Info: logos/logo2.png  used on input line 33.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
  [2]
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 94.
+Package pdftex.def Info: logos/logo2.png  used on input line 74.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
  [3]
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 122.
+Package pdftex.def Info: logos/logo2.png  used on input line 98.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
  [4]
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 159.
+Package pdftex.def Info: logos/logo2.png  used on input line 126.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
  [5]
+File: logos/logo2.png Graphic file (type png)
+<use logos/logo2.png>
+Package pdftex.def Info: logos/logo2.png  used on input line 172.
+(pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
+ [6]
+File: logos/logo2.png Graphic file (type png)
+<use logos/logo2.png>
+Package pdftex.def Info: logos/logo2.png  used on input line 208.
+(pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
+ [7]
 File: logos/logo.jpg Graphic file (type jpg)
 <use logos/logo.jpg>
-Package pdftex.def Info: logos/logo.jpg  used on input line 172.
+Package pdftex.def Info: logos/logo.jpg  used on input line 219.
 (pdftex.def)             Requested size: 223.8643pt x 85.35826pt.
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 193.
+Package pdftex.def Info: logos/logo2.png  used on input line 240.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
- [6] (main.aux)
+ [8] (main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 7DB4A36C6428CAAB55439C8382F67039;4547.
+(rerunfilecheck)             Checksum: 46D5EE134D38395DAA3F7345A0981D6B;5235.
  ) 
 Here is how much of TeX's memory you used:
- 20699 strings out of 474486
- 402286 string characters out of 5753576
- 1937542 words of memory out of 5000000
- 42686 multiletter control sequences out of 15000+600000
- 572080 words of font info for 63 fonts, out of 8000000 for 9000
+ 21004 strings out of 474486
+ 406374 string characters out of 5753576
+ 1939542 words of memory out of 5000000
+ 42981 multiletter control sequences out of 15000+600000
+ 572087 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  125i,16n,121p,697b,1175s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc12
 00.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tc
 rm1200.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ecbx1440.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
+0\ecbx1095.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
 pi600\ecbx1200.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/
-ec/dpi600\ecbx1728.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
+ec/dpi600\ecbx1440.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
 pen/ec/dpi600\ecrm1200.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/j
 knappen/ec/dpi600\eccc1440.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfo
 ur/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/
@@ -771,9 +793,9 @@ s/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/c
 m/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 
-Output written on main.pdf (7 pages, 392913 bytes).
+Output written on main.pdf (9 pages, 398471 bytes).
 PDF statistics:
- 615 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
- 264 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 652 PDF objects out of 1000 (max. 8388607)
+ 47 named destinations out of 1000 (max. 500000)
+ 304 words of extra memory for PDF output out of 10000 (max. 10000000)
 

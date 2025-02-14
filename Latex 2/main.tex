@@ -2,7 +2,11 @@
 \usepackage{lipsum}
 \usepackage{hyperref}
 \usepackage{enumitem}
-\title{Rapport ECL - Template} %Titre du fichier
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\hspace{1em}\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\small\bfseries}{\hspace{2em}\thesubsubsection}{1em}{}
+\title{Cahier des charges - L2I1} %Titre du fichier
 
 \begin{document}
 
@@ -130,7 +134,7 @@ Fournir une sécurité avec un système de chiffrements des données sensibles, 
 \section{Déroulement du projet}
 \subsection{Planification}
 \subsection{Ressources}
-\subsubsection{Ressources Matérielles}
+\subsubsection{Ressources matérielles}
 \begin{itemize}[label=\textbullet]
  \item Ordinateurs fonctionnels, 
  
@@ -140,9 +144,52 @@ Fournir une sécurité avec un système de chiffrements des données sensibles, 
 
  \item Connexion internet stable
 \end{itemize}
-\subsubsection{Ressources Humaines}
+\subsubsection{Ressources humaines}
 Les étudiants composant le groupe L2I1
 
+\section{Étude de marché}
+\subsection{Publique cible}
+\begin{itemize}[label=\textbullet]
+\item Enfants (6-18ans) :
+Attirés par des expériences interactives et ludiques. Ce public recherche des jeux colorés et
+intuitifs avec des interactions amusantes.
+\item Adultes nostalgiques (25-40 ans) :
+Ayant grandi avec le Tamagotchi des années 90, ils sont sensibles à la nostalgie et aux références
+rétro. Ce public est attiré par des jeux simples qui rappellent leur enfance. Ils apprécient
+également les jeux sans microtransactions intrusives.
+\end{itemize}
+\subsection{Fonctionnalités uniques}
+\begin{itemize}[label=\textbullet]
+\item Transfert temporaire de l’animal :
+Une fonctionnalité innovante permettant aux utilisateurs de prêter ou échanger temporairement
+leur animal virtuel avec des amis ou des membres de la famille. Cela favorise les interactions
+sociales et la création de liens autour du jeu.
+\item Microtransactions :
+Contrairement à la majorité des jeux mobiles, ce jeu ne propose aucune microtransaction. Cela
+garantit une expérience de jeu équitable, sans interruptions ni incitations à dépenser de l’argent.
+Ce modèle peut attirer les parents soucieux des dépenses in-app de leurs enfants et plaire aux
+joueurs adultes fatigués des achats intégrés.
+\end{itemize}
+\subsection{Concurrences}
+\begin{itemize}[label=\textbullet]
+\item Tamagotchi Forever :
+\begin{itemize}[label=\textendash]
+\item Points forts : Jeu officiel avec la reconnaissance de la marque Tamagotchi,
+graphismes professionnels, univers fidèle à l’original.
+\item Limites : Présence de microtransactions, ce qui peut rebuter certains utilisateurs.
+\end{itemize}
+\item My Talking Tom :
+\begin{itemize}[label=\textendash]
+\item Points forts : Franchise très populaire, graphismes attrayants, nombreuses
+fonctionnalités interactives.
+\item Limites : Fortement basé sur des achats in-app, ce qui peut frustrer les joueurs
+cherchant une expérience gratuite complète.
+\end{itemize}
+\end{itemize}
+\subsection{Positionnement}
+Notre jeu se positionne comme une alternative sans microtransactions, favorisant l’interaction
+sociale grâce au transfert temporaire d’animaux. Il combine la nostalgie des années 90 avec des
+fonctionnalités modernes pour capter un public large, des enfants aux adultes.
 \section{Annexes}
 
 \section{Glossaire}
