@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.10)  15 FEB 2025 21:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.10)  15 FEB 2025 23:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -693,12 +693,12 @@ Package hyperref Info: Link coloring OFF on input line 11.
 \openout4 = `main.nlo'.
 
 Package nomencl Info: Writing nomenclature file main.nlo on input line 29.
-<logos/logo.jpg, id=159, 1842.885pt x 702.625pt>
+<logos/logo.jpg, id=155, 1842.885pt x 702.625pt>
 File: logos/logo.jpg Graphic file (type jpg)
 <use logos/logo.jpg>
 Package pdftex.def Info: logos/logo.jpg  used on input line 30.
 (pdftex.def)             Requested size: 364.19667pt x 138.85pt.
-<logos/SteinECL.jpg, id=160, 376.90813pt x 565.61313pt>
+<logos/SteinECL.jpg, id=156, 376.90813pt x 565.61313pt>
 File: logos/SteinECL.jpg Graphic file (type jpg)
 <use logos/SteinECL.jpg>
 Package pdftex.def Info: logos/SteinECL.jpg  used on input line 30.
@@ -707,7 +707,7 @@ Package pdftex.def Info: logos/SteinECL.jpg  used on input line 30.
 
 {C:/Users/Mrw/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./logos/SteinE
 CL.jpg> <./logos/logo.jpg>] (main.toc
-<logos/logo2.png, id=209, 321.2pt x 122.4575pt>
+<logos/logo2.png, id=205, 321.2pt x 122.4575pt>
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
 Package pdftex.def Info: logos/logo2.png  used on input line 39.
@@ -717,7 +717,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.39 ...umberline {12}Références}{8}{section.12}
+l.39 ...n}{\numberline {12}Annexes}{8}{section.12}
                                                   % [1 <./logos/logo2.png>])
 \tf@toc=\write5
 \openout5 = `main.toc'.
@@ -730,78 +730,67 @@ Package pdftex.def Info: logos/logo2.png  used on input line 33.
 [2]
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 74.
+Package pdftex.def Info: logos/logo2.png  used on input line 70.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
  [3]
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 98.
+Package pdftex.def Info: logos/logo2.png  used on input line 100.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
  [4]
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 158.
+Package pdftex.def Info: logos/logo2.png  used on input line 160.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
  [5]
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 190.
+Package pdftex.def Info: logos/logo2.png  used on input line 192.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
  [6]
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 234.
+Package pdftex.def Info: logos/logo2.png  used on input line 236.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
  [7]
-File: logos/logo.jpg Graphic file (type jpg)
-<use logos/logo.jpg>
-Package pdftex.def Info: logos/logo.jpg  used on input line 268.
-(pdftex.def)             Requested size: 223.8643pt x 85.35826pt.
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 289.
+Package pdftex.def Info: logos/logo2.png  used on input line 261.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
- [8]
-File: logos/logo2.png Graphic file (type png)
-<use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 289.
-(pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
- [9] (main.aux)
+ [8] (main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: BE3F47F9663BF9055882DD5EEF7B5CF8;5887.
+(rerunfilecheck)             Checksum: 384721D12F0151B1507E3E3FD5A8C20E;5785.
  ) 
 Here is how much of TeX's memory you used:
- 21011 strings out of 474486
- 406500 string characters out of 5753576
+ 20995 strings out of 474486
+ 406199 string characters out of 5753576
  1940542 words of memory out of 5000000
- 42984 multiletter control sequences out of 15000+600000
+ 42972 multiletter control sequences out of 15000+600000
  572087 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  125i,16n,121p,697b,1287s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc12
-00.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tc
-rm1200.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ecbx1095.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
-pi600\ecbx1200.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/
-ec/dpi600\ecbx1440.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
-pen/ec/dpi600\ecrm1200.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/j
-knappen/ec/dpi600\eccc1440.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfo
-ur/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/
-ljfour/jknappen/ec/dpi600\ecbi1440.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts
-/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\f
-onts/pk/ljfour/jknappen/ec/dpi600\eccc1728.pk> <C:\Users\Mrw\AppData\Local\MiKT
-eX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc2074.pk><C:/Program Files/MiKTeX/font
-s/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-
-Output written on main.pdf (10 pages, 403036 bytes).
+ <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm12
+00.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ec
+bx1095.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\ecbx1200.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
+pi600\ecbx1440.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/
+ec/dpi600\ecrm1200.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
+pen/ec/dpi600\eccc1440.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/j
+knappen/ec/dpi600\ecrm1440.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfo
+ur/jknappen/ec/dpi600\ecbi1440.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/
+ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts
+/pk/ljfour/jknappen/ec/dpi600\eccc1728.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\f
+onts/pk/ljfour/jknappen/ec/dpi600\eccc2074.pk><C:/Program Files/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+r12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on main.pdf (9 pages, 396577 bytes).
 PDF statistics:
- 674 PDF objects out of 1000 (max. 8388607)
- 51 named destinations out of 1000 (max. 500000)
- 328 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 649 PDF objects out of 1000 (max. 8388607)
+ 47 named destinations out of 1000 (max. 500000)
+ 320 words of extra memory for PDF output out of 10000 (max. 10000000)
 
