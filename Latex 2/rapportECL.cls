@@ -91,6 +91,3 @@
 \label{fig: #4}
 \end{figure}
 }
-
-
-
