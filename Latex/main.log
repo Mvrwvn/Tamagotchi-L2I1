@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.10)  22 FEB 2025 16:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.10)  22 FEB 2025 16:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -693,12 +693,12 @@ Package hyperref Info: Link coloring OFF on input line 11.
 \openout4 = `main.nlo'.
 
 Package nomencl Info: Writing nomenclature file main.nlo on input line 29.
-<logos/logo.jpg, id=151, 1842.885pt x 702.625pt>
+<logos/logo.jpg, id=163, 1842.885pt x 702.625pt>
 File: logos/logo.jpg Graphic file (type jpg)
 <use logos/logo.jpg>
 Package pdftex.def Info: logos/logo.jpg  used on input line 30.
 (pdftex.def)             Requested size: 364.19667pt x 138.85pt.
-<logos/SteinECL.jpg, id=152, 376.90813pt x 565.61313pt>
+<logos/SteinECL.jpg, id=164, 376.90813pt x 565.61313pt>
 File: logos/SteinECL.jpg Graphic file (type jpg)
 <use logos/SteinECL.jpg>
 Package pdftex.def Info: logos/SteinECL.jpg  used on input line 30.
@@ -706,27 +706,28 @@ Package pdftex.def Info: logos/SteinECL.jpg  used on input line 30.
 [1
 
 {C:/Users/Mrw/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./logos/SteinE
-CL.jpg> <./logos/logo.jpg>] (main.toc)
-\tf@toc=\write5
-\openout5 = `main.toc'.
-
-<logos/logo2.png, id=201, 321.2pt x 122.4575pt>
+CL.jpg> <./logos/logo.jpg>] (main.toc
+<logos/logo2.png, id=214, 321.2pt x 122.4575pt>
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 33.
+Package pdftex.def Info: logos/logo2.png  used on input line 40.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.33 \newpage
-              [1 <./logos/logo2.png>]
+l.40 ...\numberline {11}Glossaire}{10}{section.11}
+                                                  % [1 <./logos/logo2.png>])
+\tf@toc=\write5
+\openout5 = `main.toc'.
+
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
 Package pdftex.def Info: logos/logo2.png  used on input line 33.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
- [2]
+
+[2]
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
 Package pdftex.def Info: logos/logo2.png  used on input line 70.
@@ -752,23 +753,72 @@ File: logos/logo2.png Graphic file (type png)
 Package pdftex.def Info: logos/logo2.png  used on input line 241.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
  [7]
+<maquette/firstpage.png, id=256, 445.665pt x 920.43875pt>
+File: maquette/firstpage.png Graphic file (type png)
+<use maquette/firstpage.png>
+Package pdftex.def Info: maquette/firstpage.png  used on input line 272.
+(pdftex.def)             Requested size: 41.32536pt x 85.35826pt.
+<maquette/app_loading.png, id=257, 445.665pt x 920.43875pt>
+File: maquette/app_loading.png Graphic file (type png)
+<use maquette/app_loading.png>
+Package pdftex.def Info: maquette/app_loading.png  used on input line 273.
+(pdftex.def)             Requested size: 41.32536pt x 85.35826pt.
+<maquette/Adoption_animal.png, id=258, 445.665pt x 920.43875pt>
+File: maquette/Adoption_animal.png Graphic file (type png)
+<use maquette/Adoption_animal.png>
+Package pdftex.def Info: maquette/Adoption_animal.png  used on input line 274.
+(pdftex.def)             Requested size: 41.32536pt x 85.35826pt.
+<maquette/backup.png, id=259, 445.665pt x 920.43875pt>
+File: maquette/backup.png Graphic file (type png)
+<use maquette/backup.png>
+Package pdftex.def Info: maquette/backup.png  used on input line 275.
+(pdftex.def)             Requested size: 41.32536pt x 85.35826pt.
+<maquette/page_principal.png, id=260, 445.665pt x 929.4725pt>
+File: maquette/page_principal.png Graphic file (type png)
+<use maquette/page_principal.png>
+Package pdftex.def Info: maquette/page_principal.png  used on input line 276.
+(pdftex.def)             Requested size: 40.92415pt x 85.35826pt.
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 276.
+Package pdftex.def Info: logos/logo2.png  used on input line 277.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
  [8]
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 286.
+Package pdftex.def Info: logos/logo2.png  used on input line 277.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
- [9] (main.aux)
+ [9 <./maquette/firstpage.png> <./maquette/app_loading.png> <./maquette/Adoptio
+n_animal.png> <./maquette/backup.png> <./maquette/page_principal.png>]
+! Misplaced alignment tab character &.
+<argument> ...imiChi-L2I1-projet?node-id=109-1021&
+                                                  t=waYgwSG2iLA7EKha-0$
+l.292 ...t?node-id=109-1021&t=waYgwSG2iLA7EKha-0$}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+Overfull \hbox (26.89044pt too wide) in paragraph at lines 292--293
+[]\T1/cmr/m/n/12 Maquette []$\OML/cmm/m/it/12 https \OT1/cmr/m/n/12 : \OML/cmm/
+m/it/12 ==www:figma:com=design=koCZsOk\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 kDRrowf
+l\OT1/cmr/m/n/12 691\OML/cmm/m/it/12 SRs=MimiChi \OMS/cmsy/m/n/12 ^^@
+ []
+
+File: logos/logo2.png Graphic file (type png)
+<use logos/logo2.png>
+Package pdftex.def Info: logos/logo2.png  used on input line 294.
+(pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
+[10
+
+] (main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 
 Package rerunfilecheck Warning: File `main.out' has changed.
@@ -776,17 +826,17 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: EB94C4B7C7199321730C14D0AE7F0C63;5705
-(rerunfilecheck)             After:  3B3BB2A5060ADD65A28DF56083444EF5;5875.
+(rerunfilecheck)             Before: BCF09112D9C5243DC5E6DFF9244E388B;5980
+(rerunfilecheck)             After:  5ED4BDC17E2F40E8355A4BE7C0FF760D;5975.
  ) 
 Here is how much of TeX's memory you used:
- 21007 strings out of 474486
- 406563 string characters out of 5753576
+ 21062 strings out of 474486
+ 408070 string characters out of 5753576
  1940542 words of memory out of 5000000
- 42981 multiletter control sequences out of 15000+600000
+ 43029 multiletter control sequences out of 15000+600000
  572087 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 125i,16n,121p,698b,1175s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 125i,16n,121p,698b,1286s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc12
 00.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tc
 rm1200.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
@@ -804,9 +854,9 @@ s/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/c
 m/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 
-Output written on main.pdf (10 pages, 404700 bytes).
+Output written on main.pdf (11 pages, 961018 bytes).
 PDF statistics:
- 668 PDF objects out of 1000 (max. 8388607)
- 50 named destinations out of 1000 (max. 500000)
- 312 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 713 PDF objects out of 1000 (max. 8388607)
+ 57 named destinations out of 1000 (max. 500000)
+ 361 words of extra memory for PDF output out of 10000 (max. 10000000)
 

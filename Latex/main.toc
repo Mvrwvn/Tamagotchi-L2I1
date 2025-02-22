@@ -36,5 +36,6 @@
 \contentsline {subsection}{\numberline {9.4}Positionnement}{8}{subsection.9.4}%
 \contentsline {section}{\numberline {10}Annexes}{8}{section.10}%
 \contentsline {subsection}{\numberline {10.1}Github}{8}{subsection.10.1}%
-\contentsline {section}{\numberline {11}Glossaire}{8}{section.11}%
-\contentsline {section}{\numberline {12}Références}{9}{section.12}%
+\contentsline {subsection}{\numberline {10.2}Maquette}{8}{subsection.10.2}%
+\contentsline {section}{\numberline {11}Glossaire}{10}{section.11}%
+\contentsline {section}{\numberline {12}Références}{10}{section.12}%
