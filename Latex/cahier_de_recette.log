@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.10)  23 FEB 2025 13:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.10)  23 FEB 2025 19:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -901,16 +901,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 136--136
 []|\T1/cmr/m/n/12 Deux Ta-ma-got-chis
  []
 
-File: logos/logo2.png Graphic file (type png)
-<use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 138.
-(pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
-[3]
-File: logos/logo2.png Graphic file (type png)
-<use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 139.
-(pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
- [4]
+
+Underfull \hbox (badness 10000) in paragraph at lines 138--138
+[]|\T1/cmr/m/n/12 Deux Ta-ma-got-chis
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 140--140
+[]|\T1/cmr/m/n/12 Deux Ta-ma-got-chis
+ []
+
+
+Underfull \hbox (badness 5652) in paragraph at lines 140--141
+[]|\T1/cmr/m/n/12 Les deux Ta-ma-got-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--142
+[]|\T1/cmr/m/n/12 Deux Ta-ma-got-chis
+ []
+
+
+Underfull \hbox (badness 5652) in paragraph at lines 142--143
+[]|\T1/cmr/m/n/12 Les deux Ta-ma-got-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--144
+[]|\T1/cmr/m/n/12 Deux Ta-ma-got-chis
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 146--146
 []|\T1/cmr/m/n/12 Deux Ta-ma-got-chis
  []
@@ -921,8 +942,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 148--148
  []
 
 
-Underfull \hbox (badness 5652) in paragraph at lines 148--149
-[]|\T1/cmr/m/n/12 Les deux Ta-ma-got-
+Underfull \hbox (badness 10000) in paragraph at lines 148--148
+\T1/cmr/m/n/12 pré-sents avec des
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--148
+\T1/cmr/m/n/12 ni-veaux de faim
  []
 
 
@@ -931,59 +957,178 @@ Underfull \hbox (badness 10000) in paragraph at lines 150--150
  []
 
 
-Underfull \hbox (badness 5652) in paragraph at lines 150--151
-[]|\T1/cmr/m/n/12 Les deux Ta-ma-got-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 152--152
-[]|\T1/cmr/m/n/12 Deux Ta-ma-got-chis
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 154--154
-[]|\T1/cmr/m/n/12 Deux Ta-ma-got-chis
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 156--156
-[]|\T1/cmr/m/n/12 Deux Ta-ma-got-chis
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 156--156
+Underfull \hbox (badness 10000) in paragraph at lines 150--150
 \T1/cmr/m/n/12 pré-sents avec des
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--156
-\T1/cmr/m/n/12 ni-veaux de faim
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 158--158
-[]|\T1/cmr/m/n/12 Deux Ta-ma-got-chis
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 158--158
-\T1/cmr/m/n/12 pré-sents avec des
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 158--158
+Underfull \hbox (badness 10000) in paragraph at lines 150--150
 \T1/cmr/m/n/12 ni-veaux de santé
  []
 
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 176.
+Package pdftex.def Info: logos/logo2.png  used on input line 152.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
-[5]
+[3]
+File: logos/logo2.png Graphic file (type png)
+<use logos/logo2.png>
+Package pdftex.def Info: logos/logo2.png  used on input line 152.
+(pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
+ [4]
+File: logos/logo2.png Graphic file (type png)
+<use logos/logo2.png>
+Package pdftex.def Info: logos/logo2.png  used on input line 153.
+(pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
+ [5]
+Underfull \hbox (badness 3323) in paragraph at lines 160--160
+[]|\T1/cmr/m/n/12 Affichage du Splash
+ []
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 160--160
+\T1/cmr/m/n/12 L'in-ter-face doit être
+ []
+
+
+Underfull \hbox (badness 6220) in paragraph at lines 160--160
+\T1/cmr/m/n/12 adap-tée aux écrans
+ []
+
+
+Underfull \hbox (badness 2486) in paragraph at lines 160--161
+\T1/cmr/m/n/12 en plein écran puis
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
+\T1/cmr/m/n/12 passe au-to-ma-ti-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
+\T1/cmr/m/n/12 que-ment à l'écran
+ []
+
+
+Underfull \hbox (badness 3919) in paragraph at lines 162--162
+[]|\T1/cmr/m/n/12 Affichage de l'écran
+ []
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 162--162
+[]|\T1/cmr/m/n/12 L'interface doit être
+ []
+
+
+Underfull \hbox (badness 6220) in paragraph at lines 162--162
+\T1/cmr/m/n/12 adap-tée aux écrans
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 162--163
+[]|\T1/cmr/m/n/12 L'écran d'ac-cueil
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 162--163
+\T1/cmr/m/n/12 af-fiche clai-re-ment
+ []
+
+
+Underfull \hbox (badness 5696) in paragraph at lines 162--163
+\T1/cmr/m/n/12 le bou-ton ^^S Jouer
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 162--163
+\T1/cmr/m/n/12 ^^T et les op-tions
+ []
+
+
+Underfull \hbox (badness 3919) in paragraph at lines 164--164
+[]|\T1/cmr/m/n/12 Affichage de l'écran
+ []
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 164--164
+[]|\T1/cmr/m/n/12 L'interface doit être
+ []
+
+
+Underfull \hbox (badness 6220) in paragraph at lines 164--164
+\T1/cmr/m/n/12 adap-tée aux écrans
+ []
+
+
+Underfull \hbox (badness 3396) in paragraph at lines 164--165
+[]|\T1/cmr/m/n/12 Les in-for-ma-tions de
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 164--165
+\T1/cmr/m/n/12 chaque Ta-ma-got-chi
+ []
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 166--166
+[]|\T1/cmr/m/n/12 L'interface doit être
+ []
+
+
+Underfull \hbox (badness 6220) in paragraph at lines 166--166
+\T1/cmr/m/n/12 adap-tée aux écrans
+ []
+
+
+Underfull \hbox (badness 2027) in paragraph at lines 168--168
+\T1/cmr/m/n/12 ma-got-chis si-mul-ta-né-
+ []
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 168--168
+[]|\T1/cmr/m/n/12 L'interface doit être
+ []
+
+
+Underfull \hbox (badness 6220) in paragraph at lines 168--168
+\T1/cmr/m/n/12 adap-tée aux écrans
+ []
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 170--170
+[]|\T1/cmr/m/n/12 L'interface doit être
+ []
+
+
+Underfull \hbox (badness 6220) in paragraph at lines 170--170
+\T1/cmr/m/n/12 adap-tée aux écrans
+ []
+
+
+Underfull \hbox (badness 6708) in paragraph at lines 170--171
+\T1/cmr/m/n/12 re-flé-tant le chan-ge-
+ []
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 172--172
+[]|\T1/cmr/m/n/12 L'interface doit être
+ []
+
+
+Underfull \hbox (badness 6220) in paragraph at lines 172--172
+\T1/cmr/m/n/12 adap-tée aux écrans
+ []
+
+File: logos/logo2.png Graphic file (type png)
+<use logos/logo2.png>
+Package pdftex.def Info: logos/logo2.png  used on input line 182.
+(pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
+[6]
 ! Misplaced alignment tab character &.
 <argument> ...imiChi-L2I1-projet?node-id=109-1021&
                                                   t=waYgwSG2iLA7EKha-0$
-l.210 ...t?node-id=109-1021&t=waYgwSG2iLA7EKha-0$}
+l.224 ...t?node-id=109-1021&t=waYgwSG2iLA7EKha-0$}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -993,7 +1138,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 
-Overfull \hbox (26.89044pt too wide) in paragraph at lines 210--211
+Overfull \hbox (26.89044pt too wide) in paragraph at lines 224--225
 []\T1/cmr/m/n/12 Maquette []$\OML/cmm/m/it/12 https \OT1/cmr/m/n/12 : \OML/cmm/
 m/it/12 ==www:figma:com=design=koCZsOk\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 kDRrowf
 l\OT1/cmr/m/n/12 691\OML/cmm/m/it/12 SRs=MimiChi \OMS/cmsy/m/n/12 ^^@
@@ -1001,9 +1146,9 @@ l\OT1/cmr/m/n/12 691\OML/cmm/m/it/12 SRs=MimiChi \OMS/cmsy/m/n/12 ^^@
 
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 212.
+Package pdftex.def Info: logos/logo2.png  used on input line 226.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
-[6] (cahier_de_recette.aux)
+[7] (cahier_de_recette.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -1016,13 +1161,13 @@ Package rerunfilecheck Info: File `cahier_de_recette.out' has not changed.
 (rerunfilecheck)             Checksum: 2D3625775B814BF72CD430791EB9D0DC;2517.
  ) 
 Here is how much of TeX's memory you used:
- 21095 strings out of 474486
- 408249 string characters out of 5753576
- 1956542 words of memory out of 5000000
+ 21096 strings out of 474486
+ 408255 string characters out of 5753576
+ 1967542 words of memory out of 5000000
  43091 multiletter control sequences out of 15000+600000
  572087 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 125i,16n,121p,587b,1267s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 125i,17n,121p,587b,1170s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm12
 00.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ec
 bx1095.pk> <C:\Users\Mrw\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
@@ -1038,9 +1183,9 @@ onts/pk/ljfour/jknappen/ec/dpi600\eccc2074.pk><C:/Program Files/MiKTeX/fonts/ty
 pe1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cm
 r12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on cahier_de_recette.pdf (7 pages, 375438 bytes).
+Output written on cahier_de_recette.pdf (8 pages, 378420 bytes).
 PDF statistics:
- 498 PDF objects out of 1000 (max. 8388607)
- 24 named destinations out of 1000 (max. 500000)
+ 505 PDF objects out of 1000 (max. 8388607)
+ 25 named destinations out of 1000 (max. 500000)
  136 words of extra memory for PDF output out of 10000 (max. 10000000)
 

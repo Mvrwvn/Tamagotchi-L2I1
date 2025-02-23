@@ -10,7 +10,7 @@
 \contentsline {section}{\numberline {5}Moyen d'essai et outils}{3}{section.5}%
 \contentsline {section}{\numberline {6}Conformité aux spécifications générales}{3}{section.6}%
 \contentsline {section}{\numberline {7}Conformité aux spécifications fonctionnelles}{3}{section.7}%
-\contentsline {section}{\numberline {8}Conformité aux spécifications d’interfaces}{5}{section.8}%
-\contentsline {section}{\numberline {9}Conformité de la documentation}{5}{section.9}%
-\contentsline {section}{\numberline {10}Glossaire}{6}{section.10}%
-\contentsline {section}{\numberline {11}Références}{6}{section.11}%
+\contentsline {section}{\numberline {8}Conformité aux spécifications d’interfaces}{6}{section.8}%
+\contentsline {section}{\numberline {9}Conformité de la documentation}{6}{section.9}%
+\contentsline {section}{\numberline {10}Glossaire}{7}{section.10}%
+\contentsline {section}{\numberline {11}Références}{7}{section.11}%

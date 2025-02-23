@@ -135,14 +135,6 @@ SC1-18 & Vieillissement quotidien & Temps réel, même app fermée & Vieillissem
 \hline
 SC1-20 & Diminution du bonheur avec deux Tamagotchi & Deux Tamagotchis présents & La stat de bonheur diminue plus lentement \\
 \hline
-\end{longtable}
-\newpage
-\section{Conformité aux spécifications d’interfaces}
-
-\begin{longtable}{|c|p{4cm}|p{4cm}|p{4cm}|}
-\hline
-\textbf{ID} & \textbf{Description} & \textbf{Contrainte} & \textbf{Résultat attendu} \\
-\hline
 SC1-21 & Appuyer sur le bouton "Nourrir" quand il y a 2 Tamagotchis & Deux Tamagotchis doivent être présents & Le Tamagotchi le plus affamé est nourri en premier \\
 \hline
 SC1-22 & Appuyer sur le bouton "Nettoyer" quand il y a 2 Tamagotchis & Deux Tamagotchis doivent être présents & Les deux Tamagotchis sont propres après nettoyage \\
@@ -156,6 +148,28 @@ SC1-25 & Appuyer sur le bouton "Menu" quand il y a 2 Tamagotchis & Deux Tamagotc
 SC1-26 & Appuyer sur le bouton "Nourrir" lorsque la faim est égale & Deux Tamagotchis présents avec des niveaux de faim identiques & Le Tamagotchi principal est nourri en premier \\
 \hline
 SC1-27 & Appuyer sur le bouton "Soigner" lorsque la santé est égale & Deux Tamagotchis présents avec des niveaux de santé identiques & Le Tamagotchi principal est soigné en premier \\
+\hline
+\end{longtable}
+\newpage
+\section{Conformité aux spécifications d’interfaces}
+
+\begin{longtable}{|c|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+\textbf{ID} & \textbf{Description} & \textbf{Contrainte} & \textbf{Résultat attendu} \\
+\hline
+SC2-01 & Affichage du Splash Screen & L'utilisateur ne peut pas sauter cette étape. L’interface doit être adaptée aux écrans mobiles et tablettes & L'écran affiche l'icône en plein écran puis passe automatiquement à l'écran d'accueil \\
+\hline
+SC2-02 & Affichage de l'écran d'accueil & L’interface doit être adaptée aux écrans mobiles et tablettes & L'écran d'accueil affiche clairement le bouton « Jouer » et les options d'import/export \\
+\hline
+SC2-03 & Affichage de l'écran principal & L’interface doit être adaptée aux écrans mobiles et tablettes & Les informations de chaque Tamagotchi sont affichées correctement et l'utilisateur peut interagir via les boutons d'action \\
+\hline
+SC2-04 & Affichage et fonctionnalité du menu personnalisé & L’interface doit être adaptée aux écrans mobiles et tablettes & Le menu affiche correctement les informations de tous les Tamagotchis et propose les options avec confirmation pour Exporter et Supprimer \\
+\hline
+SC2-05 & Affichage de deux Tamagotchis simultanément & L’interface doit être adaptée aux écrans mobiles et tablettes & Les deux Tamagotchis sont affichés avec leurs statistiques et animations respectives sans interférence \\
+\hline
+SC2-06 & Tests des animations & L’interface doit être adaptée aux écrans mobiles et tablettes & Les animations apparaissent en temps réel, reflétant le changement d'état du Tamagotchi \\
+\hline
+SC2-07 & Fluidité de la navigation entre les écrans & L’interface doit être adaptée aux écrans mobiles et tablettes & L'utilisateur peut naviguer facilement d'un écran à l'autre \\
 \hline
 \end{longtable}
 \section{Conformité de la documentation}
