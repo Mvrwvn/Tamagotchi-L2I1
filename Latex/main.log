@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.10)  22 FEB 2025 16:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.10)  23 FEB 2025 14:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -753,46 +753,82 @@ File: logos/logo2.png Graphic file (type png)
 Package pdftex.def Info: logos/logo2.png  used on input line 241.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
  [7]
-<maquette/firstpage.png, id=256, 445.665pt x 920.43875pt>
-File: maquette/firstpage.png Graphic file (type png)
-<use maquette/firstpage.png>
-Package pdftex.def Info: maquette/firstpage.png  used on input line 272.
-(pdftex.def)             Requested size: 41.32536pt x 85.35826pt.
-<maquette/app_loading.png, id=257, 445.665pt x 920.43875pt>
-File: maquette/app_loading.png Graphic file (type png)
-<use maquette/app_loading.png>
-Package pdftex.def Info: maquette/app_loading.png  used on input line 273.
-(pdftex.def)             Requested size: 41.32536pt x 85.35826pt.
-<maquette/Adoption_animal.png, id=258, 445.665pt x 920.43875pt>
-File: maquette/Adoption_animal.png Graphic file (type png)
-<use maquette/Adoption_animal.png>
-Package pdftex.def Info: maquette/Adoption_animal.png  used on input line 274.
-(pdftex.def)             Requested size: 41.32536pt x 85.35826pt.
-<maquette/backup.png, id=259, 445.665pt x 920.43875pt>
-File: maquette/backup.png Graphic file (type png)
-<use maquette/backup.png>
-Package pdftex.def Info: maquette/backup.png  used on input line 275.
-(pdftex.def)             Requested size: 41.32536pt x 85.35826pt.
-<maquette/page_principal.png, id=260, 445.665pt x 929.4725pt>
-File: maquette/page_principal.png Graphic file (type png)
-<use maquette/page_principal.png>
-Package pdftex.def Info: maquette/page_principal.png  used on input line 276.
-(pdftex.def)             Requested size: 40.92415pt x 85.35826pt.
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 277.
+Package pdftex.def Info: logos/logo2.png  used on input line 272.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
  [8]
+<maquette/screen1.png, id=260, 939.51pt x 413.74574pt>
+File: maquette/screen1.png Graphic file (type png)
+<use maquette/screen1.png>
+Package pdftex.def Info: maquette/screen1.png  used on input line 275.
+(pdftex.def)             Requested size: 218.51521pt x 96.22646pt.
+<maquette/screen8.png, id=261, 438.438pt x 266.1945pt>
+File: maquette/screen8.png Graphic file (type png)
+<use maquette/screen8.png>
+Package pdftex.def Info: maquette/screen8.png  used on input line 279.
+(pdftex.def)             Requested size: 218.51521pt x 132.67448pt.
+<maquette/screen9.png, id=262, 324.0105pt x 287.27325pt>
+File: maquette/screen9.png Graphic file (type png)
+<use maquette/screen9.png>
+Package pdftex.def Info: maquette/screen9.png  used on input line 283.
+(pdftex.def)             Requested size: 218.51521pt x 193.74327pt.
+<maquette/screen4.png, id=263, 346.896pt x 341.47575pt>
+File: maquette/screen4.png Graphic file (type png)
+<use maquette/screen4.png>
+Package pdftex.def Info: maquette/screen4.png  used on input line 287.
+(pdftex.def)             Requested size: 218.51521pt x 215.0996pt.
+
+Overfull \hbox (2.02162pt too wide) in paragraph at lines 282--288
+[][]  [] 
+ []
+
+<maquette/screen5.png, id=264, 427.5975pt x 373.395pt>
+File: maquette/screen5.png Graphic file (type png)
+<use maquette/screen5.png>
+Package pdftex.def Info: maquette/screen5.png  used on input line 291.
+(pdftex.def)             Requested size: 218.51521pt x 190.81636pt.
+<maquette/screen6.png, id=265, 453.49425pt x 386.6445pt>
+File: maquette/screen6.png Graphic file (type png)
+<use maquette/screen6.png>
+Package pdftex.def Info: maquette/screen6.png  used on input line 295.
+(pdftex.def)             Requested size: 218.51521pt x 186.307pt.
+
+Overfull \hbox (2.02162pt too wide) in paragraph at lines 290--296
+[][]  [] 
+ []
+
+<maquette/screen7.png, id=266, 457.71pt x 364.9635pt>
+File: maquette/screen7.png Graphic file (type png)
+<use maquette/screen7.png>
+Package pdftex.def Info: maquette/screen7.png  used on input line 299.
+(pdftex.def)             Requested size: 218.51521pt x 174.23376pt.
+<maquette/screen2.png, id=267, 458.9145pt x 269.20575pt>
+File: maquette/screen2.png Graphic file (type png)
+<use maquette/screen2.png>
+Package pdftex.def Info: maquette/screen2.png  used on input line 303.
+(pdftex.def)             Requested size: 218.51521pt x 128.18213pt.
+
+Overfull \hbox (2.02162pt too wide) in paragraph at lines 298--304
+[][]  [] 
+ []
+
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 277.
+Package pdftex.def Info: logos/logo2.png  used on input line 305.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
- [9 <./maquette/firstpage.png> <./maquette/app_loading.png> <./maquette/Adoptio
-n_animal.png> <./maquette/backup.png> <./maquette/page_principal.png>]
+[9 <./maquette/screen1.png> <./maquette/screen8.png> <./maquette/screen9.png> <
+./maquette/screen4.png> <./maquette/screen5.png> <./maquette/screen6.png>]
+<maquette/screen3.png, id=278, 489.027pt x 271.61475pt>
+File: maquette/screen3.png Graphic file (type png)
+<use maquette/screen3.png>
+Package pdftex.def Info: maquette/screen3.png  used on input line 307.
+(pdftex.def)             Requested size: 218.51521pt x 121.36758pt.
+
 ! Misplaced alignment tab character &.
 <argument> ...imiChi-L2I1-projet?node-id=109-1021&
                                                   t=waYgwSG2iLA7EKha-0$
-l.292 ...t?node-id=109-1021&t=waYgwSG2iLA7EKha-0$}
+l.324 ...t?node-id=109-1021&t=waYgwSG2iLA7EKha-0$}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -802,7 +838,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 
-Overfull \hbox (26.89044pt too wide) in paragraph at lines 292--293
+Overfull \hbox (26.89044pt too wide) in paragraph at lines 324--325
 []\T1/cmr/m/n/12 Maquette []$\OML/cmm/m/it/12 https \OT1/cmr/m/n/12 : \OML/cmm/
 m/it/12 ==www:figma:com=design=koCZsOk\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 kDRrowf
 l\OT1/cmr/m/n/12 691\OML/cmm/m/it/12 SRs=MimiChi \OMS/cmsy/m/n/12 ^^@
@@ -810,30 +846,22 @@ l\OT1/cmr/m/n/12 691\OML/cmm/m/it/12 SRs=MimiChi \OMS/cmsy/m/n/12 ^^@
 
 File: logos/logo2.png Graphic file (type png)
 <use logos/logo2.png>
-Package pdftex.def Info: logos/logo2.png  used on input line 294.
+Package pdftex.def Info: logos/logo2.png  used on input line 326.
 (pdftex.def)             Requested size: 96.36073pt x 36.73752pt.
-[10
-
-] (main.aux)
+[10 <./maquette/screen7.png> <./maquette/screen2.png> <./maquette/screen3.png>]
+(main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: BCF09112D9C5243DC5E6DFF9244E388B;5980
-(rerunfilecheck)             After:  5ED4BDC17E2F40E8355A4BE7C0FF760D;5975.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 5ED4BDC17E2F40E8355A4BE7C0FF760D;5975.
  ) 
 Here is how much of TeX's memory you used:
- 21062 strings out of 474486
- 408070 string characters out of 5753576
+ 21076 strings out of 474486
+ 408356 string characters out of 5753576
  1940542 words of memory out of 5000000
- 43029 multiletter control sequences out of 15000+600000
+ 43048 multiletter control sequences out of 15000+600000
  572087 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  125i,16n,121p,698b,1286s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -854,9 +882,9 @@ s/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/c
 m/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 
-Output written on main.pdf (11 pages, 961018 bytes).
+Output written on main.pdf (11 pages, 1810655 bytes).
 PDF statistics:
- 713 PDF objects out of 1000 (max. 8388607)
- 57 named destinations out of 1000 (max. 500000)
- 361 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 707 PDF objects out of 1000 (max. 8388607)
+ 52 named destinations out of 1000 (max. 500000)
+ 381 words of extra memory for PDF output out of 10000 (max. 10000000)
 
