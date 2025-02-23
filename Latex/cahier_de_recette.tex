@@ -1,0 +1,212 @@
+\documentclass{cahier_de_recette}
+\usepackage{lipsum}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{longtable}
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\hspace{1em}\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\small\bfseries}{\hspace{2em}\thesubsubsection}{1em}{}
+\title{Cahier de recette - L2I1} %Titre du fichier
+
+\begin{document}
+
+%----------- Informations du rapport ---------
+
+\titre{Cahier de recette \\ L2I1 - Tamagotchi} %Titre du fichier .pdf
+\UE{UE Projet de programmation} %Nom de la UE
+\sujet{Projet L2I1 - Tamagotchi} %Nom du sujet
+
+\encadrant{Camille \textsc{KURTZ}} %Nom de l'enseignant
+\responsable{David \textsc{JANISZEK}}
+
+\auteurs{Marwan \textsc{DENAGNON} \\
+		Lina \textsc{BOUGUETTAYA} \\ 
+		Yasmine \textsc{DEHOUCHE} \\
+		Abhijeet \textsc{SINGH}} %Nom des élèves
+
+%----------- Initialisation -------------------
+        
+\fairemarges %Afficher les marges
+\fairepagedegarde %Créer la page de garde
+\renewcommand{\contentsname}{Sommaire}
+\tableofcontents %Créer la table de matières
+\newpage
+
+
+%------------ Corps du rapport ----------------
+
+
+\section{Introduction} 
+
+Ce cahier de recette a pour objectif de définir et formaliser l’ensemble des tests permettant de
+vérifier la conformité de l’application aux spécifications fonctionnelles définies lors de la phase de
+conception. Il décrit les scénarios de test à réaliser afin de s’assurer que toutes les fonctionnalités du
+jeu fonctionnent correctement et répondent aux attentes des utilisateurs.
+
+
+\section{Guide de lecture}
+
+\subsection{Maîtrise d’œuvre}
+\subsubsection{Responsable}
+Nom de l'encadrant : Kurtz Camille 
+
+Le maître d’œuvre analyse les propositions du groupe et supervise le développement de l'application web.
+l'application web.
+\subsubsection{Personnel technique}
+Les personnes oeuvrant pour ce projet sont des étudiants en deuxième année de licence informatique :
+\begin{itemize}[label=\textbullet]
+\item Lina BOUGUETTAYA 
+\item Yasmine DEHOUCHE
+\item Marwan DENAGNON 
+\item Abhijeet SINGH
+\end{itemize}
+\subsection{Maîtrise d'ouvrage}
+Dans le cadre de ce projet la maitrise d’ouvrage est assurée par l’encadrant Camille Kurtz.
+\section{Concepts de base}
+L’application à concevoir est un jeu mobile Android inspiré des Tamagotchis classiques, des gadgets qui, en appuyant sur des boutons situés autour d'un petit écran vidéo, permet de nourrir, laver et soigner l'animal virtuel pour qu'il « vive » le plus longtemps possible. L’objectif principal de cette application est de moderniser les Tamagotchis originaux, en ajoutant des fonctionnalités qui exploitent les capacités technologiques de nos smartphones. Notre application sera développée à l’aide des techniques suivantes :
+\begin{itemize}[label=\textbullet]
+\item Java
+\item XML
+\item JSON
+\end{itemize}
+Vous pouvez retrouver la définition de ces termes dans la partie \protect\hyperref[sec:glossaire]{Glossaire}
+
+\section{Description de la fourniture}
+L’application sera fournie sous la forme d’un fichier APK permettant son installation sur un
+appareil Android. Elle pourra être installée et testée sur des émulateurs Android ainsi que sur des
+appareils physiques.
+\section{Moyen d'essai et outils}
+Un ordinateur avec un système d’exploitation compatible avec Android Studio.
+Un appareil Android physique ou un émulateur Android pour tester l’application dans des
+conditions réelles.
+Observation du comportement de l’application en effectuant les actions principales
+\section{Conformité aux spécifications générales}
+Les tests couvrent l’ensemble des fonctionnalités essentielles de l’application, notamment :
+\begin{itemize}[label=\textbullet]
+\item La sélection et la gestion des Tamagotchis (adoption, suppression, importation/exportation).
+\item L’évolution des statistiques du Tamagotchi (santé, faim, propreté, bonheur).
+\item L’impact du temps sur la dégradation automatique des stats.
+\item L’affichage et l’interaction avec l’interface utilisateur (barres de statistiques, menu, boutons
+d’action).
+\item L’exportation et l’importation de Tamagotchis via un fichier JSON.
+\end{itemize}
+\section{Conformité aux spécifications fonctionnelles}
+\begin{longtable}{|c|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+\textbf{ID} & \textbf{Description} & \textbf{Contrainte} & \textbf{Résultat attendu} \\
+\hline
+SC1-01 & Sélection du Tamagotchi au premier lancement & Aucune sauvegarde précédente ne doit exister & Le Tamagotchi est initialisé avec le personnage choisi \\
+\hline
+SC1-02 & Attribution du nom & Caractères spéciaux interdits & Le Tamagotchi a reçu un nom valide \\
+\hline
+SC1-03 & Appuyer sur le bouton "Nourrir" & Le Tamagotchi ne doit pas être déjà à 100\% en faim & Le Tamagotchi est nourri et sa faim diminue \\
+\hline
+SC1-04 & Appuyer sur le bouton "Nettoyer" & Le Tamagotchi ne doit pas être déjà à 100\% en propreté & Le Tamagotchi est propre après avoir été nettoyé \\
+\hline
+SC1-05 & Cliquer sur le bouton "Jouer" & Le Tamagotchi ne doit pas être déjà à 100\% bonheur & Le Tamagotchi est plus heureux après avoir joué \\
+\hline
+SC1-06 & Appuyer sur le bouton "Soigner" & Le Tamagotchi ne doit pas être déjà à 100\% santé & Le Tamagotchi est en meilleure santé après avoir été soigné \\
+\hline
+SC1-07 & Affichage de l’Humeur Joyeuse & Santé, propreté, bonheur, faim à 70\% & Le Tamagotchi affiche une humeur « joyeuse » \\
+\hline
+SC1-08 & Affichage de l’Humeur Neutre & Santé, bonheur, propreté à environ 55\% & Le Tamagotchi affiche une humeur « neutre » \\
+\hline
+SC1-09 & Affichage de l’Humeur Triste & Au moins une statistique est inférieure à 25\% & Le Tamagotchi affiche une humeur « triste » \\
+\hline
+SC1-10 & Appuyer sur le bouton "Menu" & Tamagotchi actif & Le menu affiche correctement les infos du Tamagotchi et propose toutes les options \\
+\hline
+SC1-11 & Laisser l’application tourner sans interaction & Temps d'inactivité nécessaire & Les stats du Tamagotchi diminuent progressivement \\
+\hline
+SC1-12 & Connexion pour la deuxième fois & Un Tamagotchi doit avoir été créé et sauvegardé & Le Tamagotchi est chargé instantanément \\
+\hline
+SC1-13 & Baisse des stats en arrière-plan & Tamagotchi actif & Les stats baissent même lorsque l'application est fermée \\
+\hline
+SC1-14 & Mort du Tamagotchi & Santé à 0 & Message « Votre Tamagotchi est mort » et disparition du Tamagotchi \\
+\hline
+SC1-15 & Recommencer après mort & Tamagotchi mort & L’écran de sélection s’affiche pour adopter un nouveau personnage \\
+\hline
+SC1-16 & Cliquer sur "Exporter" & Tamagotchi actif et espace disponible & Le fichier JSON est créé et prêt à être partagé \\
+\hline
+SC1-17 & Importer un Tamagotchi & Fichier JSON valide & Le Tamagotchi est importé avec succès \\
+\hline
+SC1-18 & Vieillissement quotidien & Temps réel, même app fermée & Vieillissement d'un jour toutes les 24h réelles \\
+\hline
+SC1-20 & Diminution du bonheur avec deux Tamagotchi & Deux Tamagotchis présents & La stat de bonheur diminue plus lentement \\
+\hline
+\end{longtable}
+\newpage
+\section{Conformité aux spécifications d’interfaces}
+
+\begin{longtable}{|c|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+\textbf{ID} & \textbf{Description} & \textbf{Contrainte} & \textbf{Résultat attendu} \\
+\hline
+SC1-21 & Appuyer sur le bouton "Nourrir" quand il y a 2 Tamagotchis & Deux Tamagotchis doivent être présents & Le Tamagotchi le plus affamé est nourri en premier \\
+\hline
+SC1-22 & Appuyer sur le bouton "Nettoyer" quand il y a 2 Tamagotchis & Deux Tamagotchis doivent être présents & Les deux Tamagotchis sont propres après nettoyage \\
+\hline
+SC1-23 & Appuyer sur le bouton "Jouer" quand il y a 2 Tamagotchis & Deux Tamagotchis doivent être présents & Les deux Tamagotchis sont plus heureux après avoir joué \\
+\hline
+SC1-24 & Appuyer sur le bouton "Soigner" quand il y a 2 Tamagotchis & Deux Tamagotchis doivent être présents & Le Tamagotchi le plus malade est soigné en premier \\
+\hline
+SC1-25 & Appuyer sur le bouton "Menu" quand il y a 2 Tamagotchis & Deux Tamagotchis doivent être présents & Le menu affiche correctement les infos des deux Tamagotchis \\
+\hline
+SC1-26 & Appuyer sur le bouton "Nourrir" lorsque la faim est égale & Deux Tamagotchis présents avec des niveaux de faim identiques & Le Tamagotchi principal est nourri en premier \\
+\hline
+SC1-27 & Appuyer sur le bouton "Soigner" lorsque la santé est égale & Deux Tamagotchis présents avec des niveaux de santé identiques & Le Tamagotchi principal est soigné en premier \\
+\hline
+\end{longtable}
+\section{Conformité de la documentation}
+La documentation doit être conforme aux objectifs et apte à répondre aux exigences des tests que nous venons de citer. Nous devions nous référer aux documents suivants: 
+\begin{itemize}[label=\textbullet]
+\item Le cahier des charges.
+\item La description du projet (disponible dans la partie référence p. *page de référence)
+\item La maquette de l’application.
+
+Le projet doit également inclure des informations et instructions pour assurer sa validité, ces dernières sont représentées ci-dessous : 
+\item Ne pas dépasser la date limite de la fin du projet.
+\item Tout document devra être clair, précis, cohérent à son objectif et apte à être testé afin de le valider. 
+\item Un code source lisible et commenté pour la facilité de lecture et compréhension.
+\item Une documentation propre à notre code, autrement dit concevoir la conception détaillée avec les différentes fonctions, classes, méthodes et libraires essentielles et bien adaptées à la réussite de notre application.
+\item Un guide d’utilisateur de l’application, le plan des tests ainsi que le rapport du projet.
+\item Une application Android simple à l’utilisation et qui répond à la demande du client: 
+\begin{itemize}[label=\textendash]
+\item Prendre soin du Tamagotchi et répondre à ses besoins.
+\item Pouvoir transférer ses données via un système NFC.
+\item Créer une base de données avec un système de compte par utilisateur.
+\end{itemize}
+\end{itemize}
+\section{Glossaire}
+\begin{itemize}[label=\textbullet]
+\item Tamagotchi :
+Animal virtuel dont l’utilisateur doit s’occuper en effectuant diverses actions (nourrir,
+nettoyer, jouer, soigner).
+\item Stats :
+Indicateurs mesurant l’état du Tamagotchi (santé, bonheur, faim, propreté, énergie, etc.).
+\item Splash Screen :
+Écran de démarrage affiché lors du lancement de l’application, généralement pendant
+quelques secondes, avant de rediriger l’utilisateur vers l’écran principal.
+\item Import/Export :
+Fonctionnalités permettant de transférer un Tamagotchi sous forme de fichier JSON entre
+différents appareils.
+\item JSON :
+Format léger d’échange de données utilisé ici pour la persistance locale.
+\item APK (Android Package Kit) :
+Fichier exécutable contenant l’application Android prête à être installée sur un appareil ou
+un émulateur.
+\item AVD (Android Virtual Device) :
+Émulateur Android permettant de tester l’application sur différentes configurations
+d’appareils virtuels dans Android Studio.
+\end{itemize}
+\section{Références} \label{sec:ref}
+\begin{itemize}[label=\textbullet]
+\item Tamagotchi Wiki \href{https://tamagotchi.fandom.com/wiki/Main_Page}{$https://tamagotchi.fandom.com/wiki/Main_Page$}
+\item Android Studio \href{https://developer.android.com/?hl=fr}{$https://developer.android.com/?hl=fr$}
+\item JSON \href{https://www.json.org/json-en.html}{$https://www.json.org/json-en.html$}
+\item XML \href{https://fr.wikipedia.org/wiki/Extensible_Markup_Language}{$https://fr.wikipedia.org/wiki/Extensible_Markup_Language$}
+\item Java \href{https://www.java.com/fr/}{$https://www.java.com/fr/$}
+\item Maquette \href{https://www.figma.com/design/koCZsOk1kDRrowfl691SRs/MimiChi-L2I1-projet?node-id=109-1021&t=waYgwSG2iLA7EKha-0}{$https://www.figma.com/design/koCZsOk1kDRrowfl691SRs/MimiChi-L2I1-projet?node-id=109-1021&t=waYgwSG2iLA7EKha-0$} 
+\end{itemize}
+\end{document}
