@@ -14,7 +14,7 @@ public class Tamagotchi{
     }
     public void manger(int valeur){
         this.statsTama.augementerfaim(valeur);
-        System.out.println("Votre faim a été augmentée de "+ valeur + "\nVotre faim vaut désormais " + this.statsTama.faim);
+        System.out.println("Votre faim a été augmentée de "+ valeur +"\nVotre faim vaut désormais " + this.statsTama.faim);
     }
     public int getId() {
         return id;
