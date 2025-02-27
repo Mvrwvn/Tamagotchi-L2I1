@@ -1,0 +1,36 @@
+name: 🚀 Discord Notification
+
+on:
+  push:
+    branches:
+      - main  # Change selon ta branche
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer les infos du commit
+        id: vars
+        run: |
+          echo "REPO_NAME=${{ github.repository }}" >> $GITHUB_ENV
+          echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+          echo "AUTHOR=${{ github.event.pusher.name }}" >> $GITHUB_ENV
+          echo "COMMIT_MESSAGE=${{ github.event.head_commit.message }}" >> $GITHUB_ENV
+          echo "COMMIT_URL=${{ github.event.head_commit.url }}" >> $GITHUB_ENV
+
+      - name: Envoyer le message sur Discord
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d '{
+            "username": "GitHub Bot",
+            "avatar_url": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+            "embeds": [{
+              "title": "🚀 Nouveau push sur **${{ env.REPO_NAME }}**",
+              "description": "**Branche**: `${{ env.BRANCH_NAME }}`\n**Auteur**: `${{ env.AUTHOR }}`\n\n**Message du commit**:\n```${
+                { env.COMMIT_MESSAGE }}```",
+              "url": "${{ env.COMMIT_URL }}",
+              "color": 5814783
+            }]
+          }' \
+          "${{ secrets.DISCORD_WEBHOOK_URL }}"
