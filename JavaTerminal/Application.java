@@ -42,8 +42,6 @@ public class Application {
 
         try (Reader reader = new FileReader(FICHIER_JSON)) {
             listeTamagotchis = gson.fromJson(reader, new TypeToken<ArrayList<Tamagotchi>>() {}.getType());
-
-            // Vérifie si la liste est encore null après le chargement
             if (listeTamagotchis == null) {
                 listeTamagotchis = new ArrayList<>();
             }
