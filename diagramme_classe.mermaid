@@ -1,0 +1,68 @@
+classDiagram
+    class Joueur {
+        + inscription()
+        + connexion()
+        + reinitialiserMotDePasse()
+        + adopterTamagotchi()
+        
+        - idJoueur: int
+        - nomJoueur: String
+        - motDePasse: String
+        - codeDeSecours: List<String>
+        - tamagotchis: List<Tamagotchi>
+    }
+
+    class Tamagotchi {
+        + nourrir()
+        + jouer()
+        + dormir()
+        + soigner()
+        + doucher()
+        + getAge()
+        - idTamagotchi: int
+        - nomTamagotchi: String
+        - dateNaissance: Date
+        - statsTamagotchi: Statistiques
+        - inventaireTamagotchi: Inventaire
+    }
+
+    class Statistique {
+        + degraderStatsAutomatiquement()
+        + modifierStatistiques()
+        - faim: int
+        - bonheur: int
+        - sante: int
+        - energie: int
+        - hygiene: int
+        - dernierUpdate: LocalDateTime
+    }
+
+    class Inventaire {
+        + augmenterInventairesAutomatiquement()
+        + modifierInventaires()
+        - nbNourritures: int
+        - nbJouets: int
+        - nbMedicaments: int
+        - nbLits: int
+        - nbSavons: int
+        - dernierUpdate: LocalDateTime
+    }
+
+    class Data {
+        + sauvegarderObjet(objet: T, fichier: String): void
+        + chargerObjet(objet: T, fichier: String): T
+        - nomFichierJSON : String
+    }
+
+    class Application{
+        + affichage() "partie Front End Android"
+        + runApplication()
+        + main()
+    }
+    Tamagotchi "1" *-- "1" Statistique : a
+    Tamagotchi "1" *-- "1" Inventaire : possède
+    Data --> Joueur : sauvegarde/charge
+    Data --> Tamagotchi : sauvegarde/charge
+    Joueur "1" *-- "0..*" Tamagotchi : possède
+    Application --> Joueur : gère
+    Application --> Tamagotchi : affiche
