@@ -77,7 +77,7 @@
 	\end{minipage}\\[3cm]
     
 	\vfill
-	{\large \today\par} %Affichage de la date
+	{\large 9 mars 2025} %Affichage de la date
 
 \end{titlepage}
 }
