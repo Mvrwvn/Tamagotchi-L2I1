@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "861180610571",
+    "project_id": "tamagotchi-l2i1",
+    "storage_bucket": "tamagotchi-l2i1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861180610571:android:dc8c360d3d0743bd6d1f0e",
+        "android_client_info": {
+          "package_name": "com.example.tamagotchi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuDbbYfr8d-ly-FqhWn2RsWCzk2dhqtEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

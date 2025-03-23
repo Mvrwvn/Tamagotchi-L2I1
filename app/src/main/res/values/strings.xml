@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tamagotchi</string>
+    <string name="se_connecter">Se connecter</string>
+    <string name="s_inscrire">S\'inscrire</string>
+    <string name="r_cup_ration_mdp">Récupération mdp</string>
+    <string name="textview">TextView</string>
+</resources>
