@@ -4,4 +4,6 @@
     <string name="s_inscrire">S\'inscrire</string>
     <string name="r_cup_ration_mdp">Récupération mdp</string>
     <string name="textview">TextView</string>
+    <string name="d_connexion">Déconnexion</string>
+    <string name="main_activity_2">Main activity 2</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.tamagotchi;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,16 +16,16 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class ConnexionActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private EditText usernameInput, passwordInput;
+    private EditText emailInput, passwordInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.connexion_inscription);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -33,12 +34,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mAuth = FirebaseAuth.getInstance();
-        usernameInput = findViewById(R.id.usernameInput);
+        emailInput = findViewById(R.id.usernameInput);
         passwordInput = findViewById(R.id.passwordInput);
     }
 
     public void connexion(View v) {
-        String email = usernameInput.getText().toString().trim();
+        String email = emailInput.getText().toString().trim();
         String password = passwordInput.getText().toString().trim();
 
         if (email.isEmpty() || password.isEmpty()) {
@@ -50,17 +51,17 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
-                        Toast.makeText(MainActivity.this, "Connexion réussie", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, MainActivity2.class );
+                        Toast.makeText(ConnexionActivity.this, "Connexion réussie", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(ConnexionActivity.this, MainActivity2.class );
                         startActivity(intent);
                     } else {
-                        Toast.makeText(MainActivity.this, "Échec de connexion", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ConnexionActivity.this, "Échec de connexion", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
     public void inscription(View v) {
-        String email = usernameInput.getText().toString().trim();
+        String email = emailInput.getText().toString().trim();
         String password = passwordInput.getText().toString().trim();
 
         if (email.isEmpty() || password.isEmpty()) {
@@ -72,10 +73,30 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
-                        Toast.makeText(MainActivity.this, "Inscription réussie", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ConnexionActivity.this, "Inscription réussie", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.this, "Échec de l'inscription", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ConnexionActivity.this, "Échec de l'inscription", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
+
+    public void recuperationMotDePasse(View v) {
+        String email = emailInput.getText().toString().trim();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+        mAuth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        // Le mail de réinitialisation a été envoyé
+                        Toast.makeText(ConnexionActivity.this, "Email de réinitialisation envoyé.", Toast.LENGTH_SHORT).show();
+                        Log.d("PasswordReset", "Email de réinitialisation envoyé.");
+                        // Vous pouvez ajouter un message pour informer l'utilisateur
+                    } else {
+                        // En cas d'erreur, vous pouvez afficher un message d'erreur
+                        Toast.makeText(ConnexionActivity.this, "Erreur lors de l'envoi de l'email : " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("PasswordReset", "Erreur lors de l'envoi de l'email : " + task.getException().getMessage());
+                    }
+                });
+    }
+
 }

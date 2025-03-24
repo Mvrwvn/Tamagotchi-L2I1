@@ -5,25 +5,25 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ConnexionActivity">
 
     <Button
         android:id="@+id/connexionButton"
         android:layout_width="217dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="73dp"
+        android:layout_marginBottom="74dp"
         android:onClick="connexion"
         android:text="@string/se_connecter"
         app:layout_constraintBottom_toTopOf="@+id/inscriptionInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameInput" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
     <Button
         android:id="@+id/inscriptionInput"
         android:layout_width="215dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="73dp"
+        android:layout_marginBottom="71dp"
         android:autofillHints=""
         android:importantForAutofill="no"
         android:onClick="inscription"
@@ -37,31 +37,44 @@
         android:id="@+id/passwordInput"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="126dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="107dp"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/usernameInput"
+        app:layout_constraintBottom_toTopOf="@+id/connexionButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameInput"
         tools:ignore="LabelFor" />
 
     <EditText
         android:id="@+id/usernameInput"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginBottom="109dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
         android:autofillHints=""
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/connexionButton"
+        app:layout_constraintBottom_toTopOf="@+id/passwordInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonRenitialisation" />
+
+    <Button
+        android:id="@+id/buttonRenitialisation"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="56dp"
+        android:onClick="recuperationMotDePasse"
+        android:text="Mot de passe oublié ?"
+        app:layout_constraintBottom_toTopOf="@+id/usernameInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

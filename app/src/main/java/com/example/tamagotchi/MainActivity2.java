@@ -1,12 +1,13 @@
 package com.example.tamagotchi;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -15,6 +16,12 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activty_main2);
+    }
+
+    public void deconnexion(View v){
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(MainActivity2.this, ConnexionActivity.class );
+        startActivity(intent);
     }
 
 }
