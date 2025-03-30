@@ -7,7 +7,6 @@ import android.view.View;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -20,7 +19,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     public void deconnexion(View v){
         FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(MainActivity2.this, ConnexionActivity.class );
+        Intent intent = new Intent(MainActivity2.this, AuthActivity.class );
         startActivity(intent);
     }
 
