@@ -2,7 +2,6 @@ package com.example.tamagotchi;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.window.SplashScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
             if (currentUser != null) {
-                startActivity(new Intent(this, MainActivity2.class));
+                startActivity(new Intent(this, MainActivity.class));
             } else {
                 startActivity(new Intent(this, AuthActivity.class));
             }

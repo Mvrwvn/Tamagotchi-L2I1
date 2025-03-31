@@ -52,7 +52,7 @@ public class AuthActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
                         Toast.makeText(AuthActivity.this, "Connexion réussie", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(AuthActivity.this, MainActivity2.class );
+                        Intent intent = new Intent(AuthActivity.this, MainActivity.class );
                         startActivity(intent);
                     } else {
                         Toast.makeText(AuthActivity.this, "Échec de connexion", Toast.LENGTH_SHORT).show();
@@ -98,5 +98,4 @@ public class AuthActivity extends AppCompatActivity {
                     }
                 });
     }
-
 }
