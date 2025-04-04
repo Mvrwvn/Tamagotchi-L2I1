@@ -1,5 +1,16 @@
 package com.example.tamagotchi;
 
+/*
+-----------------------------
+    Date : 30/03/2025
+
+    Membres qui travaillent dessus : Marwan DENAGNON
+
+    Que fait le code ? : Affiche un splash screen pendant 3 secondes et, en arrière-plan, vérifie si un utilisateur est connecté
+    grâce aux fichiers cache et assure le bon chargement de l'application.
+-----------------------------
+*/
+
 import android.content.Intent;
 import android.os.Bundle;
 

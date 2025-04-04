@@ -1,10 +1,13 @@
 package com.example.tamagotchi;
+/*
+-----------------------------
+    Date : 31/03/2025
 
-import android.util.Log;
+    Membres qui travaillent dessus : Marwan DENAGNON
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+    Que fait le code ? : Rien, juste une classe pour les statistiques d'un tamagotchi
+-----------------------------
+*/
 import java.time.LocalDateTime;
 
 public class Statistique {
@@ -21,9 +24,6 @@ public class Statistique {
         this.energie = energie;
         this.hygiene = hygiene;
         this.dernierUpdate = dernierUpdate;
-    }
-    public void augementerfaim(int valeur){
-        this.faim += valeur;
     }
 
     public int getFaim() {

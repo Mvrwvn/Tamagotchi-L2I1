@@ -1,5 +1,17 @@
 package com.example.tamagotchi;
 
+/*
+-----------------------------
+    Date : 24/03/2025
+
+    Membres qui travaillent dessus : Marwan DENAGNON
+
+    Que fait le code ? : Permet à l'utilisateur de s'inscrire/se connecter avec un email et un mot de passe. Connexion internet requise pour l'inscription et la première connexion.
+    Récupération de mot de passe par email
+    L'application se connecte automatiquement au compte du dernier utilisateur qui à passer la phase de connexion (même sans internet) grâce à des fichiers en local.
+-----------------------------
+*/
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
