@@ -1,5 +1,6 @@
 package com.example.tamagotchi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -64,9 +65,15 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    public void deconnexion(View v){
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(MainActivity.this, AuthActivity.class );
+        startActivity(intent);
+    }
+
     public void ecriture(View v) {
         Statistique stats = new Statistique(100, 100, 100, 100, 100, LocalDateTime.now());
-        Tamagotchi tama = new Tamagotchi(userId, "Hors ligne", LocalDate.now(), stats);
+        Tamagotchi tama = new Tamagotchi(userId, "Marwan", LocalDate.now(), stats);
         sauvegarderTamagotchi(tama);
     }
 

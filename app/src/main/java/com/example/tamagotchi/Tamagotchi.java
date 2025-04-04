@@ -15,7 +15,7 @@ public class Tamagotchi{
         this.dateNaissance = dateNaissance;
         this.statsTamagotchi = statsTamagotchi;
     }
-    public Tamagotchi() {}  // 🔹 Obligatoire pour Firestore
+    public Tamagotchi() {}  // Obligatoire pour Firestore
 
     public String getUserId(){
         return userId;
