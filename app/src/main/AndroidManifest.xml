@@ -25,9 +25,6 @@
             android:name=".MainActivity">
         </activity>
         <activity
-            android:name=".MainActivity2">
-        </activity>
-        <activity
             android:name=".AuthActivity">
         </activity>
     </application>
