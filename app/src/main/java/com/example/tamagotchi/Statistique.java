@@ -8,16 +8,19 @@ package com.example.tamagotchi;
     Que fait le code ? : Rien, juste une classe pour les statistiques d'un tamagotchi
 -----------------------------
 */
-import java.time.LocalDateTime;
+import com.google.firebase.Timestamp;
 
 public class Statistique {
-    private int faim;
-    private int soif;
-    private int sante;
-    private int energie;
-    private int hygiene;
-    private LocalDateTime dernierUpdate;
-    public Statistique(int faim, int soif, int sante, int energie, int hygiene, LocalDateTime dernierUpdate){
+    private double vie;
+    private double faim;
+    private double soif;
+    private double sante;
+    private double energie;
+    private double hygiene;
+    private Timestamp dernierUpdate;
+
+    public Statistique(double vie, double faim, double soif, double sante, double energie, double hygiene, Timestamp dernierUpdate){
+        this.vie = vie;
         this.faim = faim;
         this.soif = soif;
         this.sante = sante;
@@ -26,51 +29,61 @@ public class Statistique {
         this.dernierUpdate = dernierUpdate;
     }
 
-    public int getFaim() {
+    public Statistique(){}; // Obligatoire pour Firestore
+
+    public double getVie(){
+        return vie;
+    }
+
+    public void setVie(double vie) {
+        this.vie = vie;
+    }
+
+    public double getFaim() {
         return faim;
     }
 
-    public void setFaim(int faim) {
+    public void setFaim(double faim) {
         this.faim = faim;
     }
 
-    public int getSoif() {
+    public double getSoif() {
         return soif;
     }
 
-    public void setSoif(int soif) {
+    public void setSoif(double soif) {
         this.soif = soif;
     }
 
-    public int getSante() {
+    public double getSante() {
         return sante;
     }
 
-    public void setSante(int sante) {
+    public void setSante(double sante) {
         this.sante = sante;
     }
 
-    public int getEnergie() {
+    public double getEnergie() {
         return energie;
     }
 
-    public void setEnergie(int energie) {
+    public void setEnergie(double energie) {
         this.energie = energie;
     }
 
-    public int getHygiene() {
+    public double getHygiene() {
         return hygiene;
     }
 
-    public void setHygiene(int hygiene) {
+    public void setHygiene(double hygiene) {
         this.hygiene = hygiene;
     }
 
-    public LocalDateTime getDernierUpdate() {
+    public Timestamp getDernierUpdate() {
         return dernierUpdate;
     }
 
-    public void setDernierUpdate(LocalDateTime dernierUpdate) {
+    public void setDernierUpdate(Timestamp dernierUpdate) {
         this.dernierUpdate = dernierUpdate;
     }
 }
