@@ -12,6 +12,7 @@ package com.example.tamagotchi;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import java.time.LocalDate;
@@ -29,24 +31,25 @@ public class MainActivity extends AppCompatActivity {
     private String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
     private FirestoreData firestoreData = new FirestoreData();
     private TextView textView;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        db = FirebaseFirestore.getInstance();
         textView = findViewById(R.id.textView);
         textView.setVisibility(View.VISIBLE);
     }
 
     public void deconnexion(View v){
         FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(MainActivity.this, AuthActivity.class );
+        Intent intent = new Intent(MainActivity.this, InscriptionActivity.class );
         startActivity(intent);
     }
 
     public void brosser(View v){
-
     }
 
     public void creer(View v) {

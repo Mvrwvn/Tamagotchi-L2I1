@@ -32,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
             if (currentUser != null) {
                 startActivity(new Intent(this, MainActivity.class));
             } else {
-                startActivity(new Intent(this, AuthActivity.class));
+                startActivity(new Intent(this, InscriptionActivity.class));
             }
             finish();  // Pour que l'écran de splash ne soit pas accessible après
         }, 3000); // Délai de 3 secondes
