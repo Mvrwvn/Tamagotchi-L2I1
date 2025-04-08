@@ -29,8 +29,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class AuthActivity extends AppCompatActivity {
-
-    private FirebaseAuth mAuth;
     private EditText emailInput, passwordInput;
 
     @Override
@@ -44,8 +42,6 @@ public class AuthActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        mAuth = FirebaseAuth.getInstance();
         emailInput = findViewById(R.id.usernameInput);
         passwordInput = findViewById(R.id.passwordInput);
     }
@@ -58,18 +54,9 @@ public class AuthActivity extends AppCompatActivity {
             Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        Toast.makeText(AuthActivity.this, "Connexion réussie", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(AuthActivity.this, MainActivity.class );
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(AuthActivity.this, "Échec de connexion", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        Joueur.connexion(this,email,password);
+        Intent intent = new Intent(AuthActivity.this, MainActivity.class );
+        startActivity(intent);
     }
 
     public void inscription(View v) {
@@ -80,34 +67,11 @@ public class AuthActivity extends AppCompatActivity {
             Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        Toast.makeText(AuthActivity.this, "Inscription réussie", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(AuthActivity.this, "Échec de l'inscription", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        Joueur.inscription(this,email,password);
     }
 
     public void recuperationMotDePasse(View v) {
         String email = emailInput.getText().toString().trim();
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
-        mAuth.sendPasswordResetEmail(email)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        // Le mail de réinitialisation a été envoyé
-                        Toast.makeText(AuthActivity.this, "Email de réinitialisation envoyé.", Toast.LENGTH_SHORT).show();
-                        Log.d("PasswordReset", "Email de réinitialisation envoyé.");
-                        // Vous pouvez ajouter un message pour informer l'utilisateur
-                    } else {
-                        // En cas d'erreur, vous pouvez afficher un message d'erreur
-                        Toast.makeText(AuthActivity.this, "Erreur lors de l'envoi de l'email : " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        Log.e("PasswordReset", "Erreur lors de l'envoi de l'email : " + task.getException().getMessage());
-                    }
-                });
+        Joueur.renitialiserMotDePasse(this,email);
     }
 }

@@ -19,12 +19,17 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.LottieDrawable;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreSettings;
-import java.time.LocalDate;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -41,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         textView = findViewById(R.id.textView);
         textView.setVisibility(View.VISIBLE);
+        LottieAnimationView lottie = findViewById(R.id.lottie);
+        lottie.setRepeatCount(LottieDrawable.INFINITE);
+        lottie.playAnimation();
     }
 
     public void deconnexion(View v){
@@ -50,12 +58,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void brosser(View v){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("tamagotchis")
+                .document("6TScsrL5iBBmIvdNbHD9")
+                .update("statsTamagotchi.hygiene", FieldValue.increment(10))
+                .addOnSuccessListener(aVoid -> {
+                    // Succès de la mise à jour
+                    Log.d("Firestore", "Valeur incrémentée avec succès !");
+                })
+                .addOnFailureListener(e -> {
+                    // Erreur lors de la mise à jour
+                    Log.e("Firestore", "Erreur lors de l'incrémentation", e);
+                });
     }
 
     public void creer(View v) {
         Inventaire inventaire = new Inventaire(10,10,10,10,10, Timestamp.now());
         Statistique stats = new Statistique(100,100, 100, 100, 100, 100, Timestamp.now());
-        Tamagotchi tama = new Tamagotchi(userId, "Marwan","male", LocalDate.now(), stats, inventaire);
+        Tamagotchi tama = new Tamagotchi(userId, "Marwan","male", Timestamp.now(), stats, inventaire);
         firestoreData.sauvegarderTamagotchi(tama);
     }
 

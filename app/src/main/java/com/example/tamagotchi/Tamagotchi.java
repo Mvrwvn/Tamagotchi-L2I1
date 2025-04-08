@@ -8,6 +8,8 @@ package com.example.tamagotchi;
     Que fait le code ? : Va permettre de créer un objet tamagotchi et d'enregistrer ses données dans Firestore (tous les getters)
 -----------------------------
 */
+import com.google.firebase.Timestamp;
+
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -16,10 +18,10 @@ public class Tamagotchi{
     private String userId;
     private String nomTamagotchi;
     private String genre;
-    private LocalDate dateNaissance;
+    private Timestamp dateNaissance;
     private Statistique statsTamagotchi;
     private Inventaire inventaireTamagotchi;
-    public Tamagotchi(String userId, String nomTamagotchi, String genre,LocalDate dateNaissance, Statistique statsTamagotchi, Inventaire inventaireTamagotchi){
+    public Tamagotchi(String userId, String nomTamagotchi, String genre, Timestamp dateNaissance, Statistique statsTamagotchi, Inventaire inventaireTamagotchi){
         this.userId = userId;
         this.nomTamagotchi = nomTamagotchi;
         this.genre = genre;
@@ -75,8 +77,13 @@ public class Tamagotchi{
     public void setGenre(String genre){
         this.genre = genre;
     }
-    public int getAge() {
-        return Period.between(LocalDate.now(), dateNaissance).getDays();
+
+    public Timestamp getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(Timestamp dateNaissance) {
+        this.dateNaissance = dateNaissance;
     }
 
     public Statistique getStatsTamagotchi() {

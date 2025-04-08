@@ -16,9 +16,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 public class InscriptionActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -63,7 +60,7 @@ public class InscriptionActivity extends AppCompatActivity {
                                             Toast.makeText(InscriptionActivity.this, "Inscription réussie" + user.getDisplayName(), Toast.LENGTH_SHORT).show();
                                             Inventaire inventaire = new Inventaire(10,10,10,10,10, Timestamp.now());
                                             Statistique stats = new Statistique(100, 100, 100, 100, 100,100, Timestamp.now());
-                                            Tamagotchi tamagotchi = new Tamagotchi(user.getUid(), nomTamagotchi, "temp", LocalDate.now(), stats, inventaire);
+                                            Tamagotchi tamagotchi = new Tamagotchi(user.getUid(), nomTamagotchi, "temp", Timestamp.now(), stats, inventaire);
                                             FirestoreData firestoreData = new FirestoreData();
                                             firestoreData.sauvegarderTamagotchi(tamagotchi);
                                             Intent intent = new Intent(InscriptionActivity.this, MainActivity.class );
