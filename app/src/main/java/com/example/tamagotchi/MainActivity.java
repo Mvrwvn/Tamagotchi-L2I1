@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
     public void brosser(View v){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("tamagotchis")
-                .document("6TScsrL5iBBmIvdNbHD9")
-                .update("statsTamagotchi.hygiene", FieldValue.increment(10))
+                .document("dcgcGnYHfWULXc7oFPQ1\n")
+                .update("statsTamagotchi.hygiene", FieldValue.increment(10), "dernierUpdate", Timestamp.now())
                 .addOnSuccessListener(aVoid -> {
                     // Succès de la mise à jour
                     Log.d("Firestore", "Valeur incrémentée avec succès !");
@@ -73,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void creer(View v) {
-        Inventaire inventaire = new Inventaire(10,10,10,10,10, Timestamp.now());
-        Statistique stats = new Statistique(100,100, 100, 100, 100, 100, Timestamp.now());
-        Tamagotchi tama = new Tamagotchi(userId, "Marwan","male", Timestamp.now(), stats, inventaire);
+        Inventaire inventaire = new Inventaire(10,10,10,10,10);
+        Statistique stats = new Statistique(100,100, 100, 100, 100, 100);
+        Tamagotchi tama = new Tamagotchi(userId, "Marwan","male", Timestamp.now(), Timestamp.now(), stats, inventaire);
         firestoreData.sauvegarderTamagotchi(tama);
     }
 

@@ -58,9 +58,9 @@ public class InscriptionActivity extends AppCompatActivity {
                                     .addOnCompleteListener(updateTask -> {
                                         if (updateTask.isSuccessful()) {
                                             Toast.makeText(InscriptionActivity.this, "Inscription réussie" + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-                                            Inventaire inventaire = new Inventaire(10,10,10,10,10, Timestamp.now());
-                                            Statistique stats = new Statistique(100, 100, 100, 100, 100,100, Timestamp.now());
-                                            Tamagotchi tamagotchi = new Tamagotchi(user.getUid(), nomTamagotchi, "temp", Timestamp.now(), stats, inventaire);
+                                            Inventaire inventaire = new Inventaire(10,10,10,10,10);
+                                            Statistique stats = new Statistique(100, 100, 100, 100, 100,100);
+                                            Tamagotchi tamagotchi = new Tamagotchi(user.getUid(), nomTamagotchi, "temp", Timestamp.now(), Timestamp.now(), stats, inventaire);
                                             FirestoreData firestoreData = new FirestoreData();
                                             firestoreData.sauvegarderTamagotchi(tamagotchi);
                                             Intent intent = new Intent(InscriptionActivity.this, MainActivity.class );
