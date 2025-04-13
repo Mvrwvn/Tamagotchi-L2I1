@@ -1,6 +1,13 @@
 package com.example.tamagotchi;
+/*
+-----------------------------
+    Date : 13/04/2025
 
-import com.google.firebase.Timestamp;
+    Membres qui travaillent dessus : Marwan DENAGNON
+
+    Que fait le code ? : Rien, juste une classe pour l'inventaire d'un tamagotchi
+-----------------------------
+*/
 
 public class Inventaire {
     private int nbNourritures;

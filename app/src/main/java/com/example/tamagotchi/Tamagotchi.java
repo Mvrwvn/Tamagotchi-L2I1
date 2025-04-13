@@ -1,11 +1,12 @@
 package com.example.tamagotchi;
 /*
 -----------------------------
-    Date : 31/03/2025
+    Date : 08/04/2025
 
     Membres qui travaillent dessus : Marwan DENAGNON
 
     Que fait le code ? : Va permettre de créer un objet tamagotchi et d'enregistrer ses données dans Firestore (tous les getters)
+    Changement par rapport à la version précédente : Ajout de l'attribut dernierUpdate qui été précédement dans Inventaire et Statistique
 -----------------------------
 */
 import com.google.firebase.Timestamp;

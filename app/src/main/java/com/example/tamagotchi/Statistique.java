@@ -1,11 +1,12 @@
 package com.example.tamagotchi;
 /*
 -----------------------------
-    Date : 31/03/2025
+    Date : 13/04/2025
 
     Membres qui travaillent dessus : Marwan DENAGNON
 
     Que fait le code ? : Rien, juste une classe pour les statistiques d'un tamagotchi
+    Changement par rapport à la version précédente : Suppression de l'attribut dernierUpdate pour le mettre directement dans l'objet Tamagotchi
 -----------------------------
 */
 import com.google.firebase.Timestamp;

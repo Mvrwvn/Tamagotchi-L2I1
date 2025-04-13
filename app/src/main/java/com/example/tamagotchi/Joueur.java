@@ -1,5 +1,16 @@
 package com.example.tamagotchi;
 
+/*
+-----------------------------
+    Date : 08/04/2025
+
+    Membres qui travaillent dessus : Marwan DENAGNON
+
+    Que fait le code ? : Fait la passerelle entre les données reçues en java et envoyé à Firebase pour l'authentification et pour le stockages des données sur FireStore
+    avec un id de tamagotchi actif pour savoir sur quelle tamagotchis l'utilisateur va modifier les attributs dans le cas où il aurait plusieurs tamagotchis.
+    -----------------------------
+*/
+
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
