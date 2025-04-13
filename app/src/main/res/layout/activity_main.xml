@@ -9,96 +9,143 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/tama1" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="32dp">
-
-    <Button
-        android:id="@+id/soignerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:onClick="soigner"
-        android:text="Soigner"
-        app:layout_constraintBaseline_toBaselineOf="@+id/nourrirButton"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/brosserButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:onClick="brosser"
-        android:text="Brosser"
-        app:layout_constraintBaseline_toBaselineOf="@+id/nourrirButton"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/nourrirButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="51dp"
-        android:onClick="nourrir"
-        android:text="Nourrir"
-        app:layout_constraintBottom_toTopOf="@+id/lecturebutton"
-        app:layout_constraintStart_toEndOf="@+id/soignerButton" />
-
-    <Button
-        android:id="@+id/creerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="35dp"
-        android:onClick="creer"
-        android:text="Creer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/lecturebutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="266dp"
-        android:onClick="lecture"
-        android:text="Lecture"
-        app:layout_constraintStart_toStartOf="@+id/nourrirButton"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonDeconnexion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="36dp"
-        android:onClick="deconnexion"
-        android:text="@string/d_connexion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="16dp"
-        android:text="Hello World!"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lecturebutton" />
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/tama1"
+        tools:ignore="MissingConstraints" />
+
+    <RelativeLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/soignerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="443dp"
+            android:onClick="soigner"
+            android:text="Soigner"
+            app:layout_constraintBaseline_toBaselineOf="@+id/nourrirButton"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/brosserButton"
+            android:layout_width="149dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="225dp"
+            android:layout_marginBottom="111dp"
+            android:onClick="brosser"
+            android:text="Brosser"
+            app:layout_constraintBaseline_toBaselineOf="@+id/nourrirButton"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/creerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="35dp"
+            android:onClick="creer"
+            android:text="Creer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/nourrirButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="536dp"
+            android:layout_marginEnd="88dp"
+            android:onClick="nourrir"
+            android:text="Nourrir"
+            app:layout_constraintBottom_toTopOf="@+id/lecturebutton"
+            app:layout_constraintStart_toEndOf="@+id/soignerButton" />
+
+        <Button
+            android:id="@+id/buttonDeconnexion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="532dp"
+            android:onClick="deconnexion"
+            android:text="@string/d_connexion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/lecturebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="266dp"
+            android:layout_marginBottom="12dp"
+            android:onClick="lecture"
+            android:text="Lecture"
+            app:layout_constraintStart_toStartOf="@+id/nourrirButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="16dp"
+            android:text="Hello World!"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lecturebutton" />
+
+        <Button
+            android:id="@+id/hydraterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="-5dp"
+            android:layout_marginBottom="184dp"
+            android:onClick="hydrater"
+            android:text="Hydrater" />
+
+        <Button
+            android:id="@+id/reposerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="95dp"
+            android:layout_marginBottom="37dp"
+            android:onClick="reposer"
+            android:text="Reposer" />
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

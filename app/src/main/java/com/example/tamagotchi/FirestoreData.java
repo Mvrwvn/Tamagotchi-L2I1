@@ -1,246 +1,149 @@
 package com.example.tamagotchi;
 
+/*
+-----------------------------
+    Date : 08/04/2025
+
+    Membres qui travaillent dessus : Marwan DENAGNON
+
+    Que fait le code ? : Classe avec des méthodes static qui va servir de bascule entre l'échanges des données sur Firestore et les données en Java.
+-----------------------------
+*/
+
+import android.annotation.SuppressLint;
 import android.util.Log;
-import android.widget.TextView;
+import android.view.View;
+
 
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreSettings;
-import android.content.Context;
-import android.content.SharedPreferences;
 
-import java.util.concurrent.CountDownLatch;
+import android.widget.Toast;
+
+import java.util.Objects;
+
 
 public class FirestoreData {
-    private final FirebaseFirestore db;
-    private final String userId;
+    @SuppressLint("StaticFieldLeak")
+    private static final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private static final String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
 
-    public FirestoreData() {
-        db = FirebaseFirestore.getInstance();
-        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        // Activer la persistance hors ligne
-        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-                .setPersistenceEnabled(true)
-                .build();
-        db.setFirestoreSettings(settings);
-    }
-
-    public void sauvegarderTamagotchi(Tamagotchi tamagotchi) {
+    public static void sauvegarderTamagotchi(Tamagotchi tamagotchi) {
         db.collection("tamagotchis")
                 .add(tamagotchi)
-                .addOnSuccessListener(documentReference ->
-                        Log.d("Firestore", "Tamagotchi sauvegardé avec ID : " + documentReference.getId()))
+                .addOnSuccessListener(documentReference -> {
+                    String newTamagotchiId = documentReference.getId();
+                    Log.d("Firestore", "Tamagotchi sauvegardé avec ID : " + newTamagotchiId);
+                    setActiveTamagotchiId(newTamagotchiId);
+                })
                 .addOnFailureListener(e ->
                         Log.e("Firestore", "Erreur de sauvegarde", e));
     }
 
-    public void chargerTamagotchi(TextView textView) {
-        db.collection("tamagotchis")
-                .whereEqualTo("userId", userId)
+    public static void setActiveTamagotchiId(String activeTamagotchiId){
+        db.collection("joueurs")
+                .document(userId)
+                .update("activeTamagotchiId", activeTamagotchiId)
+                .addOnSuccessListener(documentReference ->
+                        Log.d("Firestore", "Tamagotchi actif maj" ))
+                .addOnFailureListener(e ->
+                        Log.e("Firestore", "Erreur de sauvegarde tamagotchi actif", e));
+    }
+
+    public static void actionTamagotchi(View v, String nomInventaire, String nomStatistique) {
+        db.collection("joueurs")
+                .document(userId)
                 .get()
-                .addOnCompleteListener(task -> {
-                    StringBuilder info = new StringBuilder();
-                    if (task.isSuccessful()) {
-                        for (DocumentSnapshot document : task.getResult()) {
-                            Tamagotchi tama = document.toObject(Tamagotchi.class);
-                            info.append(tama.toString());
-                            /*String nomTamagotchi = document.getString("nomTamagotchi");
-                            String userId = document.getString("userId");
-                            String genre = document.getString("genre");
-                            String dateNaissance = document.getString("dateNaissance");
-                            String statsTamagotchi = document.getString("statsTamagotchi");
-                            String inventaireTamagotchi = document.getString("inventaireTamagotchi");
-                            String nbNourritures = document.getString("nbNourritures");
-                            String nbBoissons = document.getString("nbBoissons");
-                            String nbLits = document.getString("nbLits");
-                            String nbMedicaments = document.getString("nbMedicaments");
-                            String nbSavons = document.getString("nbSavons");
-                            info.append("Nom : ").append(nomTamagotchi).append("\n");
-                            info.append("Faim : ").append(userId).append("\n");
-                            info.append("Soif : ").append(genre).append("\n");
-                            info.append("Énergie : ").append(dateNaissance).append("\n");
-                            info.append("Santé : ").append(statsTamagotchi).append("\n");
-                            info.append("Hygiène : ").append(inventaireTamagotchi).append("\n");
-                            info.append("Nourritures : ").append(nbNourritures).append("\n");
-                            info.append("Boissons : ").append(nbBoissons).append("\n");
-                            info.append("Lits : ").append(nbLits).append("\n");
-                            info.append("Médicaments : ").append(nbMedicaments).append("\n");
-                            info.append("Savons : ").append(nbSavons).append("\n");
-                            Log.d("Firestore", nomTamagotchi);*/
-                        }
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        String activeTamagotchiId = documentSnapshot.getString("activeTamagotchiId");
+
+                        db.collection("tamagotchis")
+                                .document(Objects.requireNonNull(activeTamagotchiId))
+                                .get()
+                                .addOnSuccessListener(tamagotchiSnapshot -> {
+                                    if (tamagotchiSnapshot.exists()) {
+                                        Double statistique = tamagotchiSnapshot.getDouble("statsTamagotchi."+nomStatistique);
+                                        Long inventaire = tamagotchiSnapshot.getLong("inventaireTamagotchi.nb"+nomInventaire);
+
+                                        if (statistique == null || inventaire == null) {
+                                            Toast.makeText(v.getContext(), "Données manquantes dans le document.", Toast.LENGTH_SHORT).show();
+                                            return;
+                                        }
+
+                                        if (statistique >= 0 && statistique < 100) {
+                                            if (inventaire > 0) {
+                                                db.collection("tamagotchis")
+                                                        .document(activeTamagotchiId)
+                                                        .update(
+                                                                "statsTamagotchi."+nomStatistique, FieldValue.increment(1),
+                                                                "inventaireTamagotchi.nb"+nomInventaire, FieldValue.increment(-1),
+                                                                "dernierUpdate", Timestamp.now()
+                                                        )
+                                                        .addOnFailureListener(e -> {
+                                                            Toast.makeText(v.getContext(), "Erreur lors du soin du Tamagotchi.", Toast.LENGTH_SHORT).show();
+                                                        });
+                                            } else {
+                                                Toast.makeText(v.getContext(), "Pas assez de "+ nomInventaire +" dans l'inventaire.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        } else {
+                                            Toast.makeText(v.getContext(), nomStatistique +" est déjà au maximum.", Toast.LENGTH_SHORT).show();
+                                        }
+                                    } else {
+                                        Toast.makeText(v.getContext(), "Tamagotchi introuvable.", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .addOnFailureListener(e -> {
+                                    Toast.makeText(v.getContext(), "Erreur lors de la lecture du Tamagotchi.", Toast.LENGTH_SHORT).show();
+                                });
+
+                    } else {
+                        Toast.makeText(v.getContext(), "Joueur introuvable.", Toast.LENGTH_SHORT).show();
                     }
-                    else {
-                        info.append("Erreur de récupération des Tamagotchi : ").append(task.getException().getMessage()).append("\n");
-                        Log.d("Firestore", "erreur");
-                    }
-                    textView.setText(info.toString());
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(v.getContext(), "Erreur lors de la lecture du joueur.", Toast.LENGTH_SHORT).show();
                 });
-    }
-
-    public static void updateTamagotchiStats(Statistique newStats) {
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (currentUser != null) {
-            String userId = currentUser.getUid();
-
-            // Récupérer le document de l'utilisateur pour trouver l'ID du Tamagotchi actif
-            FirebaseFirestore.getInstance()
-                    .collection("joueurs")
-                    .document(userId)
-                    .get()
-                    .addOnSuccessListener(userSnapshot -> {
-                        if (userSnapshot.exists()) {
-                            String activeTamagotchiId = userSnapshot.getString("activeTamagotchiId");
-
-                            if (activeTamagotchiId != null) {
-                                // Récupérer le Tamagotchi actif à partir de Firestore
-                                FirebaseFirestore.getInstance()
-                                        .collection("tamagotchis")
-                                        .document(activeTamagotchiId)
-                                        .update(
-                                                "stats.vie", newStats.getVie(),
-                                                "stats.faim", newStats.getFaim(),
-                                                "stats.soif", newStats.getSoif(),
-                                                "stats.sante", newStats.getSante(),
-                                                "stats.energie", newStats.getEnergie(),
-                                                "stats.hygiene", newStats.getHygiene()
-                                        )
-                                        .addOnSuccessListener(aVoid -> {
-                                            Log.d("Firestore", "Statistiques du Tamagotchi mises à jour avec succès !");
-                                        })
-                                        .addOnFailureListener(e -> {
-                                            Log.e("Firestore", "Erreur lors de la mise à jour des statistiques", e);
-                                        });
-                            }
-                        }
-                    })
-                    .addOnFailureListener(e -> {
-                        Log.e("Firestore", "Erreur lors de la récupération de l'utilisateur", e);
-                    });
-        }
-    }
-    public static void updateTamagotchiInventaire(Inventaire newInventaire) {
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (currentUser != null) {
-            String userId = currentUser.getUid();
-
-            // Récupérer le document de l'utilisateur pour trouver l'ID du Tamagotchi actif
-            FirebaseFirestore.getInstance()
-                    .collection("joueurs")
-                    .document(userId)
-                    .get()
-                    .addOnSuccessListener(userSnapshot -> {
-                        if (userSnapshot.exists()) {
-                            String activeTamagotchiId = userSnapshot.getString("activeTamagotchiId");
-
-                            if (activeTamagotchiId != null) {
-                                FirebaseFirestore.getInstance()
-                                        .collection("tamagotchis")
-                                        .document(activeTamagotchiId)
-                                        .update(
-                                                "inventaire.nbNourritures", newInventaire.getNbNourritures(),
-                                                "inventaire.nbBoissons", newInventaire.getNbBoissons(),
-                                                "inventaire.nbMedicaments", newInventaire.getNbMedicaments(),
-                                                "inventaire.nbLits", newInventaire.getNbLits(),
-                                                "inventaire.nbSavons", newInventaire.getNbSavons()
-                                        )
-                                        .addOnSuccessListener(aVoid -> {
-                                            Log.d("Firestore", "Inventaire du Tamagotchi mis à jour avec succès !");
-                                        })
-                                        .addOnFailureListener(e -> {
-                                            Log.e("Firestore", "Erreur lors de la mise à jour de l'inventaire", e);
-                                        });
-                            }
-                        }
-                    })
-                    .addOnFailureListener(e -> {
-                        Log.e("Firestore", "Erreur lors de la récupération de l'utilisateur", e);
-                    });
-        }
-    }
-
-    public String getActiveTamagotchiId(FirebaseUser currentUser) {
-        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-        final CountDownLatch latch = new CountDownLatch(1);
-        final String[] activeTamagotchiId = new String[1];
-
-        firestore.collection("joeuurs")
-                .document(currentUser.getUid())
-                .get()
-                .addOnSuccessListener(userSnapshot -> {
-                    if (userSnapshot.exists()) {
-                        activeTamagotchiId[0] = userSnapshot.getString("activeTamagotchiId");
-                    }
-                    latch.countDown();
-                })
-                .addOnFailureListener(e -> latch.countDown());
-
-        try {
-            latch.await();  // Attendre que la réponse de Firestore soit reçue
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        return activeTamagotchiId[0];
-    }
-
-    // Récupérer toutes les données du Tamagotchi actif
-    public Tamagotchi getTamagotchiData(String tamagotchiId) {
-        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-        final CountDownLatch latch = new CountDownLatch(1);
-        final Tamagotchi[] tamagotchi = new Tamagotchi[1];
-
-        firestore.collection("tamagotchis")
-                .document(tamagotchiId)
-                .get()
-                .addOnSuccessListener(tamagotchiSnapshot -> {
-                    if (tamagotchiSnapshot.exists()) {
-                        String userId = tamagotchiSnapshot.getString("userId");
-                        String nomTamagotchi = tamagotchiSnapshot.getString("nomTamagotchi");
-                        String genre = tamagotchiSnapshot.getString("genre");
-                        Timestamp dateNaissance = tamagotchiSnapshot.getTimestamp("dateNaissance");
-                        Statistique statsTamagotchi = extractStats(tamagotchiSnapshot);
-                        Inventaire inventaireTamagotchi = extractInventaire(tamagotchiSnapshot);
-
-                        tamagotchi[0] = new Tamagotchi(userId, nomTamagotchi, genre, dateNaissance, Timestamp.now(), statsTamagotchi, inventaireTamagotchi);
-                    }
-                    latch.countDown();
-                })
-                .addOnFailureListener(e -> latch.countDown());
-
-        try {
-            latch.await();  // Attendre que la réponse de Firestore soit reçue
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        return tamagotchi[0];
-    }
-
-    // Extraire les statistiques d'un Tamagotchi
-    private Statistique extractStats(DocumentSnapshot snapshot) {
-        double vie = snapshot.getDouble("stats.vie");
-        double faim = snapshot.getDouble("stats.faim");
-        double soif = snapshot.getDouble("stats.soif");
-        double sante = snapshot.getDouble("stats.sante");
-        double energie = snapshot.getDouble("stats.energie");
-        double hygiene = snapshot.getDouble("stats.hygiene");
-
-        return new Statistique(vie, faim, soif, sante, energie, hygiene);
-    }
-
-    // Extraire l'inventaire d'un Tamagotchi
-    private Inventaire extractInventaire(DocumentSnapshot snapshot) {
-        int nbNourritures = snapshot.getLong("inventaire.nbNourritures").intValue();
-        int nbBoissons = snapshot.getLong("inventaire.nbBoissons").intValue();
-        int nbMedicaments = snapshot.getLong("inventaire.nbMedicaments").intValue();
-        int nbLits = snapshot.getLong("inventaire.nbLits").intValue();
-        int nbSavons = snapshot.getLong("inventaire.nbSavons").intValue();
-
-        return new Inventaire(nbNourritures, nbBoissons, nbMedicaments, nbLits, nbSavons);
     }
 }
 
+    /*public static void verifierDernierUpdate(View v){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        db.collection("joueurs")
+                .document(userId)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        String activeTamagotchiId = documentSnapshot.getString("activeTamagotchiId");
+
+                        db.collection("tamagotchis")
+                                .document(activeTamagotchiId)
+                                .get()
+                                .addOnSuccessListener(tamagotchiSnapshot -> {
+                                    if (tamagotchiSnapshot.exists()) {
+                                        long now = Timestamp.now().getSeconds();
+                                        long lastUpdate = tamagotchiSnapshot.getTimestamp("dernierUpdate").getSeconds();
+                                        long heuresPassees = (now - lastUpdate) / 3600;
+                                    if (heuresPassees > 0) {
+                                        long variationStats = -2 * heuresPassees;
+                                        long variationInventaire = 10 * heuresPassees;
+
+                                        updates.put("statsTamagotchi.sante", FieldValue.increment(variationStats));
+                                        updates.put("statsTamagotchi.faim", FieldValue.increment(variationStats));
+                                        updates.put("statsTamagotchi.bonheur", FieldValue.increment(variationStats));
+                                        updates.put("statsTamagotchi.energie", FieldValue.increment(variationStats));
+
+                                        updates.put("inventaireTamagotchi.nbNourriture", FieldValue.increment(variationInventaire));
+                                        updates.put("inventaireTamagotchi.nbJeux", FieldValue.increment(variationInventaire));
+                                        updates.put("inventaireTamagotchi.nbMedicaments", FieldValue.increment(variationInventaire));
+
+                                        updates.put("dernierUpdate", Timestamp.now());
+                                }
+
+                    }
+        }
+    }}*/
