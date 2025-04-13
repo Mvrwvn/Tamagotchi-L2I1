@@ -106,8 +106,7 @@ public class FirestoreData {
                                                 "stats.soif", newStats.getSoif(),
                                                 "stats.sante", newStats.getSante(),
                                                 "stats.energie", newStats.getEnergie(),
-                                                "stats.hygiene", newStats.getHygiene(),
-                                                "stats.dernierUpdate", newStats.getDernierUpdate()
+                                                "stats.hygiene", newStats.getHygiene()
                                         )
                                         .addOnSuccessListener(aVoid -> {
                                             Log.d("Firestore", "Statistiques du Tamagotchi mises à jour avec succès !");
@@ -146,8 +145,7 @@ public class FirestoreData {
                                                 "inventaire.nbBoissons", newInventaire.getNbBoissons(),
                                                 "inventaire.nbMedicaments", newInventaire.getNbMedicaments(),
                                                 "inventaire.nbLits", newInventaire.getNbLits(),
-                                                "inventaire.nbSavons", newInventaire.getNbSavons(),
-                                                "inventaire.dernierUpdate", newInventaire.getDernierUpdate()
+                                                "inventaire.nbSavons", newInventaire.getNbSavons()
                                         )
                                         .addOnSuccessListener(aVoid -> {
                                             Log.d("Firestore", "Inventaire du Tamagotchi mis à jour avec succès !");
@@ -207,7 +205,7 @@ public class FirestoreData {
                         Statistique statsTamagotchi = extractStats(tamagotchiSnapshot);
                         Inventaire inventaireTamagotchi = extractInventaire(tamagotchiSnapshot);
 
-                        tamagotchi[0] = new Tamagotchi(userId, nomTamagotchi, genre, dateNaissance, statsTamagotchi, inventaireTamagotchi);
+                        tamagotchi[0] = new Tamagotchi(userId, nomTamagotchi, genre, dateNaissance, Timestamp.now(), statsTamagotchi, inventaireTamagotchi);
                     }
                     latch.countDown();
                 })
@@ -230,9 +228,8 @@ public class FirestoreData {
         double sante = snapshot.getDouble("stats.sante");
         double energie = snapshot.getDouble("stats.energie");
         double hygiene = snapshot.getDouble("stats.hygiene");
-        Timestamp dernierUpdate = snapshot.getTimestamp("stats.dernierUpdate");
 
-        return new Statistique(vie, faim, soif, sante, energie, hygiene, dernierUpdate);
+        return new Statistique(vie, faim, soif, sante, energie, hygiene);
     }
 
     // Extraire l'inventaire d'un Tamagotchi
@@ -242,9 +239,8 @@ public class FirestoreData {
         int nbMedicaments = snapshot.getLong("inventaire.nbMedicaments").intValue();
         int nbLits = snapshot.getLong("inventaire.nbLits").intValue();
         int nbSavons = snapshot.getLong("inventaire.nbSavons").intValue();
-        Timestamp dernierUpdate = snapshot.getTimestamp("inventaire.dernierUpdate");
 
-        return new Inventaire(nbNourritures, nbBoissons, nbMedicaments, nbLits, nbSavons, dernierUpdate);
+        return new Inventaire(nbNourritures, nbBoissons, nbMedicaments, nbLits, nbSavons);
     }
 }
 

@@ -17,16 +17,14 @@ public class Statistique {
     private double sante;
     private double energie;
     private double hygiene;
-    private Timestamp dernierUpdate;
 
-    public Statistique(double vie, double faim, double soif, double sante, double energie, double hygiene, Timestamp dernierUpdate){
+    public Statistique(double vie, double faim, double soif, double sante, double energie, double hygiene){
         this.vie = vie;
         this.faim = faim;
         this.soif = soif;
         this.sante = sante;
         this.energie = energie;
         this.hygiene = hygiene;
-        this.dernierUpdate = dernierUpdate;
     }
 
     public Statistique(){}; // Obligatoire pour Firestore
@@ -77,14 +75,6 @@ public class Statistique {
 
     public void setHygiene(double hygiene) {
         this.hygiene = hygiene;
-    }
-
-    public Timestamp getDernierUpdate() {
-        return dernierUpdate;
-    }
-
-    public void setDernierUpdate(Timestamp dernierUpdate) {
-        this.dernierUpdate = dernierUpdate;
     }
 }
 

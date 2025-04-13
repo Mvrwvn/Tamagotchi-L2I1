@@ -8,16 +8,14 @@ public class Inventaire {
     private int nbMedicaments;
     private int nbLits;
     private int nbSavons;
-    private Timestamp dernierUpdate;
 
     // Constructeur
-    public Inventaire(int nbNourritures, int nbBoissons, int nbMedicaments, int nbLits, int nbSavons, Timestamp dernierUpdate) {
+    public Inventaire(int nbNourritures, int nbBoissons, int nbMedicaments, int nbLits, int nbSavons) {
         this.nbNourritures = nbNourritures;
         this.nbBoissons = nbBoissons;
         this.nbMedicaments = nbMedicaments;
         this.nbLits = nbLits;
         this.nbSavons = nbSavons;
-        this.dernierUpdate = dernierUpdate;
     }
 
     public Inventaire(){};
@@ -61,13 +59,5 @@ public class Inventaire {
 
     public void setNbSavons(int nbSavons) {
         this.nbSavons = nbSavons;
-    }
-
-    public Timestamp getDernierUpdate() {
-        return dernierUpdate;
-    }
-
-    public void setDernierUpdate(Timestamp dernierUpdate) {
-        this.dernierUpdate = dernierUpdate;
     }
 }

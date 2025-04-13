@@ -19,13 +19,15 @@ public class Tamagotchi{
     private String nomTamagotchi;
     private String genre;
     private Timestamp dateNaissance;
+    private Timestamp dernierUpdate;
     private Statistique statsTamagotchi;
     private Inventaire inventaireTamagotchi;
-    public Tamagotchi(String userId, String nomTamagotchi, String genre, Timestamp dateNaissance, Statistique statsTamagotchi, Inventaire inventaireTamagotchi){
+    public Tamagotchi(String userId, String nomTamagotchi, String genre, Timestamp dateNaissance, Timestamp dernierUpdate, Statistique statsTamagotchi, Inventaire inventaireTamagotchi){
         this.userId = userId;
         this.nomTamagotchi = nomTamagotchi;
         this.genre = genre;
         this.dateNaissance = dateNaissance;
+        this.dernierUpdate = dernierUpdate;
         this.statsTamagotchi = statsTamagotchi;
         this.inventaireTamagotchi = inventaireTamagotchi;
     }
@@ -86,6 +88,14 @@ public class Tamagotchi{
         this.dateNaissance = dateNaissance;
     }
 
+    public Timestamp getDernierUpdate() {
+        return dernierUpdate;
+    }
+
+    public void setDernierUpdate(Timestamp dernierUpdate) {
+        this.dernierUpdate = dernierUpdate;
+    }
+
     public Statistique getStatsTamagotchi() {
         return statsTamagotchi;
     }
@@ -107,6 +117,7 @@ public class Tamagotchi{
         return "Nom : " + nomTamagotchi + "\n" +
                 "Genre : " + genre + "\n" +
                 "Date de naissance : " + dateNaissance + "\n" +
+                "Dernière MAJ : " + dernierUpdate + "\n\n" +
                 "User ID : " + userId + "\n\n" +
                 "===== Statistiques =====\n" +
                 "Vie : " + statsTamagotchi.getVie() + "\n" +
@@ -115,14 +126,12 @@ public class Tamagotchi{
                 "Santé : " + statsTamagotchi.getSante() + "\n" +
                 "Énergie : " + statsTamagotchi.getEnergie() + "\n" +
                 "Hygiène : " + statsTamagotchi.getHygiene() + "\n" +
-                "Dernière MAJ (stats) : " + statsTamagotchi.getDernierUpdate() + "\n\n" +
                 "===== Inventaire =====\n" +
                 "Nourritures : " + inventaireTamagotchi.getNbNourritures() + "\n" +
                 "Boissons : " + inventaireTamagotchi.getNbBoissons() + "\n" +
                 "Médicaments : " + inventaireTamagotchi.getNbMedicaments() + "\n" +
                 "Lits : " + inventaireTamagotchi.getNbLits() + "\n" +
-                "Savons : " + inventaireTamagotchi.getNbSavons() + "\n" +
-                "Dernière MAJ (inventaire) : " + inventaireTamagotchi.getDernierUpdate();
+                "Savons : " + inventaireTamagotchi.getNbSavons() + "\n";
     }
 
 }
