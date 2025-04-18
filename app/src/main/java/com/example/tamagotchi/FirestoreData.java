@@ -10,6 +10,8 @@ package com.example.tamagotchi;
     Changement par rapport à la version précédente : Ajout d'une fonction pour mettre à jour les statistiques en fonction du Timestamp de la dernière update (-2% à toutes les statistiques par heure, +10 à chaque objets de l'inventaire)
     fonction pour augmenter la robustesse des données (s'assurer que toutes les statistiques soit compris entre 0 et 100 et non null)
     fonction pour màj la statistique "vie" qui représente la moyenne de toutes les autres statistiques
+    Changement par rapport à la version précédente 2.0 : correction de la fonction verifierDernierUpdate
+    ajout d'une fonction pour mettre les données de statistique de la bdd dans une progressbar
 -----------------------------
 */
 
@@ -24,6 +26,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -58,7 +61,7 @@ public class FirestoreData {
                         Log.e("Firestore", "Erreur de sauvegarde tamagotchi actif", e));
     }
 
-    public static void actionTamagotchi(View v, String nomInventaire, String nomStatistique) {
+    public static void actionTamagotchi(View v,ProgressBar progressBar, String nomInventaire, String nomStatistique) {
         db.collection("joueurs")
                 .document(userId)
                 .get()
@@ -88,6 +91,10 @@ public class FirestoreData {
                                                                 "inventaireTamagotchi.nb" + nomInventaire, FieldValue.increment(-1),
                                                                 "dernierUpdate", Timestamp.now()
                                                         )
+                                                        .addOnSuccessListener(aVoid -> {
+                                                            updateVie();
+                                                            loadStatsFromFirestore(progressBar,nomStatistique);
+                                                        })
                                                         .addOnFailureListener(e -> {
                                                             Toast.makeText(v.getContext(), "Erreur lors du soin du Tamagotchi.", Toast.LENGTH_SHORT).show();
                                                         });
@@ -162,6 +169,17 @@ public class FirestoreData {
                                                 updates.put("inventaireTamagotchi.nbBoissons", FieldValue.increment(variationInventaire));
 
                                                 updates.put("dernierUpdate", Timestamp.now());
+
+                                                db.collection("tamagotchis")
+                                                        .document(activeTamagotchiId)
+                                                        .update(updates)
+                                                        .addOnSuccessListener(aVoid -> {
+                                                            Log.d("Update", "Tamagotchi mis à jour après " + heuresPassees + " heures.");
+                                                            updateVie();
+                                                        })
+                                                        .addOnFailureListener(e -> {
+                                                            Log.e("Update", "Erreur lors de la mise à jour du tamagotchi", e);
+                                                        });
                                             }
                                         }
                                     });
@@ -207,6 +225,27 @@ public class FirestoreData {
                                     });
                         }
                     }
+                });
+    }
+
+    public static void loadStatsFromFirestore(ProgressBar progressBar, String nomStatistique) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        db.collection("joueurs")
+                .document(userId)
+                .get()
+                .addOnSuccessListener(snapshot -> {
+                    String activeTamagotchiId = snapshot.getString("activeTamagotchiId");
+
+                    db.collection("tamagotchis")
+                            .document(activeTamagotchiId)
+                            .get()
+                            .addOnSuccessListener(doc -> {
+                                if (doc.exists()) {
+                                    progressBar.setProgress((int)getSafeLong(doc, "statsTamagotchi."+nomStatistique));
+                                }
+                            });
                 });
     }
 

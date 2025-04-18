@@ -15,6 +15,7 @@ package com.example.tamagotchi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -29,6 +30,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
     private String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
     private TextView textView;
+    private ProgressBar progressSante, progressFaim, progressBonheur, progressEnergie, progressHygiene, progressSoif;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +39,26 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textView);
+        progressSante = findViewById(R.id.progressSante);
+        progressFaim = findViewById(R.id.progressFaim);
+        progressBonheur = findViewById(R.id.progressBonheur);
+        progressEnergie = findViewById(R.id.progressEnergie);
+        progressHygiene = findViewById(R.id.progressHygiene);
+        progressSoif = findViewById(R.id.progressSoif);
         textView.setVisibility(View.VISIBLE);
         LottieAnimationView lottie = findViewById(R.id.lottie);
         lottie.setRepeatCount(LottieDrawable.INFINITE);
         lottie.playAnimation();
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        FirestoreData.verifierDernierUpdate();
+        FirestoreData.loadStatsFromFirestore(progressFaim,"faim");
+        FirestoreData.loadStatsFromFirestore(progressEnergie,"energie");
+        FirestoreData.loadStatsFromFirestore(progressSoif,"soif");
+        FirestoreData.loadStatsFromFirestore(progressHygiene,"hygiene");
+        FirestoreData.loadStatsFromFirestore(progressSante,"sante");
     }
 
     public void deconnexion(View v){
@@ -49,23 +68,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void reposer(View v){
-        FirestoreData.actionTamagotchi(v,"Lits","energie");
+        FirestoreData.actionTamagotchi(v,progressEnergie,"Lits","energie");
     }
 
     public void hydrater(View v){
-        FirestoreData.actionTamagotchi(v,"Boissons","soif");
+        FirestoreData.actionTamagotchi(v,progressSoif,"Boissons","soif");
     }
 
     public void brosser(View v){
-        FirestoreData.actionTamagotchi(v,"Savons","hygiene");
+        FirestoreData.actionTamagotchi(v,progressHygiene,"Savons","hygiene");
     }
 
     public void nourrir(View v) {
-        FirestoreData.actionTamagotchi(v, "Nourritures", "faim");
+        FirestoreData.actionTamagotchi(v,progressFaim, "Nourritures", "faim");
     }
 
     public void soigner(View v) {
-        FirestoreData.actionTamagotchi(v,"Medicaments","sante");
+        FirestoreData.actionTamagotchi(v,progressSante,"Medicaments","sante");
     }
 
 
