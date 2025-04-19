@@ -35,15 +35,9 @@ public class AuthActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_auth);
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-        emailInput = findViewById(R.id.usernameInput);
-        passwordInput = findViewById(R.id.passwordInput);
+        setContentView(R.layout.activity_authv1);
+        emailInput = findViewById(R.id.editTextTextEmailAddress);
+        passwordInput = findViewById(R.id.editTextNumberPassword);
     }
 
     public void connexion(View v) {
@@ -55,7 +49,7 @@ public class AuthActivity extends AppCompatActivity {
             return;
         }
         Joueur.connexion(this,email,password);
-        Intent intent = new Intent(AuthActivity.this, MainActivity.class );
+        Intent intent = new Intent(this, SplashActivity.class );
         startActivity(intent);
     }
 
@@ -70,8 +64,13 @@ public class AuthActivity extends AppCompatActivity {
         Joueur.inscription(this,email,password);
     }
 
-    public void recuperationMotDePasse(View v) {
-        String email = emailInput.getText().toString().trim();
-        Joueur.renitialiserMotDePasse(this,email);
+    public void load_inscription_activity(View v){
+        Intent intent = new Intent(this, InscriptionActivity.class);
+        startActivity(intent);
+    }
+
+    public void load_recuperationMdpActivity(View v){
+        Intent intent = new Intent(this,RenitialisationMdpActivity.class);
+        startActivity(intent);
     }
 }

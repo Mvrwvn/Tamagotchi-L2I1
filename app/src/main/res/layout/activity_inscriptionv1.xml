@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+     Date :
+     Membre qui travaille dessus : Yasmine DEHOUCHE
+     Que fait le code XML? Ce layout XML représente la page d'inscription pour un nouvel utilisateur
+-->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,11 +16,23 @@
     tools:context=".InscriptionActivity">
 
 
+    <ImageView
+        android:id="@+id/imageViewInscription1"
+        android:layout_width="77dp"
+        android:layout_height="96dp"
+        android:contentDescription="@string/image_d_inscription1"
+        android:src="@drawable/inscription_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/commencons_par_vous"
+        android:text="@string/commen_ons_par_vous"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +45,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/passons_a_votre_mimichi"
+        android:text="@string/passons_votre_mimichi"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,7 +84,7 @@
     <EditText
         android:id="@+id/usernameInput"
         android:layout_width="240dp"
-        android:layout_height="48dp"
+        android:layout_height="50dp"
         android:background="@drawable/textviewbg"
         android:ems="10"
         android:hint="@string/entrez_votre_nom"
@@ -81,10 +100,24 @@
         app:layout_constraintVertical_bias="0.169"
         tools:ignore="Autofill,TextFields" />
 
+
+    <ImageView
+        android:id="@+id/imageViewInscription2"
+        android:layout_width="77dp"
+        android:layout_height="96dp"
+        android:contentDescription="@string/image_d_inscription2"
+        android:src="@drawable/inscription_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.532" />
+
     <EditText
         android:id="@+id/nomTamagotchiInput"
         android:layout_width="240dp"
-        android:layout_height="48dp"
+        android:layout_height="50dp"
         android:background="@drawable/textviewbg"
         android:ems="10"
         android:hint="@string/entrez_le_nom_du_mimichi"
@@ -135,7 +168,7 @@
     <EditText
         android:id="@+id/passwordInput"
         android:layout_width="240dp"
-        android:layout_height="49dp"
+        android:layout_height="50dp"
         android:background="@drawable/textviewbg"
         android:ems="10"
         android:hint="@string/entrez_votre_mot_de_passe"
@@ -174,10 +207,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.036"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.728" />
+        app:layout_constraintVertical_bias="0.751" />
 
     <Button
         android:id="@+id/inscriptionButton"
@@ -193,19 +226,6 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="VisualLintOverlap" />
 
-    <RadioGroup
-        android:id="@+id/radio_group_sex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.443"
-        app:layout_constraintStart_toStartOf="parent">
-
-
-    </RadioGroup>
 
     <TextView
         android:id="@+id/retourButton"
@@ -214,7 +234,7 @@
         android:minHeight="48dp"
         android:onClick="retour"
         android:padding="8dp"
-        android:text="@string/retour_a_la_connexion"
+        android:text="Retour à la page de connnexion"
         android:textColor="#3F51B5"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -225,35 +245,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.949" />
 
+    <RadioGroup
+        android:id="@+id/radio_group_sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.76"
+        app:layout_constraintHorizontal_bias="0.5">
+
     <RadioButton
         android:id="@+id/radio_male"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="168dp"
         android:text="@string/male"
         android:textColor="#343fe9"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.26"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="522dp"
+        tools:ignore="MissingConstraints" />
 
     <RadioButton
         android:id="@+id/radio_female"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="168dp"
         android:text="@string/femelle"
         android:textColor="#AA00FF"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.663"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="358dp" />
+        tools:layout_editor_absoluteX="204dp"
+        tools:layout_editor_absoluteY="522dp"
+        tools:ignore="MissingConstraints" />
 
-
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

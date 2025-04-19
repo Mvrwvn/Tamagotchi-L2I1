@@ -16,32 +16,69 @@ package com.example.tamagotchi;
 */
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
-
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import android.widget.ProgressBar;
-import android.widget.Toast;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-
 public class FirestoreData {
     @SuppressLint("StaticFieldLeak")
     private static final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private static final String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
 
     public static void sauvegarderTamagotchi(Tamagotchi tamagotchi) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) return;
         db.collection("tamagotchis")
                 .add(tamagotchi)
+                .addOnSuccessListener(documentReference -> {
+                    String newTamagotchiId = documentReference.getId();
+                    Log.d("Firestore", "Tamagotchi sauvegardé avec ID : " + newTamagotchiId);
+                })
+                .addOnFailureListener(e ->
+                        Log.e("Firestore", "Erreur de sauvegarde", e));
+    }
+
+    public static void inscription(Tamagotchi tamagotchi, String email){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) return;
+        db.collection("tamagotchis")
+                .add(tamagotchi)
+                .addOnSuccessListener(documentReference -> {
+                    String newTamagotchiId = documentReference.getId();
+                    Log.d("Firestore", "Tamagotchi sauvegardé avec ID : " + newTamagotchiId);
+                    ArrayList<String> tamagotchiIds = new ArrayList<>();
+                    tamagotchiIds.add(newTamagotchiId);
+                    Joueur joueur = new Joueur(email, tamagotchiIds, newTamagotchiId);
+                    db.collection("joueurs")
+                            .add(joueur)
+                            .addOnSuccessListener(doc -> {
+                                Log.d("Firestore", "Joueur sauvegardé avec email : " + email);
+                            })
+                            .addOnFailureListener(e ->
+                                    Log.e("Firestore", "Erreur de sauvegarde", e));
+                })
+                .addOnFailureListener(e ->
+                        Log.e("Firestore", "Erreur de sauvegarde", e));
+    }
+
+    public static void sauvegarderJoueur(Joueur joueur){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) return;
+        db.collection("joueurs")
+                .add(joueur)
                 .addOnSuccessListener(documentReference -> {
                     String newTamagotchiId = documentReference.getId();
                     Log.d("Firestore", "Tamagotchi sauvegardé avec ID : " + newTamagotchiId);
@@ -50,8 +87,11 @@ public class FirestoreData {
                 .addOnFailureListener(e ->
                         Log.e("Firestore", "Erreur de sauvegarde", e));
     }
-
     public static void setActiveTamagotchiId(String activeTamagotchiId) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) return;
+        String userId = user.getUid();
+
         db.collection("joueurs")
                 .document(userId)
                 .update("activeTamagotchiId", activeTamagotchiId)
@@ -61,7 +101,9 @@ public class FirestoreData {
                         Log.e("Firestore", "Erreur de sauvegarde tamagotchi actif", e));
     }
 
-    public static void actionTamagotchi(View v,ProgressBar progressBar, String nomInventaire, String nomStatistique) {
+    public static void actionTamagotchi(FirebaseUser user, View v, ProgressBar progressBar, String nomInventaire, String nomStatistique) {
+        String userId = user.getUid();
+
         db.collection("joueurs")
                 .document(userId)
                 .get()
@@ -92,8 +134,8 @@ public class FirestoreData {
                                                                 "dernierUpdate", Timestamp.now()
                                                         )
                                                         .addOnSuccessListener(aVoid -> {
-                                                            updateVie();
-                                                            loadStatsFromFirestore(progressBar,nomStatistique);
+                                                            updateVie(user);
+                                                            loadStatsFromFirestore(user, progressBar, nomStatistique);
                                                         })
                                                         .addOnFailureListener(e -> {
                                                             Toast.makeText(v.getContext(), "Erreur lors du soin du Tamagotchi.", Toast.LENGTH_SHORT).show();
@@ -121,9 +163,8 @@ public class FirestoreData {
                 });
     }
 
-    public static void verifierDernierUpdate() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    public static void verifierDernierUpdate(FirebaseUser user) {
+        String userId = user.getUid();
 
         db.collection("joueurs")
                 .document(userId)
@@ -140,15 +181,16 @@ public class FirestoreData {
                                         if (tamagotchiSnapshot.exists() && tamagotchiSnapshot.getTimestamp("dernierUpdate") != null) {
                                             long now = Timestamp.now().getSeconds();
                                             long lastUpdate = tamagotchiSnapshot.getTimestamp("dernierUpdate").getSeconds();
-                                            long heuresPassees = (now - lastUpdate) / 3600;
+                                            long heuresPassees = (now - lastUpdate) / 5;
 
                                             if (heuresPassees > 0) {
+                                                Log.d("Ici","test2");
+                                                Log.d("Firestore", "Document: " + tamagotchiSnapshot.getData());
                                                 long variationStats = -2 * heuresPassees;
                                                 long variationInventaire = 10 * heuresPassees;
 
                                                 long sante = limitBetween(tamagotchiSnapshot.getLong("statsTamagotchi.sante") + variationStats, 0, 100);
                                                 long faim = limitBetween(tamagotchiSnapshot.getLong("statsTamagotchi.faim") + variationStats, 0, 100);
-                                                long bonheur = limitBetween(tamagotchiSnapshot.getLong("statsTamagotchi.bonheur") + variationStats, 0, 100);
                                                 long energie = limitBetween(tamagotchiSnapshot.getLong("statsTamagotchi.energie") + variationStats, 0, 100);
                                                 long hygiene = limitBetween(tamagotchiSnapshot.getLong("statsTamagotchi.hygiene") + variationStats, 0, 100);
                                                 long soif = limitBetween(tamagotchiSnapshot.getLong("statsTamagotchi.soif") + variationStats, 0, 100);
@@ -156,13 +198,11 @@ public class FirestoreData {
                                                 Map<String, Object> updates = new HashMap<>();
                                                 updates.put("statsTamagotchi.sante", sante);
                                                 updates.put("statsTamagotchi.faim", faim);
-                                                updates.put("statsTamagotchi.bonheur", bonheur);
                                                 updates.put("statsTamagotchi.energie", energie);
                                                 updates.put("statsTamagotchi.hygiene", hygiene);
                                                 updates.put("statsTamagotchi.soif", soif);
 
                                                 updates.put("inventaireTamagotchi.nbNourritures", FieldValue.increment(variationInventaire));
-                                                updates.put("inventaireTamagotchi.nbJeux", FieldValue.increment(variationInventaire));
                                                 updates.put("inventaireTamagotchi.nbMedicaments", FieldValue.increment(variationInventaire));
                                                 updates.put("inventaireTamagotchi.nbLits", FieldValue.increment(variationInventaire));
                                                 updates.put("inventaireTamagotchi.nbSavons", FieldValue.increment(variationInventaire));
@@ -175,7 +215,7 @@ public class FirestoreData {
                                                         .update(updates)
                                                         .addOnSuccessListener(aVoid -> {
                                                             Log.d("Update", "Tamagotchi mis à jour après " + heuresPassees + " heures.");
-                                                            updateVie();
+                                                            updateVie(user);
                                                         })
                                                         .addOnFailureListener(e -> {
                                                             Log.e("Update", "Erreur lors de la mise à jour du tamagotchi", e);
@@ -187,9 +227,9 @@ public class FirestoreData {
                     }
                 });
     }
-    public static void updateVie() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+    public static void updateVie(FirebaseUser user) {
+        String userId = user.getUid();
 
         db.collection("joueurs")
                 .document(userId)
@@ -228,27 +268,28 @@ public class FirestoreData {
                 });
     }
 
-    public static void loadStatsFromFirestore(ProgressBar progressBar, String nomStatistique) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
+    public static void loadStatsFromFirestore(FirebaseUser user, ProgressBar progressBar, String nomStatistique) {
+        String userId = user.getUid();
+        Log.d("userId",userId);
         db.collection("joueurs")
                 .document(userId)
                 .get()
                 .addOnSuccessListener(snapshot -> {
+                    Log.d("Ici","test1");
                     String activeTamagotchiId = snapshot.getString("activeTamagotchiId");
-
+                    Log.d("tamaactif",activeTamagotchiId);
                     db.collection("tamagotchis")
                             .document(activeTamagotchiId)
                             .get()
                             .addOnSuccessListener(doc -> {
+                                Log.d("Ici1","ici");
                                 if (doc.exists()) {
-                                    progressBar.setProgress((int)getSafeLong(doc, "statsTamagotchi."+nomStatistique));
+                                    progressBar.setProgress((int) getSafeLong(doc, "statsTamagotchi." + nomStatistique));
                                 }
                             });
-                });
+                })
+                .addOnFailureListener(e -> Log.e("Erreur", "Erreur ici", e));
     }
-
 
     private static long limitBetween(long value, long min, long max) {
         return Math.max(min, Math.min(value, max));
@@ -258,5 +299,4 @@ public class FirestoreData {
         Long value = doc.getLong(path);
         return value != null ? value : 0;
     }
-
 }

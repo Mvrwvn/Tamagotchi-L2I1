@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Date :
+     Membre qui travaille dessus : Yasmine DEHOUCHE
+     Que fait le code XML? Ce layout XML représente la page de réinitialisation du mot de passe en envoyant un lien de réinitialisation à l'adresse e-mail associé au Mimichi
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mdp_oublie"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#debdf0"
+    tools:context=".RenitialisationMdpActivity">
+
+
+    <TextView
+        android:id="@+id/textViewreinitialisermdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        android:padding="16dp"
+        android:text="@string/pas_de_panique"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewMDPoublie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textViewreinitialisermdp2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:padding="16dp"
+        android:text="@string/entre_ton_email_pour_recevoir_un_lien_de_r_initialisation_et_r_cup_rer_ton_compte_en_un_clin_d_il"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewMDPoublie" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/adresse_e_mail"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/email_input"
+        app:layout_constraintStart_toStartOf="@+id/email_input"
+        app:layout_constraintTop_toBottomOf="@+id/textViewreinitialisermdp2"
+        tools:ignore="VisualLintOverlap" />
+
+    <EditText
+        android:id="@+id/email_input"
+        android:layout_width="242dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/textviewbg"
+        android:hint="@string/entrez_votre_adresse_e_mail"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/send_reset_link"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="Autofill,MissingConstraints" />
+
+    <Button
+        android:id="@+id/send_reset_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="29dp"
+        android:onClick="recuperationMotDePasse"
+        android:padding="20dp"
+        android:text="@string/envoyer_le_lien_de_r_initialisation"
+        app:layout_constraintBottom_toTopOf="@+id/retourButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_input"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/retourButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginBottom="48dp"
+        android:minHeight="48dp"
+        android:onClick="load_authActivity"
+        android:padding="8dp"
+        android:text="Retour à la page de connexion"
+        android:textColor="#3F51B5"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/send_reset_link"
+        app:layout_constraintTop_toBottomOf="@+id/send_reset_link"
+        tools:ignore="HardcodedText,OnClick" />
+
+    <ImageView
+        android:id="@+id/imageViewMDPoublie"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="38dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewreinitialisermdp2"
+        app:layout_constraintEnd_toEndOf="@+id/send_reset_link"
+        app:layout_constraintStart_toStartOf="@+id/textViewreinitialisermdp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewreinitialisermdp"
+        app:srcCompat="@drawable/mdp_oublie"
+        tools:ignore="ContentDescription,image mot de passe oublié" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

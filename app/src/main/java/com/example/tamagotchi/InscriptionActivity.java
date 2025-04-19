@@ -2,6 +2,7 @@ package com.example.tamagotchi;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -15,6 +16,11 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class InscriptionActivity extends AppCompatActivity {
 
@@ -27,7 +33,7 @@ public class InscriptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.inscription);
+        setContentView(R.layout.activity_inscriptionv1);
         mAuth = FirebaseAuth.getInstance();
         emailInput = findViewById(R.id.emailInput);
         passwordInput = findViewById(R.id.passwordInput);
@@ -61,10 +67,46 @@ public class InscriptionActivity extends AppCompatActivity {
                                             Inventaire inventaire = new Inventaire(10,10,10,10,10);
                                             Statistique stats = new Statistique(100, 100, 100, 100, 100,100);
                                             Tamagotchi tamagotchi = new Tamagotchi(user.getUid(), nomTamagotchi, "temp", Timestamp.now(), Timestamp.now(), stats, inventaire);
-                                            FirestoreData firestoreData = new FirestoreData();
-                                            firestoreData.sauvegarderTamagotchi(tamagotchi);
-                                            Intent intent = new Intent(InscriptionActivity.this, MainActivity.class );
-                                            startActivity(intent);
+                                            /*Map<String, Object> joueurData = new HashMap<>();
+                                            joueurData.put("activeTamagotchiId", ""); // vide pour l'instant, on l'update après
+                                            joueurData.put("email", email);
+                                            joueurData.put("username", username);
+
+                                            FirebaseFirestore.getInstance().collection("joueurs")
+                                                    .document(user.getUid())
+                                                    .set(joueurData)
+                                                    .addOnSuccessListener(aVoid -> {
+                                                        // maintenant que le document joueur est créé, on peut sauvegarder le tamagotchi
+                                                        FirestoreData.sauvegarderTamagotchi(tamagotchi);
+                                                        Intent intent = new Intent(this, MainActivity.class);
+                                                        intent.putExtra("userId", user.getUid());
+                                                        startActivity(intent);
+                                                    })
+                                                    .addOnFailureListener(e -> {
+                                                        Toast.makeText(InscriptionActivity.this, "Erreur création joueur : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                    });*/
+                                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                            db.collection("tamagotchis")
+                                                    .add(tamagotchi)
+                                                    .addOnSuccessListener(documentReference -> {
+                                                        String newTamagotchiId = documentReference.getId();
+                                                        Log.d("Firestore", "Tamagotchi sauvegardé avec ID : " + newTamagotchiId);
+                                                        ArrayList<String> tamagotchiIds = new ArrayList<>();
+                                                        tamagotchiIds.add(newTamagotchiId);
+                                                        Joueur joueur = new Joueur(email, tamagotchiIds, newTamagotchiId);
+                                                        db.collection("joueurs")
+                                                                .document(user.getUid())
+                                                                .set(joueur)
+                                                                .addOnSuccessListener(doc -> {
+                                                                    Log.d("Firestore", "Joueur sauvegardé avec email : " + email);
+                                                                    Intent intent = new Intent(this, MainActivity.class );
+                                                                    startActivity(intent);
+                                                                })
+                                                                .addOnFailureListener(e ->
+                                                                        Log.e("Firestore", "Erreur de sauvegarde", e));
+                                                    })
+                                                    .addOnFailureListener(e ->
+                                                            Log.e("Firestore", "Erreur de sauvegarde", e));
                                         } else {
                                             Toast.makeText(InscriptionActivity.this, "Échec de la mise à jour du profil", Toast.LENGTH_SHORT).show();
                                         }
@@ -77,7 +119,7 @@ public class InscriptionActivity extends AppCompatActivity {
     }
 
     public void retour(View v){
-        Intent intent = new Intent(InscriptionActivity.this,AuthActivity.class);
+        Intent intent = new Intent(this,AuthActivity.class);
         startActivity(intent);
     }
 }

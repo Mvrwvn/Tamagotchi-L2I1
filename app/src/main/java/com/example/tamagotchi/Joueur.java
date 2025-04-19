@@ -25,9 +25,7 @@ import java.util.ArrayList;
 
 public class Joueur {
 
-    private String idJoueur;
     private String email;
-    private String password;
     private ArrayList<String> idTamagotchis;
     private String activeTamagotchiId;
 
@@ -35,23 +33,14 @@ public class Joueur {
     public Joueur() {
     }
 
-    public Joueur(String idJoueur, String email, String password,
+    public Joueur(String email,
                   ArrayList<String> idTamagotchis, String activeTamagotchiId) {
-        this.idJoueur = idJoueur;
         this.email = email;
-        this.password = password;
         this.idTamagotchis = idTamagotchis;
         this.activeTamagotchiId = activeTamagotchiId;
     }
 
     // Getters et Setters
-    public String getIdJoueur() {
-        return idJoueur;
-    }
-
-    public void setIdJoueur(String idJoueur) {
-        this.idJoueur = idJoueur;
-    }
 
     public String getEmail() {
         return email;
@@ -59,14 +48,6 @@ public class Joueur {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public ArrayList<String> getIdTamagotchis() {
@@ -92,7 +73,7 @@ public class Joueur {
                     if (firebaseUser != null) {
                         String uid = firebaseUser.getUid();
 
-                        Joueur joueur = new Joueur(uid, email, password, new ArrayList<>(), null);
+                        Joueur joueur = new Joueur(email, new ArrayList<>(), null);
 
                         FirebaseFirestore.getInstance()
                                 .collection("joueurs")

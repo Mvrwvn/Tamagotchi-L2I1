@@ -14,6 +14,7 @@ package com.example.tamagotchi;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -25,12 +26,14 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.airbnb.lottie.LottieDrawable;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity {
-    private String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
     private TextView textView;
     private ProgressBar progressSante, progressFaim, progressBonheur, progressEnergie, progressHygiene, progressSoif;
+    private final Handler handler = new Handler();
+    private final int DELAY = 10000; // 10 secondes
 
 
     @Override
@@ -53,13 +56,30 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        FirestoreData.verifierDernierUpdate();
-        FirestoreData.loadStatsFromFirestore(progressFaim,"faim");
-        FirestoreData.loadStatsFromFirestore(progressEnergie,"energie");
-        FirestoreData.loadStatsFromFirestore(progressSoif,"soif");
-        FirestoreData.loadStatsFromFirestore(progressHygiene,"hygiene");
-        FirestoreData.loadStatsFromFirestore(progressSante,"sante");
+        handler.post(updateRunnable);
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        handler.removeCallbacks(updateRunnable); // évite les fuites mémoire
+    }
+
+    private final Runnable updateRunnable = new Runnable() {
+        @Override
+        public void run() {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null) {
+                FirestoreData.verifierDernierUpdate(user);
+                FirestoreData.loadStatsFromFirestore(user, progressFaim,"faim");
+                FirestoreData.loadStatsFromFirestore(user, progressEnergie,"energie");
+                FirestoreData.loadStatsFromFirestore(user, progressSoif,"soif");
+                FirestoreData.loadStatsFromFirestore(user, progressHygiene,"hygiene");
+                FirestoreData.loadStatsFromFirestore(user, progressSante,"sante");
+            }
+            handler.postDelayed(this, DELAY);
+        }
+    };
 
     public void deconnexion(View v){
         FirebaseAuth.getInstance().signOut();
@@ -68,30 +88,40 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void reposer(View v){
-        FirestoreData.actionTamagotchi(v,progressEnergie,"Lits","energie");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {return;}
+        FirestoreData.actionTamagotchi(user, v,progressEnergie,"Lits","energie");
     }
 
     public void hydrater(View v){
-        FirestoreData.actionTamagotchi(v,progressSoif,"Boissons","soif");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {return;}
+        FirestoreData.actionTamagotchi(user, v,progressSoif,"Boissons","soif");
     }
 
     public void brosser(View v){
-        FirestoreData.actionTamagotchi(v,progressHygiene,"Savons","hygiene");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {return;}
+        FirestoreData.actionTamagotchi(user, v,progressHygiene,"Savons","hygiene");
     }
 
     public void nourrir(View v) {
-        FirestoreData.actionTamagotchi(v,progressFaim, "Nourritures", "faim");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {return;}
+        FirestoreData.actionTamagotchi(user, v,progressFaim, "Nourritures", "faim");
     }
 
     public void soigner(View v) {
-        FirestoreData.actionTamagotchi(v,progressSante,"Medicaments","sante");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {return;}
+        FirestoreData.actionTamagotchi(user, v,progressSante,"Medicaments","sante");
     }
 
 
     public void creer(View v) {
         Inventaire inventaire = new Inventaire(10,0,2,10,10);
         Statistique stats = new Statistique(50,50, 50, 80, 90, 100);
-        Tamagotchi tama = new Tamagotchi(userId, "Marwan","male", Timestamp.now(), Timestamp.now(), stats, inventaire);
+        Tamagotchi tama = new Tamagotchi(FirebaseAuth.getInstance().getCurrentUser().getUid(), "Marwan","male", Timestamp.now(), Timestamp.now(), stats, inventaire);
         FirestoreData.sauvegarderTamagotchi(tama);
     }
 }
