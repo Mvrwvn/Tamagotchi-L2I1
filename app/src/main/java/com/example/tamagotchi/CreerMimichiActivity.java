@@ -1,5 +1,13 @@
 package com.example.tamagotchi;
+/*
+-----------------------------
+    Date : 20/04/2025
 
+    Membres qui travaillent dessus : Marwan DENAGNON
+
+    Que fait le code ? : Page d'ajout de tamagotchi permet d'en ajouter un à la bdd et il va automatiquement le mettre en actif après l'avoir ajouté
+-----------------------------
+*/
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -29,9 +37,8 @@ public class CreerMimichiActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nouveau_mimichi); // Mets ici le bon nom de ton layout XML
+        setContentView(R.layout.activity_nouveau_mimichi);
 
-        // Liaison des vues avec leur ID
         imageViewNouveauMimichi = findViewById(R.id.imageViewNouveauMimichi);
         nomTamagotchiInput = findViewById(R.id.nomTamagotchiInput);
         radioGroupSex = findViewById(R.id.radio_group_sex);
@@ -41,12 +48,15 @@ public class CreerMimichiActivity extends AppCompatActivity {
         retourButton = findViewById(R.id.retourButton);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        // Action bouton "Ajouter"
         ajouterButton.setOnClickListener(v -> {
             String nom = nomTamagotchiInput.getText().toString().trim();
             String genre = "";
 
             int checkedId = radioGroupSex.getCheckedRadioButtonId();
+            if (user == null){
+                Toast.makeText(this, "Problème dans le chargement de l'utilisateur connecté firebase", Toast.LENGTH_SHORT).show();
+                return;
+            }
             if (checkedId == R.id.radio_male) {
                 genre = "Mâle";
             } else if (checkedId == R.id.radio_female) {
@@ -59,11 +69,10 @@ public class CreerMimichiActivity extends AppCompatActivity {
                 return;
             }
 
-            // Tu peux ici insérer dans Firestore ou aller vers une autre activité
-            Inventaire inventaire = new Inventaire(10,10,10,10,10);
-            Statistique stats = new Statistique(100, 100, 100, 100, 100,100);
+            Inventaire inventaire = new Inventaire(10,10,10,10,10,10);
+            Statistique stats = new Statistique(100, 100, 100, 100, 100,100,100);
             Tamagotchi tamagotchi = new Tamagotchi(user.getUid(), nom, genre, Timestamp.now(), Timestamp.now(), stats, inventaire);
-            FirestoreData.sauvegarderTamagotchi(tamagotchi);
+            FirestoreData.ajouterTamagotchi(user,v,tamagotchi);
         });
 
         retourButton.setOnClickListener(v -> {

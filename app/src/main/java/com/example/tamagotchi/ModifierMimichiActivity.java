@@ -1,5 +1,13 @@
 package com.example.tamagotchi;
+/*
+-----------------------------
+    Date : 20/04/2025
 
+    Membres qui travaillent dessus : Marwan DENAGNON
+
+    Que fait le code ? : Page pour modifier le mimichi Modifie uniquement le tamagotchi actif (celui qui est dans l'attribut activeTamagotchiId dans la bdd collection joueurs)
+-----------------------------
+*/
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -30,9 +38,8 @@ public class ModifierMimichiActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modifier_mimichi); // Mets ici le bon nom de ton layout XML
+        setContentView(R.layout.activity_modifier_mimichi);
 
-        // Liaison des vues avec leur ID
         imageViewNouveauMimichi = findViewById(R.id.imageViewNouveauMimichi);
         nomTamagotchiInput = findViewById(R.id.nomTamagotchiInput);
         radioGroupSex = findViewById(R.id.radio_group_sex);
@@ -45,7 +52,10 @@ public class ModifierMimichiActivity extends AppCompatActivity {
         modifierButton.setOnClickListener(v -> {
             String nom = nomTamagotchiInput.getText().toString().trim();
             String genre = "";
-
+            if (user == null){
+                Toast.makeText(this, "Problème dans le chargement de l'utilisateur connecté firebase", Toast.LENGTH_SHORT).show();
+                return;
+            }
             int checkedId = radioGroupSex.getCheckedRadioButtonId();
             if (checkedId == R.id.radio_male) {
                 genre = "Mâle";

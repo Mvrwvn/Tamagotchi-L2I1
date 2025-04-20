@@ -33,32 +33,6 @@ public class Tamagotchi{
         this.inventaireTamagotchi = inventaireTamagotchi;
     }
     public Tamagotchi() {}  // Obligatoire pour Firestore
-
-    public void nourir(double valeur){
-        statsTamagotchi.setFaim(valeur);
-        inventaireTamagotchi.setNbNourritures(inventaireTamagotchi.getNbNourritures()-1);
-    }
-    public void soif(double valeur) {
-        statsTamagotchi.setSoif(valeur);
-        inventaireTamagotchi.setNbBoissons(inventaireTamagotchi.getNbBoissons() - 1);
-    }
-
-    public void dormir(double valeur) {
-        statsTamagotchi.setEnergie(valeur);
-        inventaireTamagotchi.setNbLits(inventaireTamagotchi.getNbLits() - 1);
-    }
-
-    public void soigner(double valeur) {
-        statsTamagotchi.setSante(valeur);
-        inventaireTamagotchi.setNbMedicaments(inventaireTamagotchi.getNbMedicaments() - 1);
-    }
-
-    public void doucher(double valeur) {
-        statsTamagotchi.setHygiene(valeur);
-        inventaireTamagotchi.setNbSavons(inventaireTamagotchi.getNbSavons() - 1);
-    }
-
-
     public String getUserId(){
         return userId;
     }
@@ -111,28 +85,6 @@ public class Tamagotchi{
 
     public void setInventaireTamagotchi(Inventaire inventaireTamagotchi) {
         this.inventaireTamagotchi = inventaireTamagotchi;
-    }
-
-    @Override
-    public String toString() {
-        return "Nom : " + nomTamagotchi + "\n" +
-                "Genre : " + genre + "\n" +
-                "Date de naissance : " + dateNaissance + "\n" +
-                "Dernière MAJ : " + dernierUpdate + "\n\n" +
-                "User ID : " + userId + "\n\n" +
-                "===== Statistiques =====\n" +
-                "Vie : " + statsTamagotchi.getVie() + "\n" +
-                "Faim : " + statsTamagotchi.getFaim() + "\n" +
-                "Soif : " + statsTamagotchi.getSoif() + "\n" +
-                "Santé : " + statsTamagotchi.getSante() + "\n" +
-                "Énergie : " + statsTamagotchi.getEnergie() + "\n" +
-                "Hygiène : " + statsTamagotchi.getHygiene() + "\n" +
-                "===== Inventaire =====\n" +
-                "Nourritures : " + inventaireTamagotchi.getNbNourritures() + "\n" +
-                "Boissons : " + inventaireTamagotchi.getNbBoissons() + "\n" +
-                "Médicaments : " + inventaireTamagotchi.getNbMedicaments() + "\n" +
-                "Lits : " + inventaireTamagotchi.getNbLits() + "\n" +
-                "Savons : " + inventaireTamagotchi.getNbSavons() + "\n";
     }
 
 }

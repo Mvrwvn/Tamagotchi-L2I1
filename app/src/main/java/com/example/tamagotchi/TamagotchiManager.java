@@ -1,4 +1,13 @@
 package com.example.tamagotchi;
+/*
+-----------------------------
+    Date : 20/04/2025
+
+    Membres qui travaillent dessus : Marwan DENAGNON
+
+    Que fait le code ? : Rien en cours de développement
+-----------------------------
+*/
 import android.util.Log;
 
 import com.google.firebase.firestore.FirebaseFirestore;

@@ -2,13 +2,14 @@ package com.example.tamagotchi;
 
 /*
 -----------------------------
-    Date : 13/04/2025
+    Date : 20/04/2025
 
     Membres qui travaillent dessus : Marwan DENAGNON
 
     Que fait le code ? : Permet de lire et écrire des données (attributs de la classe Tamagothci) sur Firestore chaque Tamagotchi est lié à un compte (userId = clé unique générée automatiquement pour chaque compte).
     Changement par rapport à la version précédente : Permet de faire lien entre le front end et la gestion des données, toutes la partie donnée est géré dans la class FirestoreData.java.
     Par exemple la méthode nourrir va être appeler quand l'utilisateur va cliquer sur le bouton "Nourrir"
+    Changement par rapport à la version précédente : ajout d'un handler pour mettre à jour les données sur la bdd puis les charger dans la progressBar
 -----------------------------
 */
 
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 FirestoreData.loadStatsFromFirestore(user, progressSoif,"soif");
                 FirestoreData.loadStatsFromFirestore(user, progressHygiene,"hygiene");
                 FirestoreData.loadStatsFromFirestore(user, progressSante,"sante");
+                FirestoreData.loadStatsFromFirestore(user, progressBonheur,"bonheur");
             }
             handler.postDelayed(this, DELAY);
         }
@@ -120,11 +122,9 @@ public class MainActivity extends AppCompatActivity {
         FirestoreData.actionTamagotchi(user, v,progressSante,"Medicaments","sante");
     }
 
-
-    public void creer(View v) {
-        Inventaire inventaire = new Inventaire(10,0,2,10,10);
-        Statistique stats = new Statistique(50,50, 50, 80, 90, 100);
-        Tamagotchi tama = new Tamagotchi(FirebaseAuth.getInstance().getCurrentUser().getUid(), "Marwan","male", Timestamp.now(), Timestamp.now(), stats, inventaire);
-        FirestoreData.sauvegarderTamagotchi(tama);
+    public void jouer(View v){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {return;}
+        FirestoreData.actionTamagotchi(user, v,progressBonheur,"Jouets","bonheur");
     }
 }

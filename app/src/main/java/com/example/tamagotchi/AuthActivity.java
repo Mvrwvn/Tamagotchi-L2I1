@@ -53,17 +53,6 @@ public class AuthActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void inscription(View v) {
-        String email = emailInput.getText().toString().trim();
-        String password = passwordInput.getText().toString().trim();
-
-        if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        Joueur.inscription(this,email,password);
-    }
-
     public void load_inscription_activity(View v){
         Intent intent = new Intent(this, InscriptionActivity.class);
         startActivity(intent);

@@ -1,5 +1,13 @@
 package com.example.tamagotchi;
+/*
+-----------------------------
+    Date : 20/04/2025
 
+    Membres qui travaillent dessus : Marwan DENAGNON
+
+    Que fait le code ? : Page de réinitialisation de mot de passe
+-----------------------------
+*/
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;

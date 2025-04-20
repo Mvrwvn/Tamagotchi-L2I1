@@ -37,52 +37,13 @@ public class FirestoreData {
     @SuppressLint("StaticFieldLeak")
     private static final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    public static void sauvegarderTamagotchi(Tamagotchi tamagotchi) {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) return;
+    public static void ajouterTamagotchi(FirebaseUser user, View v, Tamagotchi tamagotchi) {
         db.collection("tamagotchis")
                 .add(tamagotchi)
                 .addOnSuccessListener(documentReference -> {
                     String newTamagotchiId = documentReference.getId();
-                    Log.d("Firestore", "Tamagotchi sauvegardé avec ID : " + newTamagotchiId);
                     setActiveTamagotchiId(newTamagotchiId);
-                })
-                .addOnFailureListener(e ->
-                        Log.e("Firestore", "Erreur de sauvegarde", e));
-    }
-
-    public static void inscription(Tamagotchi tamagotchi, String email){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) return;
-        db.collection("tamagotchis")
-                .add(tamagotchi)
-                .addOnSuccessListener(documentReference -> {
-                    String newTamagotchiId = documentReference.getId();
-                    Log.d("Firestore", "Tamagotchi sauvegardé avec ID : " + newTamagotchiId);
-                    ArrayList<String> tamagotchiIds = new ArrayList<>();
-                    tamagotchiIds.add(newTamagotchiId);
-                    Joueur joueur = new Joueur(email, tamagotchiIds, newTamagotchiId);
-                    db.collection("joueurs")
-                            .add(joueur)
-                            .addOnSuccessListener(doc -> {
-                                Log.d("Firestore", "Joueur sauvegardé avec email : " + email);
-                            })
-                            .addOnFailureListener(e ->
-                                    Log.e("Firestore", "Erreur de sauvegarde", e));
-                })
-                .addOnFailureListener(e ->
-                        Log.e("Firestore", "Erreur de sauvegarde", e));
-    }
-
-    public static void sauvegarderJoueur(Joueur joueur){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) return;
-        db.collection("joueurs")
-                .add(joueur)
-                .addOnSuccessListener(documentReference -> {
-                    String newTamagotchiId = documentReference.getId();
-                    Log.d("Firestore", "Tamagotchi sauvegardé avec ID : " + newTamagotchiId);
-                    setActiveTamagotchiId(newTamagotchiId);
+                    Toast.makeText(v.getContext(), "Mimichi créer avec succès : " + tamagotchi.getNomTamagotchi() + " (" + tamagotchi.getGenre() + ")", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e ->
                         Log.e("Firestore", "Erreur de sauvegarde", e));
@@ -181,7 +142,7 @@ public class FirestoreData {
                                         if (tamagotchiSnapshot.exists() && tamagotchiSnapshot.getTimestamp("dernierUpdate") != null) {
                                             long now = Timestamp.now().getSeconds();
                                             long lastUpdate = tamagotchiSnapshot.getTimestamp("dernierUpdate").getSeconds();
-                                            long heuresPassees = (now - lastUpdate) / 3600;
+                                            long heuresPassees = (now - lastUpdate) / 5;
 
                                             if (heuresPassees > 0) {
                                                 Log.d("Ici","test2");
@@ -194,6 +155,8 @@ public class FirestoreData {
                                                 long energie = limitBetween(tamagotchiSnapshot.getLong("statsTamagotchi.energie") + variationStats, 0, 100);
                                                 long hygiene = limitBetween(tamagotchiSnapshot.getLong("statsTamagotchi.hygiene") + variationStats, 0, 100);
                                                 long soif = limitBetween(tamagotchiSnapshot.getLong("statsTamagotchi.soif") + variationStats, 0, 100);
+                                                long bonheur = limitBetween(tamagotchiSnapshot.getLong("statsTamagotchi.bonheur") + variationStats, 0, 100);
+
 
                                                 Map<String, Object> updates = new HashMap<>();
                                                 updates.put("statsTamagotchi.sante", sante);
@@ -201,12 +164,14 @@ public class FirestoreData {
                                                 updates.put("statsTamagotchi.energie", energie);
                                                 updates.put("statsTamagotchi.hygiene", hygiene);
                                                 updates.put("statsTamagotchi.soif", soif);
+                                                updates.put("statsTamagotchi.bonheur", bonheur);
 
                                                 updates.put("inventaireTamagotchi.nbNourritures", FieldValue.increment(variationInventaire));
                                                 updates.put("inventaireTamagotchi.nbMedicaments", FieldValue.increment(variationInventaire));
                                                 updates.put("inventaireTamagotchi.nbLits", FieldValue.increment(variationInventaire));
                                                 updates.put("inventaireTamagotchi.nbSavons", FieldValue.increment(variationInventaire));
                                                 updates.put("inventaireTamagotchi.nbBoissons", FieldValue.increment(variationInventaire));
+                                                updates.put("inventaireTamagotchi.nbJouets", FieldValue.increment(variationInventaire));
 
                                                 updates.put("dernierUpdate", Timestamp.now());
 
@@ -313,7 +278,7 @@ public class FirestoreData {
                             .document(activeTamagotchiId)
                             .update("nomTamagotchi", nomTamagotchi, "genre", genre)
                             .addOnSuccessListener(snap->{
-                                Toast.makeText(v.getContext(), "Mimichi modifié : " + nomTamagotchi + " (" + genre + ")", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(v.getContext(), "Mimichi modifié avec succès : " + nomTamagotchi + " (" + genre + ")", Toast.LENGTH_SHORT).show();
                             })
                             .addOnFailureListener(snap->{
                                 Toast.makeText(v.getContext(), "Erreur lors de la création du Mimichi.", Toast.LENGTH_SHORT).show();

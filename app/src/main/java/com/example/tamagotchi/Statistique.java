@@ -18,14 +18,16 @@ public class Statistique {
     private double sante;
     private double energie;
     private double hygiene;
+    private double bonheur;
 
-    public Statistique(double vie, double faim, double soif, double sante, double energie, double hygiene){
+    public Statistique(double vie, double faim, double soif, double sante, double energie, double hygiene, double bonheur){
         this.vie = vie;
         this.faim = faim;
         this.soif = soif;
         this.sante = sante;
         this.energie = energie;
         this.hygiene = hygiene;
+        this.bonheur = bonheur;
     }
 
     public Statistique(){}; // Obligatoire pour Firestore
@@ -76,6 +78,14 @@ public class Statistique {
 
     public void setHygiene(double hygiene) {
         this.hygiene = hygiene;
+    }
+
+    public void setBonheur(double bonheur) {
+        this.bonheur = bonheur;
+    }
+
+    public double getBonheur() {
+        return bonheur;
     }
 }
 

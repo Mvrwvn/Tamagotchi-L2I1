@@ -2,12 +2,13 @@ package com.example.tamagotchi;
 
 /*
 -----------------------------
-    Date : 08/04/2025
+    Date : 20/04/2025
 
     Membres qui travaillent dessus : Marwan DENAGNON
 
     Que fait le code ? : Fait la passerelle entre les données reçues en java et envoyé à Firebase pour l'authentification et pour le stockages des données sur FireStore
     avec un id de tamagotchi actif pour savoir sur quelle tamagotchis l'utilisateur va modifier les attributs dans le cas où il aurait plusieurs tamagotchis.
+    Changement par rapport à la version précédente : Fusion du front end et du back end
     -----------------------------
 */
 
@@ -64,35 +65,6 @@ public class Joueur {
 
     public void setActiveTamagotchiId(String activeTamagotchiId) {
         this.activeTamagotchiId = activeTamagotchiId;
-    }
-
-    public static void inscription(Context context, String email, String password) {
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-                .addOnSuccessListener(authResult -> {
-                    FirebaseUser firebaseUser = authResult.getUser();
-                    if (firebaseUser != null) {
-                        String uid = firebaseUser.getUid();
-
-                        Joueur joueur = new Joueur(email, new ArrayList<>(), null);
-
-                        FirebaseFirestore.getInstance()
-                                .collection("joueurs")
-                                .document(uid)
-                                .set(joueur)
-                                .addOnSuccessListener(aVoid -> {
-                                    Toast.makeText(context, "Inscription réussie", Toast.LENGTH_SHORT).show();
-                                    Log.d(TAG, "Utilisateur enregistré dans Firestore");
-                                })
-                                .addOnFailureListener(e -> {
-                                    Toast.makeText(context, "Erreur Firestore", Toast.LENGTH_SHORT).show();
-                                    Log.e(TAG, "Erreur Firestore : ", e);
-                                });
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(context, "Erreur lors de l'inscription : " + e.getMessage(), Toast.LENGTH_LONG).show();
-                    Log.e(TAG, "Erreur inscription : ", e);
-                });
     }
 
     public static void connexion(Context context, String email, String password) {

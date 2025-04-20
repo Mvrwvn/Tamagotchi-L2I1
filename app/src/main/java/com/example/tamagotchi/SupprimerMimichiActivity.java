@@ -1,5 +1,13 @@
 package com.example.tamagotchi;
+/*
+-----------------------------
+    Date : 20/04/2025
 
+    Membres qui travaillent dessus : Marwan DENAGNON
+
+    Que fait le code ? : Rien en cours de développement
+-----------------------------
+*/
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,16 +27,13 @@ public class SupprimerMimichiActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supprimer_mimichi); // Vérifie le nom du layout ici
 
-        // Liaison des vues
         imageViewSupprimerMimichi = findViewById(R.id.imageViewSupprimerMimichi);
         ajouterButton = findViewById(R.id.ajouterButton);
         retourButton = findViewById(R.id.retourButton);
 
         // Action pour le bouton "Supprimer"
         ajouterButton.setOnClickListener(v -> {
-            // À adapter avec la logique de suppression réelle
-            Toast.makeText(this, "Mimichi supprimé 😢", Toast.LENGTH_SHORT).show();
-            // finish(); ou redirection selon ce que tu veux
+            //en cours de dev
         });
 
         // Action pour le bouton "Retour"

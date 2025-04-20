@@ -1,12 +1,23 @@
 package com.example.tamagotchi;
+/*
+-----------------------------
+    Date : 20/04/2025
 
+    Membres qui travaillent dessus : Marwan DENAGNON
+
+    Que fait le code ? : Page des parametres
+-----------------------------
+*/
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ParametresActivity extends AppCompatActivity {
 
@@ -26,7 +37,7 @@ public class ParametresActivity extends AppCompatActivity {
         reinitialiserMDP = findViewById(R.id.reinitialiserMDP);
         retourButton = findViewById(R.id.retourButton);
         listeMimichi.setOnClickListener(v -> {
-            startActivity(new Intent(this, ListeMimichiActivity.class));
+            Toast.makeText(this, "En cours de développement", Toast.LENGTH_SHORT).show();
         });
 
         modifierMimichi.setOnClickListener(v -> {
@@ -34,18 +45,19 @@ public class ParametresActivity extends AppCompatActivity {
         });
 
         supprimerMimichi.setOnClickListener(v -> {
-            startActivity(new Intent(this, SupprimerMimichiActivity.class));
+            Toast.makeText(this, "En cours de développement", Toast.LENGTH_SHORT).show();
         });
 
         importerMimichi.setOnClickListener(v -> {
-            startActivity(new Intent(this, ImporterMimichiActivity.class));
+            Toast.makeText(this, "En cours de développement", Toast.LENGTH_SHORT).show();
         });
 
         exporterMimichi.setOnClickListener(v -> {
-            startActivity(new Intent(this, ExporterMimichiActivity.class));
+            Toast.makeText(this, "En cours de développement", Toast.LENGTH_SHORT).show();
         });
 
         deconnexion.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut(); // Déconnexion Firebase
             startActivity(new Intent(this, AuthActivity.class));
             finish(); // Pour empêcher de revenir avec le bouton retour
         });

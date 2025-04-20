@@ -1,5 +1,13 @@
 package com.example.tamagotchi;
+/*
+-----------------------------
+    Date : 20/04/2025
 
+    Membres qui travaillent dessus : Marwan DENAGNON
+
+    Que fait le code ? : Page d'inscription fusion front end back end
+-----------------------------
+*/
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -73,27 +81,9 @@ public class InscriptionActivity extends AppCompatActivity {
                                     .addOnCompleteListener(updateTask -> {
                                         if (updateTask.isSuccessful()) {
                                             Toast.makeText(InscriptionActivity.this, "Inscription réussie" + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-                                            Inventaire inventaire = new Inventaire(10,10,10,10,10);
-                                            Statistique stats = new Statistique(100, 100, 100, 100, 100,100);
+                                            Inventaire inventaire = new Inventaire(10,10,10,10,10,10);
+                                            Statistique stats = new Statistique(100, 100, 100, 100, 100,100,100);
                                             Tamagotchi tamagotchi = new Tamagotchi(user.getUid(), nomTamagotchi, genre, Timestamp.now(), Timestamp.now(), stats, inventaire);
-                                            /*Map<String, Object> joueurData = new HashMap<>();
-                                            joueurData.put("activeTamagotchiId", ""); // vide pour l'instant, on l'update après
-                                            joueurData.put("email", email);
-                                            joueurData.put("username", username);
-
-                                            FirebaseFirestore.getInstance().collection("joueurs")
-                                                    .document(user.getUid())
-                                                    .set(joueurData)
-                                                    .addOnSuccessListener(aVoid -> {
-                                                        // maintenant que le document joueur est créé, on peut sauvegarder le tamagotchi
-                                                        FirestoreData.sauvegarderTamagotchi(tamagotchi);
-                                                        Intent intent = new Intent(this, MainActivity.class);
-                                                        intent.putExtra("userId", user.getUid());
-                                                        startActivity(intent);
-                                                    })
-                                                    .addOnFailureListener(e -> {
-                                                        Toast.makeText(InscriptionActivity.this, "Erreur création joueur : " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                                    });*/
                                             FirebaseFirestore db = FirebaseFirestore.getInstance();
                                             db.collection("tamagotchis")
                                                     .add(tamagotchi)

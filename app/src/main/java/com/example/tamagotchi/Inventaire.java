@@ -15,14 +15,16 @@ public class Inventaire {
     private int nbMedicaments;
     private int nbLits;
     private int nbSavons;
+    private int nbJouets;
 
     // Constructeur
-    public Inventaire(int nbNourritures, int nbBoissons, int nbMedicaments, int nbLits, int nbSavons) {
+    public Inventaire(int nbNourritures, int nbBoissons, int nbMedicaments, int nbLits, int nbSavons, int nbJouets) {
         this.nbNourritures = nbNourritures;
         this.nbBoissons = nbBoissons;
         this.nbMedicaments = nbMedicaments;
         this.nbLits = nbLits;
         this.nbSavons = nbSavons;
+        this.nbJouets = nbJouets;
     }
 
     public Inventaire(){};
@@ -66,5 +68,13 @@ public class Inventaire {
 
     public void setNbSavons(int nbSavons) {
         this.nbSavons = nbSavons;
+    }
+
+    public void setNbJouets(int nbJouets) {
+        this.nbJouets = nbJouets;
+    }
+
+    public int getNbJouets() {
+        return nbJouets;
     }
 }
