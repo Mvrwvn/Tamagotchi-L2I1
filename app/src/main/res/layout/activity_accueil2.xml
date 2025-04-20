@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+     Date : 18 avril 2025
+     Membre qui travaille dessus : Yasmine DEHOUCHE.
+     Que fait le code XML? Ce layout XML représente la page d'accueil après inscription ou connexion, elle inclue tous les boutons pour intéragir avec le Mimichi ainsi qu'un bouton de paramètres
+-->
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/accueil"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/tama1"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="578dp">
+
+        <GridLayout
+            android:id="@+id/gridActions"
+            android:layout_width="216dp"
+            android:layout_height="wrap_content"
+            android:alignmentMode="alignMargins"
+            android:columnCount="3"
+            android:gravity="center"
+            android:rowCount="2"
+            android:useDefaultMargins="true">
+
+            <FrameLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="4dp">
+
+                <ProgressBar
+                    android:id="@+id/progressBoisson"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="60"
+                    android:progressDrawable="@drawable/circular_progress_drawable"
+                    android:rotation="-90" />
+
+                <ImageView
+                    android:id="@+id/imageViewBoisson"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:onClick="hydrater"
+                    android:contentDescription="@string/boisson"
+                    android:focusable="true"
+                    android:src="@drawable/boisson" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="4dp">
+
+                <ProgressBar
+                    android:id="@+id/progressDouche"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="40"
+                    android:progressDrawable="@drawable/circular_progress_drawable"
+                    android:rotation="-90" />
+
+                <ImageView
+                    android:id="@+id/imageViewDouche"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:onClick="brosser"
+                    android:contentDescription="@string/douche"
+                    android:focusable="true"
+                    android:src="@drawable/douche" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="4dp">
+
+                <ProgressBar
+                    android:id="@+id/progressJouet"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="70"
+                    android:progressDrawable="@drawable/circular_progress_drawable"
+                    android:rotation="-90" />
+
+                <ImageView
+                    android:id="@+id/imageViewJouet"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:onClick="jouer"
+                    android:contentDescription="@string/jouet"
+                    android:focusable="true"
+                    android:src="@drawable/jouet" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="4dp">
+
+                <ProgressBar
+                    android:id="@+id/progressMedicament"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="20"
+                    android:progressDrawable="@drawable/circular_progress_drawable"
+                    android:rotation="-90" />
+
+                <ImageView
+                    android:id="@+id/imageViewMedicament"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:onClick="soigner"
+                    android:contentDescription="@string/m_dicament"
+                    android:focusable="true"
+                    android:src="@drawable/medicament" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="4dp">
+
+                <ProgressBar
+                    android:id="@+id/progressNourriture"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="80"
+                    android:progressDrawable="@drawable/circular_progress_drawable"
+                    android:rotation="-90" />
+
+                <ImageView
+                    android:id="@+id/imageViewNourriture"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:onClick="nourrir"
+                    android:contentDescription="@string/nourriture"
+                    android:focusable="true"
+                    android:src="@drawable/nourriture" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="4dp">
+
+                <ProgressBar
+                    android:id="@+id/progressSommeil"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="30"
+                    android:progressDrawable="@drawable/circular_progress_drawable"
+                    android:rotation="-90" />
+
+                <ImageView
+                    android:id="@+id/imageViewSommeil"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:onClick="reposer"
+                    android:contentDescription="@string/sommeil"
+                    android:focusable="true"
+                    android:src="@drawable/sommeil" />
+            </FrameLayout>
+        </GridLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageViewIconeParametres"
+        android:layout_width="148dp"
+        android:layout_height="100dp"
+        android:clickable="true"
+        android:contentDescription="@string/parametres"
+        android:focusable="true"
+        app:srcCompat="@drawable/iconeparametres"
+        tools:ignore="MissingConstraints,VisualLintBounds"
+        tools:layout_editor_absoluteX="263dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

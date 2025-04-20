@@ -16,7 +16,6 @@ package com.example.tamagotchi;
 */
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -46,6 +45,7 @@ public class FirestoreData {
                 .addOnSuccessListener(documentReference -> {
                     String newTamagotchiId = documentReference.getId();
                     Log.d("Firestore", "Tamagotchi sauvegardé avec ID : " + newTamagotchiId);
+                    setActiveTamagotchiId(newTamagotchiId);
                 })
                 .addOnFailureListener(e ->
                         Log.e("Firestore", "Erreur de sauvegarde", e));
@@ -94,7 +94,7 @@ public class FirestoreData {
 
         db.collection("joueurs")
                 .document(userId)
-                .update("activeTamagotchiId", activeTamagotchiId)
+                .update("activeTamagotchiId", activeTamagotchiId, "idTamagotchis", FieldValue.arrayUnion(activeTamagotchiId))
                 .addOnSuccessListener(documentReference ->
                         Log.d("Firestore", "Tamagotchi actif maj"))
                 .addOnFailureListener(e ->
@@ -181,7 +181,7 @@ public class FirestoreData {
                                         if (tamagotchiSnapshot.exists() && tamagotchiSnapshot.getTimestamp("dernierUpdate") != null) {
                                             long now = Timestamp.now().getSeconds();
                                             long lastUpdate = tamagotchiSnapshot.getTimestamp("dernierUpdate").getSeconds();
-                                            long heuresPassees = (now - lastUpdate) / 5;
+                                            long heuresPassees = (now - lastUpdate) / 3600;
 
                                             if (heuresPassees > 0) {
                                                 Log.d("Ici","test2");
@@ -298,5 +298,27 @@ public class FirestoreData {
     private static long getSafeLong(DocumentSnapshot doc, String path) {
         Long value = doc.getLong(path);
         return value != null ? value : 0;
+    }
+
+    public static void modifierTamagotchiActif(FirebaseUser user, View v, String nomTamagotchi, String genre){
+        String userId = user.getUid();
+        db.collection("joueurs")
+                .document(userId)
+                .get()
+                .addOnSuccessListener(snapshot -> {
+                    Log.d("Ici","test1");
+                    String activeTamagotchiId = snapshot.getString("activeTamagotchiId");
+                    Log.d("tamaactif",activeTamagotchiId);
+                    db.collection("tamagotchis")
+                            .document(activeTamagotchiId)
+                            .update("nomTamagotchi", nomTamagotchi, "genre", genre)
+                            .addOnSuccessListener(snap->{
+                                Toast.makeText(v.getContext(), "Mimichi modifié : " + nomTamagotchi + " (" + genre + ")", Toast.LENGTH_SHORT).show();
+                            })
+                            .addOnFailureListener(snap->{
+                                Toast.makeText(v.getContext(), "Erreur lors de la création du Mimichi.", Toast.LENGTH_SHORT).show();
+                            });
+                });
+
     }
 }

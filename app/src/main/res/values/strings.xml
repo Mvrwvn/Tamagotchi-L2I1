@@ -45,5 +45,17 @@
     <string name="param_tres_du_compte">Paramètres du compte</string>
     <string name="param_tres_des_mimichis">Paramètres des Mimichis</string>
     <string name="s_lectionner">Sélectionner</string>
-
+    <string name="nourriture">Nourriture</string>
+    <string name="douche">Douche</string>
+    <string name="jouet">Jouet</string>
+    <string name="m_dicament">Médicament</string>
+    <string name="boisson">Boisson</string>
+    <string name="sommeil">Sommeil</string>
+    <string name="parametres">Parametres</string>
+    <string name="un_petit_tre_attend_que_tu_lui_donnes_vie_pr_t_accueillir_un_nouveau_mimichi">Un petit être attend que tu lui donnes vie… Prêt à accueillir un nouveau Mimichi ?</string>
+    <string name="ajouter">Ajouter</string>
+    <string name="il_t_a_accompagn_il_a_grandi_avec_toi_es_tu_pr_t_laisser_partir_ton_mimichi">Il t’a accompagné, il a grandi avec toi… Es-tu prêt à laisser partir ton Mimichi ?</string>
+    <string name="supprimer">Supprimer</string>
+    <string name="nom_du_mimichi">Nom du Mimichi</string>
+    <string name="cette_action_est_irr_versible_ton_mimichi_ne_pourra_pas_tre_r_cup_r">Cette action est irréversible. Ton Mimichi ne pourra pas être récupéré.</string>
 </resources>

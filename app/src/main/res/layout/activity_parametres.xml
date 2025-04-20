@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+     Date :
+     Membre qui travaille dessus : Yasmine DEHOUCHE
+     Que fait le code XML? Ce layout XML représente la page des paramètres de l'application
+-->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#debdf0"
+    tools:context=".ParametresActivity">
+
+    <ImageView
+        android:id="@+id/imageViewParametres1"
+        android:layout_width="93dp"
+        android:layout_height="107dp"
+        android:src="@drawable/parametres1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/textviewParametres1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:padding="16dp"
+        android:text="@string/param_tres_des_mimichis"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/imageViewParametres1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Liste Mimichi -->
+    <Button
+        android:id="@+id/listeMimichi"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="@string/liste_des_mimichis"
+        app:layout_constraintTop_toBottomOf="@id/textviewParametres1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <!-- Exporter -->
+    <Button
+        android:id="@+id/exporterMimichi"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="@string/exporter_un_mimichi"
+        app:layout_constraintTop_toBottomOf="@id/listeMimichi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- Importer -->
+    <Button
+        android:id="@+id/importerMimichi"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="@string/importer_un_mimichi"
+        app:layout_constraintTop_toBottomOf="@id/exporterMimichi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- Modifier -->
+    <Button
+        android:id="@+id/modifierMimichi"
+        android:layout_width="254dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="8dp"
+        android:text="Modifier le Mimichi Actif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/importerMimichi" />
+
+    <!-- Supprimer -->
+    <Button
+        android:id="@+id/supprimerMimichi"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="@string/supprimer_un_mimichi"
+        app:layout_constraintTop_toBottomOf="@id/modifierMimichi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/creernouveauTamagotchi"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:text="@string/cr_er_un_nouveau_mimichi"
+        app:layout_constraintTop_toBottomOf="@id/supprimerMimichi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <!-- TextView "Paramètres du compte" -->
+    <TextView
+        android:id="@+id/textviewParametres2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:padding="16dp"
+        android:text="@string/param_tres_du_compte"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/creernouveauTamagotchi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Réinitialiser MDP -->
+    <Button
+        android:id="@+id/reinitialiserMDP"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:text="@string/r_initialiser_le_mot_de_passe"
+        app:layout_constraintTop_toBottomOf="@id/textviewParametres2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- Déconnexion -->
+    <Button
+        android:id="@+id/deconnexion"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="@string/d_connexion"
+        app:layout_constraintTop_toBottomOf="@id/reinitialiserMDP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- Bouton retour -->
+    <TextView
+        android:id="@+id/retourButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:padding="8dp"
+        android:text="@string/retour_l_accueil"
+        android:textColor="#3F51B5"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/deconnexion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <!-- Image bas -->
+    <ImageView
+        android:id="@+id/imageViewParametres2"
+        android:layout_width="93dp"
+        android:layout_height="107dp"
+        android:src="@drawable/parametres2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

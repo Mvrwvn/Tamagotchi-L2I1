@@ -19,8 +19,6 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class InscriptionActivity extends AppCompatActivity {
 
@@ -39,13 +37,24 @@ public class InscriptionActivity extends AppCompatActivity {
         passwordInput = findViewById(R.id.passwordInput);
         nomTamagotchiInput = findViewById(R.id.nomTamagotchiInput);
         usernameInput = findViewById(R.id.usernameInput);
+        genderRadioGroup = findViewById(R.id.radio_group_sex);
+        radio_male = findViewById(R.id.radio_male);
+        radio_female = findViewById(R.id.radio_female);
     }
     public void inscription(View v) {
         String email = emailInput.getText().toString().trim();
         String password = passwordInput.getText().toString().trim();
         String nomTamagotchi = nomTamagotchiInput.getText().toString().trim();
         String username = usernameInput.getText().toString().trim();
-
+        String genre;
+        int checkedId = genderRadioGroup.getCheckedRadioButtonId();
+        if (checkedId == R.id.radio_male) {
+            genre = "Mâle";
+        } else if (checkedId == R.id.radio_female) {
+            genre = "Femelle";
+        } else {
+            genre = "";
+        }
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
             return;
@@ -66,7 +75,7 @@ public class InscriptionActivity extends AppCompatActivity {
                                             Toast.makeText(InscriptionActivity.this, "Inscription réussie" + user.getDisplayName(), Toast.LENGTH_SHORT).show();
                                             Inventaire inventaire = new Inventaire(10,10,10,10,10);
                                             Statistique stats = new Statistique(100, 100, 100, 100, 100,100);
-                                            Tamagotchi tamagotchi = new Tamagotchi(user.getUid(), nomTamagotchi, "temp", Timestamp.now(), Timestamp.now(), stats, inventaire);
+                                            Tamagotchi tamagotchi = new Tamagotchi(user.getUid(), nomTamagotchi, genre, Timestamp.now(), Timestamp.now(), stats, inventaire);
                                             /*Map<String, Object> joueurData = new HashMap<>();
                                             joueurData.put("activeTamagotchiId", ""); // vide pour l'instant, on l'update après
                                             joueurData.put("email", email);

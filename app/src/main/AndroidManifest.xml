@@ -36,6 +36,21 @@
         <activity
             android:name=".RenitialisationMdpActivity">
         </activity>
+        <activity
+            android:name=".ParametresActivity">
+        </activity>
+        <activity
+            android:name=".CreerMimichiActivity">
+        </activity>
+        <activity
+            android:name=".ListeMimichiActivity">
+        </activity>
+        <activity
+            android:name=".SupprimerMimichiActivity">
+        </activity>
+        <activity
+            android:name=".ModifierMimichiActivity">
+        </activity>
     </application>
 
 </manifest>

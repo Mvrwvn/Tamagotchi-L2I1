@@ -16,8 +16,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,25 +31,27 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity {
-    private TextView textView;
     private ProgressBar progressSante, progressFaim, progressBonheur, progressEnergie, progressHygiene, progressSoif;
     private final Handler handler = new Handler();
     private final int DELAY = 10000; // 10 secondes
+    private ImageView parametre;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        textView = findViewById(R.id.textView);
-        progressSante = findViewById(R.id.progressSante);
-        progressFaim = findViewById(R.id.progressFaim);
-        progressBonheur = findViewById(R.id.progressBonheur);
-        progressEnergie = findViewById(R.id.progressEnergie);
-        progressHygiene = findViewById(R.id.progressHygiene);
-        progressSoif = findViewById(R.id.progressSoif);
-        textView.setVisibility(View.VISIBLE);
+        setContentView(R.layout.activity_accueil2);
+        progressSante = findViewById(R.id.progressMedicament);
+        progressFaim = findViewById(R.id.progressNourriture);
+        progressBonheur = findViewById(R.id.progressJouet);
+        progressEnergie = findViewById(R.id.progressSommeil);
+        progressHygiene = findViewById(R.id.progressDouche);
+        progressSoif = findViewById(R.id.progressBoisson);
+        parametre = findViewById(R.id.imageViewIconeParametres);
+        parametre.setOnClickListener(v -> {
+            startActivity(new Intent(this, ParametresActivity.class));
+        });
         LottieAnimationView lottie = findViewById(R.id.lottie);
         lottie.setRepeatCount(LottieDrawable.INFINITE);
         lottie.playAnimation();
