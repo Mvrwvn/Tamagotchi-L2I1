@@ -20,6 +20,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tamagotchi.model.Statistique;
+import com.example.tamagotchi.model.Tamagotchi;
+import com.example.tamagotchi.viewmodel.MainViewModel;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -72,7 +75,7 @@ public class CreerMimichiActivity extends AppCompatActivity {
             Inventaire inventaire = new Inventaire(10,10,10,10,10,10);
             Statistique stats = new Statistique(100, 100, 100, 100, 100,100,100);
             Tamagotchi tamagotchi = new Tamagotchi(user.getUid(), nom, genre, Timestamp.now(), Timestamp.now(), stats, inventaire);
-            FirestoreData.ajouterTamagotchi(user,v,tamagotchi);
+            MainViewModel.ajouterTamagotchi(user,v,tamagotchi);
         });
 
         retourButton.setOnClickListener(v -> {

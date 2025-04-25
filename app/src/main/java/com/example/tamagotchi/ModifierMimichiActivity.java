@@ -20,10 +20,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.Timestamp;
+import com.example.tamagotchi.viewmodel.MainViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ModifierMimichiActivity extends AppCompatActivity {
 
@@ -69,7 +68,7 @@ public class ModifierMimichiActivity extends AppCompatActivity {
                 return;
             }
 
-            FirestoreData.modifierTamagotchiActif(user,v,nom,genre);
+            MainViewModel.modifierTamagotchiActif(user,v,nom,genre);
         });
 
         retourButton.setOnClickListener(v -> {

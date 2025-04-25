@@ -1,4 +1,4 @@
-package com.example.tamagotchi;
+package com.example.tamagotchi.model;
 /*
 -----------------------------
     Date : 08/04/2025
@@ -9,10 +9,8 @@ package com.example.tamagotchi;
     Changement par rapport à la version précédente : Ajout de l'attribut dernierUpdate qui été précédement dans Inventaire et Statistique
 -----------------------------
 */
+import com.example.tamagotchi.Inventaire;
 import com.google.firebase.Timestamp;
-
-import java.time.LocalDate;
-import java.time.Period;
 
 public class Tamagotchi{
 

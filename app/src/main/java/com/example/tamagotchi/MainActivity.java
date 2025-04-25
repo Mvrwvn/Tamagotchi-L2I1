@@ -17,16 +17,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.airbnb.lottie.LottieDrawable;
-import com.google.firebase.Timestamp;
+import com.example.tamagotchi.model.Tamagotchi;
+import com.example.tamagotchi.viewmodel.MainViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private final Handler handler = new Handler();
     private final int DELAY = 10000; // 10 secondes
     private ImageView parametre;
+    private MainViewModel mainViewModel;
 
 
     @Override
@@ -53,10 +56,25 @@ public class MainActivity extends AppCompatActivity {
         parametre.setOnClickListener(v -> {
             startActivity(new Intent(this, ParametresActivity.class));
         });
+        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+
+        // Observer le Tamagotchi actif
+        mainViewModel.getActiveTamagotchi().observe(this, new Observer<Tamagotchi>() {
+            @Override
+            public void onChanged(Tamagotchi tamagotchi) {
+                if (tamagotchi != null) {
+                    double faim = tamagotchi.getStatsTamagotchi().getFaim(); // lecture du champ
+                    progressFaim.setProgress((int)faim*10); // mise à jour de la barre
+                } else {
+                    progressFaim.setProgress(0); // au cas où
+                }
+            }
+        });
         LottieAnimationView lottie = findViewById(R.id.lottie);
         lottie.setRepeatCount(LottieDrawable.INFINITE);
         lottie.playAnimation();
     }
+
     @Override
     protected void onResume(){
         super.onResume();
@@ -74,13 +92,12 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             if (user != null) {
-                FirestoreData.verifierDernierUpdate(user);
-                FirestoreData.loadStatsFromFirestore(user, progressFaim,"faim");
-                FirestoreData.loadStatsFromFirestore(user, progressEnergie,"energie");
-                FirestoreData.loadStatsFromFirestore(user, progressSoif,"soif");
-                FirestoreData.loadStatsFromFirestore(user, progressHygiene,"hygiene");
-                FirestoreData.loadStatsFromFirestore(user, progressSante,"sante");
-                FirestoreData.loadStatsFromFirestore(user, progressBonheur,"bonheur");
+                MainViewModel.verifierDernierUpdate(user);
+                MainViewModel.loadStatsFromFirestore(user, progressEnergie,"energie");
+                MainViewModel.loadStatsFromFirestore(user, progressSoif,"soif");
+                MainViewModel.loadStatsFromFirestore(user, progressHygiene,"hygiene");
+                MainViewModel.loadStatsFromFirestore(user, progressSante,"sante");
+                MainViewModel.loadStatsFromFirestore(user, progressBonheur,"bonheur");
             }
             handler.postDelayed(this, DELAY);
         }
@@ -95,36 +112,36 @@ public class MainActivity extends AppCompatActivity {
     public void reposer(View v){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {return;}
-        FirestoreData.actionTamagotchi(user, v,progressEnergie,"Lits","energie");
+        MainViewModel.actionTamagotchi(user, v,progressEnergie,"Lits","energie");
     }
 
     public void hydrater(View v){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {return;}
-        FirestoreData.actionTamagotchi(user, v,progressSoif,"Boissons","soif");
+        MainViewModel.actionTamagotchi(user, v,progressSoif,"Boissons","soif");
     }
 
     public void brosser(View v){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {return;}
-        FirestoreData.actionTamagotchi(user, v,progressHygiene,"Savons","hygiene");
+        MainViewModel.actionTamagotchi(user, v,progressHygiene,"Savons","hygiene");
     }
 
     public void nourrir(View v) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {return;}
-        FirestoreData.actionTamagotchi(user, v,progressFaim, "Nourritures", "faim");
+        MainViewModel.actionTamagotchi(user, v,progressFaim, "Nourritures", "faim");
     }
 
     public void soigner(View v) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {return;}
-        FirestoreData.actionTamagotchi(user, v,progressSante,"Medicaments","sante");
+        MainViewModel.actionTamagotchi(user, v,progressSante,"Medicaments","sante");
     }
 
     public void jouer(View v){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {return;}
-        FirestoreData.actionTamagotchi(user, v,progressBonheur,"Jouets","bonheur");
+        MainViewModel.actionTamagotchi(user, v,progressBonheur,"Jouets","bonheur");
     }
 }

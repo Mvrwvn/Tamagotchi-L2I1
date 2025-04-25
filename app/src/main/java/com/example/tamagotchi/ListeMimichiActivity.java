@@ -9,17 +9,13 @@ package com.example.tamagotchi;
 -----------------------------
 */
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tamagotchi.R;
-import com.example.tamagotchi.Tamagotchi;
-import com.example.tamagotchi.TamagotchiAdapter;
+import com.example.tamagotchi.model.Tamagotchi;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

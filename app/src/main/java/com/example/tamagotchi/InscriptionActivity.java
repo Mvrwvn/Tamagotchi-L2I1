@@ -20,6 +20,9 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tamagotchi.model.Joueur;
+import com.example.tamagotchi.model.Statistique;
+import com.example.tamagotchi.model.Tamagotchi;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

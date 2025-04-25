@@ -1,4 +1,4 @@
-package com.example.tamagotchi;
+package com.example.tamagotchi.viewmodel;
 
 /*
 -----------------------------
@@ -21,19 +21,130 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+
+import com.example.tamagotchi.model.Tamagotchi;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class FirestoreData {
+public class MainViewModel extends ViewModel {
+
+    public LiveData<List<Tamagotchi>> getUserTamagotchis() {
+        final MutableLiveData<List<Tamagotchi>> tamagotchiListLiveData = new MutableLiveData<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user == null) {
+            tamagotchiListLiveData.postValue(Collections.emptyList());
+            return tamagotchiListLiveData;
+        }
+
+        String uid = user.getUid();
+
+        // Utilisation de addSnapshotListener pour écouter les changements en temps réel
+        db.collection("tamagotchis")
+                .whereEqualTo("userId", uid)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            tamagotchiListLiveData.postValue(Collections.emptyList());
+                            return;
+                        }
+
+                        if (queryDocumentSnapshots != null) {
+                            List<Tamagotchi> tamagotchiList = new ArrayList<>();
+                            for (DocumentSnapshot document : queryDocumentSnapshots) {
+                                Tamagotchi tamagotchi = document.toObject(Tamagotchi.class);
+                                tamagotchiList.add(tamagotchi);
+                            }
+                            tamagotchiListLiveData.postValue(tamagotchiList);
+                        } else {
+                            tamagotchiListLiveData.postValue(Collections.emptyList());
+                        }
+                    }
+                });
+
+        return tamagotchiListLiveData;
+    }
+
+
+    public LiveData<Tamagotchi> getActiveTamagotchi() {
+        final MutableLiveData<Tamagotchi> activeTamagotchiLiveData = new MutableLiveData<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user == null) {
+            activeTamagotchiLiveData.postValue(null);
+            return activeTamagotchiLiveData;
+        }
+
+        String uid = user.getUid();
+
+        // Étape 1 : Écouter en temps réel le document joueur
+        db.collection("joueurs").document(uid)
+                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot joueurDoc, @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            activeTamagotchiLiveData.postValue(null);
+                            return;
+                        }
+
+                        if (joueurDoc != null && joueurDoc.exists()) {
+                            String activeTamagotchiId = joueurDoc.getString("activeTamagotchiId");
+                            if (activeTamagotchiId != null && !activeTamagotchiId.isEmpty()) {
+                                // Étape 2 : Écouter en temps réel le Tamagotchi actif
+                                db.collection("tamagotchis").document(activeTamagotchiId)
+                                        .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onEvent(@Nullable DocumentSnapshot tamagotchiDoc, @Nullable FirebaseFirestoreException e) {
+                                                if (e != null) {
+                                                    activeTamagotchiLiveData.postValue(null);
+                                                    return;
+                                                }
+
+                                                if (tamagotchiDoc != null && tamagotchiDoc.exists()) {
+                                                    Tamagotchi tamagotchi = tamagotchiDoc.toObject(Tamagotchi.class);
+                                                    activeTamagotchiLiveData.postValue(tamagotchi);
+                                                } else {
+                                                    activeTamagotchiLiveData.postValue(null); // Tamagotchi non trouvé
+                                                }
+                                            }
+                                        });
+                            } else {
+                                activeTamagotchiLiveData.postValue(null); // Pas d'ID actif
+                            }
+                        } else {
+                            activeTamagotchiLiveData.postValue(null); // Document joueur inexistant
+                        }
+                    }
+                });
+
+        return activeTamagotchiLiveData;
+    }
+
+
     @SuppressLint("StaticFieldLeak")
     private static final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -142,7 +253,7 @@ public class FirestoreData {
                                         if (tamagotchiSnapshot.exists() && tamagotchiSnapshot.getTimestamp("dernierUpdate") != null) {
                                             long now = Timestamp.now().getSeconds();
                                             long lastUpdate = tamagotchiSnapshot.getTimestamp("dernierUpdate").getSeconds();
-                                            long heuresPassees = (now - lastUpdate) / 5;
+                                            long heuresPassees = (now - lastUpdate) / 3600;
 
                                             if (heuresPassees > 0) {
                                                 Log.d("Ici","test2");

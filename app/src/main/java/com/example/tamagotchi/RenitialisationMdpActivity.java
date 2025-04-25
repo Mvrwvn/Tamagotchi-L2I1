@@ -16,7 +16,7 @@ import android.widget.EditText;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.tamagotchi.model.Joueur;
 
 public class RenitialisationMdpActivity extends AppCompatActivity {
 

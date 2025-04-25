@@ -1,4 +1,4 @@
-package com.example.tamagotchi;
+package com.example.tamagotchi.model;
 /*
 -----------------------------
     Date : 13/04/2025
@@ -9,7 +9,6 @@ package com.example.tamagotchi;
     Changement par rapport à la version précédente : Suppression de l'attribut dernierUpdate pour le mettre directement dans l'objet Tamagotchi
 -----------------------------
 */
-import com.google.firebase.Timestamp;
 
 public class Statistique {
     private double vie;
