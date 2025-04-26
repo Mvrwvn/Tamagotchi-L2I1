@@ -1,4 +1,4 @@
-package com.example.tamagotchi;
+package com.example.tamagotchi.view;
 /*
 -----------------------------
     Date : 20/04/2025
@@ -16,6 +16,7 @@ import android.widget.EditText;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tamagotchi.R;
 import com.example.tamagotchi.model.Joueur;
 
 public class RenitialisationMdpActivity extends AppCompatActivity {

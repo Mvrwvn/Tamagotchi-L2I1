@@ -1,4 +1,4 @@
-package com.example.tamagotchi;
+package com.example.tamagotchi.view;
 /*
 -----------------------------
     Date : 20/04/2025
@@ -12,9 +12,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.tamagotchi.R;
 
 public class SupprimerMimichiActivity extends AppCompatActivity {
 

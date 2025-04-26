@@ -1,4 +1,4 @@
-package com.example.tamagotchi;
+package com.example.tamagotchi.recyclerview;
 /*
 -----------------------------
     Date : 20/04/2025
@@ -12,14 +12,14 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.tamagotchi.R;
 import com.example.tamagotchi.model.Tamagotchi;
+import com.example.tamagotchi.view.ModifierMimichiActivity;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class TamagotchiAdapter extends FirestoreRecyclerAdapter<Tamagotchi, TamagotchiViewHolder> {
 
@@ -43,9 +43,10 @@ public class TamagotchiAdapter extends FirestoreRecyclerAdapter<Tamagotchi, Tama
             // Ajoute d'autres données que tu souhaites passer
             holder.itemView.getContext().startActivity(intent);
         });
+    }
 
         // Bouton "Supprimer"
-        holder.deleteButton.setOnClickListener(v -> {
+        /*holder.deleteButton.setOnClickListener(v -> {
             // Supprimer le Tamagotchi de Firestore
             FirebaseFirestore.getInstance().collection("tamagotchis")
                     .document(tamagotchiId)
@@ -58,7 +59,7 @@ public class TamagotchiAdapter extends FirestoreRecyclerAdapter<Tamagotchi, Tama
                         Toast.makeText(holder.itemView.getContext(), "Erreur lors de la suppression", Toast.LENGTH_SHORT).show();
                     });
         });
-    }
+    }*/
 
     @NonNull
     @Override

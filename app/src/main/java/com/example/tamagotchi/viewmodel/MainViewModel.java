@@ -15,21 +15,14 @@ package com.example.tamagotchi.viewmodel;
 -----------------------------
 */
 
-import android.annotation.SuppressLint;
 import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.tamagotchi.model.Tamagotchi;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,12 +35,14 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 public class MainViewModel extends ViewModel {
+    private MutableLiveData<String> messageLiveData = new MutableLiveData<>();
+
+    public LiveData<String> getMessageLiveData() {
+        return messageLiveData;
+    }
 
     public LiveData<List<Tamagotchi>> getUserTamagotchis() {
         final MutableLiveData<List<Tamagotchi>> tamagotchiListLiveData = new MutableLiveData<>();
@@ -145,6 +140,77 @@ public class MainViewModel extends ViewModel {
     }
 
 
+    public void updateTamagotchi(Tamagotchi tamagotchi) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        if (tamagotchi == null || tamagotchi.getIdTamagotchi() == null || tamagotchi.getIdTamagotchi().isEmpty()) {
+            String errorMessage = "Objet Tamagotchi invalide.";
+            Log.w("TamagotchiViewModel", errorMessage);
+            messageLiveData.postValue(errorMessage);
+            return;
+        }
+
+        tamagotchi.setDernierUpdate(Timestamp.now());
+        db.collection("tamagotchis")
+                .document(tamagotchi.getIdTamagotchi())
+                .set(tamagotchi);
+                /*.get()
+                .addOnSuccessListener(tamagotchiSnapshot -> {
+                    if (tamagotchiSnapshot.exists()) {
+                        Double statistique = tamagotchiSnapshot.getDouble("statsTamagotchi." + nomStatistique);
+                        Long inventaire = tamagotchiSnapshot.getLong("inventaireTamagotchi.nb" + nomInventaire);
+
+                        if (statistique == null || inventaire == null) {
+                            String warningMessage = "Données manquantes dans le document.";
+                            Log.w("TamagotchiViewModel", warningMessage);
+                            messageLiveData.postValue(warningMessage);
+                            return;
+                        }
+
+                        if (statistique >= 0 && statistique < 100) {
+                            if (inventaire > 0) {
+                                db.collection("tamagotchis")
+                                        .document(tamagotchi.getIdTamagotchi())
+                                        .update(
+                                                "statsTamagotchi." + nomStatistique, FieldValue.increment(1),
+                                                "inventaireTamagotchi.nb" + nomInventaire, FieldValue.increment(-1),
+                                                "dernierUpdate", Timestamp.now()
+                                        )
+                                        .addOnSuccessListener(aVoid -> {
+                                            String successMessage = "Mise à jour réussie.";
+                                            Log.d("TamagotchiViewModel", successMessage);
+                                        })
+                                        .addOnFailureListener(e -> {
+                                            String errorMessage = "Erreur lors de la mise à jour : " + e.getMessage();
+                                            Log.w("TamagotchiViewModel", errorMessage, e);
+                                            messageLiveData.postValue(errorMessage);
+                                        });
+                            } else {
+                                String warningMessage = "Pas assez de " + nomInventaire + " dans l'inventaire.";
+                                Log.w("TamagotchiViewModel", warningMessage);
+                                messageLiveData.postValue(warningMessage);
+                            }
+                        } else {
+                            String warningMessage = nomStatistique + " est déjà au maximum.";
+                            Log.w("TamagotchiViewModel", warningMessage);
+                            messageLiveData.postValue(warningMessage);
+                        }
+                    } else {
+                        String errorMessage = "Tamagotchi introuvable.";
+                        Log.w("TamagotchiViewModel", errorMessage);
+                        messageLiveData.postValue(errorMessage);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    String errorMessage = "Erreur lors de la récupération du Tamagotchi : " + e.getMessage();
+                    Log.w("TamagotchiViewModel", errorMessage, e);
+                    messageLiveData.postValue(errorMessage);
+                });*/
+    }
+}
+
+/*
+
     @SuppressLint("StaticFieldLeak")
     private static final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -153,8 +219,22 @@ public class MainViewModel extends ViewModel {
                 .add(tamagotchi)
                 .addOnSuccessListener(documentReference -> {
                     String newTamagotchiId = documentReference.getId();
-                    setActiveTamagotchiId(newTamagotchiId);
-                    Toast.makeText(v.getContext(), "Mimichi créer avec succès : " + tamagotchi.getNomTamagotchi() + " (" + tamagotchi.getGenre() + ")", Toast.LENGTH_SHORT).show();
+
+                    // Mettre à jour l'attribut idTamagotchi de l'objet local
+                    tamagotchi.setIdTamagotchi(newTamagotchiId);
+
+                    // mettre aussi à jour dans Firestore
+                    db.collection("tamagotchis").document(newTamagotchiId)
+                            .update("idTamagotchi", newTamagotchiId)
+                            .addOnSuccessListener(aVoid -> {
+                                setActiveTamagotchiId(newTamagotchiId);
+                                Toast.makeText(v.getContext(), "Mimichi créé avec succès : "
+                                        + tamagotchi.getNomTamagotchi() + " (" + tamagotchi.getGenre() + ")", Toast.LENGTH_SHORT).show();
+                            })
+                            .addOnFailureListener(e -> {
+                                Log.e("Firestore", "Erreur lors de l'ajout de l'idTamagotchi", e);
+                            });
+
                 })
                 .addOnFailureListener(e ->
                         Log.e("Firestore", "Erreur de sauvegarde", e));
@@ -397,4 +477,4 @@ public class MainViewModel extends ViewModel {
                 });
 
     }
-}
+}*/

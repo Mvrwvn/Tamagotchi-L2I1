@@ -1,4 +1,4 @@
-package com.example.tamagotchi;
+package com.example.tamagotchi.view;
 /*
 -----------------------------
     Date : 20/04/2025

@@ -1,4 +1,4 @@
-package com.example.tamagotchi;
+package com.example.tamagotchi.view;
 
 /*
 -----------------------------
@@ -16,6 +16,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tamagotchi.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;

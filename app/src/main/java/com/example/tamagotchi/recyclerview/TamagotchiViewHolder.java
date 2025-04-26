@@ -1,4 +1,4 @@
-package com.example.tamagotchi;
+package com.example.tamagotchi.recyclerview;
 /*
 -----------------------------
     Date : 20/04/2025
@@ -14,15 +14,15 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tamagotchi.R;
+
 public class TamagotchiViewHolder extends RecyclerView.ViewHolder {
     public TextView nameTextView;
     public Button editButton;
-    public Button deleteButton;
 
     public TamagotchiViewHolder(View itemView) {
         super(itemView);
-        nameTextView = itemView.findViewById(R.id.tamagotchiName);
+        nameTextView = itemView.findViewById(R.id.titleTextView);
         editButton = itemView.findViewById(R.id.editButton);
-        deleteButton = itemView.findViewById(R.id.deleteButton);
     }
 }

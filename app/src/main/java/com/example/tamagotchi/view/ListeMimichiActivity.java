@@ -1,4 +1,4 @@
-package com.example.tamagotchi;
+package com.example.tamagotchi.view;
 /*
 -----------------------------
     Date : 20/04/2025
@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tamagotchi.R;
+import com.example.tamagotchi.recyclerview.TamagotchiAdapter;
 import com.example.tamagotchi.model.Tamagotchi;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;

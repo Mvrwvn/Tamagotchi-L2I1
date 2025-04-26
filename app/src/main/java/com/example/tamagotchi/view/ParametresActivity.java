@@ -1,4 +1,4 @@
-package com.example.tamagotchi;
+package com.example.tamagotchi.view;
 /*
 -----------------------------
     Date : 20/04/2025
@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tamagotchi.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ParametresActivity extends AppCompatActivity {
@@ -37,7 +38,7 @@ public class ParametresActivity extends AppCompatActivity {
         reinitialiserMDP = findViewById(R.id.reinitialiserMDP);
         retourButton = findViewById(R.id.retourButton);
         listeMimichi.setOnClickListener(v -> {
-            Toast.makeText(this, "En cours de développement", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, ListeMimichiActivity.class));
         });
 
         modifierMimichi.setOnClickListener(v -> {

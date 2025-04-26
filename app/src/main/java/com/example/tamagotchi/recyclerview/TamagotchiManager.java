@@ -1,4 +1,4 @@
-package com.example.tamagotchi;
+package com.example.tamagotchi.recyclerview;
 /*
 -----------------------------
     Date : 20/04/2025
@@ -11,7 +11,6 @@ package com.example.tamagotchi;
 import android.util.Log;
 
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.Timestamp;
 import java.util.HashMap;

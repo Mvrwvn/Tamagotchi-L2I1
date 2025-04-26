@@ -1,4 +1,4 @@
-package com.example.tamagotchi;
+package com.example.tamagotchi.model;
 /*
 -----------------------------
     Date : 13/04/2025
@@ -76,5 +76,15 @@ public class Inventaire {
 
     public int getNbJouets() {
         return nbJouets;
+    }
+
+    public void augmenterInventairesAutomatiquement(long heuresPassees){
+        int variationInventaire = 10 * (int) heuresPassees;
+        nbNourritures += variationInventaire;
+        nbMedicaments += variationInventaire;
+        nbLits += variationInventaire;
+        nbSavons += variationInventaire;
+        nbBoissons += variationInventaire;
+        nbJouets += variationInventaire;
     }
 }

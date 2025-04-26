@@ -1,4 +1,4 @@
-package com.example.tamagotchi;
+package com.example.tamagotchi.view;
 
 /*
 -----------------------------
@@ -21,6 +21,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tamagotchi.R;
 import com.example.tamagotchi.model.Joueur;
 
 public class AuthActivity extends AppCompatActivity {

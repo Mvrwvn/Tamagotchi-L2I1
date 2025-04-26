@@ -32,7 +32,7 @@ public class Statistique {
     public Statistique(){}; // Obligatoire pour Firestore
 
     public double getVie(){
-        return vie;
+        return (faim+sante+soif+energie+hygiene+bonheur)/6;
     }
 
     public void setVie(double vie) {
@@ -85,6 +85,20 @@ public class Statistique {
 
     public double getBonheur() {
         return bonheur;
+    }
+
+    public void degraderStatAutomatiquement(long heuresPassees){
+        long variationStats = -2 * heuresPassees;
+        sante = limitBetween(sante + variationStats, 0, 100);
+        faim = limitBetween(faim + variationStats, 0, 100);
+        energie = limitBetween(energie + variationStats, 0, 100);
+        hygiene = limitBetween(hygiene + variationStats, 0, 100);
+        soif = limitBetween(soif + variationStats, 0, 100);
+        bonheur = limitBetween(bonheur + variationStats, 0, 100);
+    }
+
+    private static double limitBetween(double value, long min, long max) {
+        return Math.max(min, Math.min(value, max));
     }
 }
 

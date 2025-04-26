@@ -9,20 +9,21 @@ package com.example.tamagotchi.model;
     Changement par rapport à la version précédente : Ajout de l'attribut dernierUpdate qui été précédement dans Inventaire et Statistique
 -----------------------------
 */
-import com.example.tamagotchi.Inventaire;
 import com.google.firebase.Timestamp;
 
 public class Tamagotchi{
 
-    private String userId;
+    private String idTamagotchi;
+    private String idJoueur;
     private String nomTamagotchi;
     private String genre;
     private Timestamp dateNaissance;
     private Timestamp dernierUpdate;
     private Statistique statsTamagotchi;
     private Inventaire inventaireTamagotchi;
-    public Tamagotchi(String userId, String nomTamagotchi, String genre, Timestamp dateNaissance, Timestamp dernierUpdate, Statistique statsTamagotchi, Inventaire inventaireTamagotchi){
-        this.userId = userId;
+    public Tamagotchi(String idTamagotchi, String idJoueur, String nomTamagotchi, String genre, Timestamp dateNaissance, Timestamp dernierUpdate, Statistique statsTamagotchi, Inventaire inventaireTamagotchi){
+        this.idTamagotchi = idTamagotchi;
+        this.idJoueur = idJoueur;
         this.nomTamagotchi = nomTamagotchi;
         this.genre = genre;
         this.dateNaissance = dateNaissance;
@@ -31,12 +32,21 @@ public class Tamagotchi{
         this.inventaireTamagotchi = inventaireTamagotchi;
     }
     public Tamagotchi() {}  // Obligatoire pour Firestore
-    public String getUserId(){
-        return userId;
+
+    public String getIdTamagotchi() {
+        return idTamagotchi;
     }
 
-    public void setUserId(String userId){
-        this.userId = userId;
+    public void setIdTamagotchi(String idTamagotchi) {
+        this.idTamagotchi = idTamagotchi;
+    }
+
+    public String getIdJoueur(){
+        return idJoueur;
+    }
+
+    public void setIdJoueur(String idJoueur){
+        this.idJoueur = idJoueur;
     }
 
     public String getNomTamagotchi() {
@@ -84,5 +94,4 @@ public class Tamagotchi{
     public void setInventaireTamagotchi(Inventaire inventaireTamagotchi) {
         this.inventaireTamagotchi = inventaireTamagotchi;
     }
-
 }

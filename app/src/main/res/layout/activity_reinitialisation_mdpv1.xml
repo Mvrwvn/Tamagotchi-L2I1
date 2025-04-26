@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#debdf0"
-    tools:context=".RenitialisationMdpActivity">
+    tools:context=".view.RenitialisationMdpActivity">
 
 
     <TextView
