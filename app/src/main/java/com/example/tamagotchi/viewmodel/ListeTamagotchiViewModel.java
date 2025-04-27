@@ -6,12 +6,10 @@ package com.example.tamagotchi.viewmodel;
 
     Membres qui travaillent dessus : Marwan DENAGNON
 
-    Que fait le code ? : ViewModel sont but est de gérer les données entre les Model et la View ici MainActivity
-    Va gérer toutes les données entre Firestore et l'application pour le MainActivity
+    Que fait le code ? : Que fait le code ? : ViewModel sont but est de gérer les données entre les Model et la View ici ListeTamagotchiActivity
+    Va gérer toutes les données entre Firestore et l'application pour le  ListeTamagotchiActivity
 -----------------------------
 */
-
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
@@ -19,36 +17,62 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.tamagotchi.model.Tamagotchi;
-import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public class MainViewModel extends ViewModel {
+public class ListeTamagotchiViewModel extends ViewModel {
     private MutableLiveData<String> messageLiveData = new MutableLiveData<>();
 
     public LiveData<String> getMessageLiveData() {
         return messageLiveData;
     }
 
-    public void updateTamagotchi(Tamagotchi tamagotchi) {
+    public LiveData<List<Tamagotchi>> getUserTamagotchis() {
+        final MutableLiveData<List<Tamagotchi>> tamagotchiListLiveData = new MutableLiveData<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        if (tamagotchi == null || tamagotchi.getIdTamagotchi() == null || tamagotchi.getIdTamagotchi().isEmpty()) {
-            String errorMessage = "Objet Tamagotchi invalide.";
-            Log.w("TamagotchiViewModel", errorMessage);
-            messageLiveData.postValue(errorMessage);
-            return;
+        if (user == null) {
+            tamagotchiListLiveData.postValue(Collections.emptyList());
+            return tamagotchiListLiveData;
         }
 
-        tamagotchi.setDernierUpdate(Timestamp.now());
+        String uid = user.getUid();
+
+        // Utilisation de addSnapshotListener pour écouter les changements en temps réel
         db.collection("tamagotchis")
-                .document(tamagotchi.getIdTamagotchi())
-                .set(tamagotchi);
+                .whereEqualTo("idJoueur", uid)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            tamagotchiListLiveData.postValue(Collections.emptyList());
+                            return;
+                        }
+
+                        if (queryDocumentSnapshots != null) {
+                            List<Tamagotchi> tamagotchiList = new ArrayList<>();
+                            for (DocumentSnapshot document : queryDocumentSnapshots) {
+                                Tamagotchi tamagotchi = document.toObject(Tamagotchi.class);
+                                tamagotchiList.add(tamagotchi);
+                            }
+                            tamagotchiListLiveData.postValue(tamagotchiList);
+                        } else {
+                            tamagotchiListLiveData.postValue(Collections.emptyList());
+                        }
+                    }
+                });
+
+        return tamagotchiListLiveData;
     }
 
     public LiveData<Tamagotchi> getActiveTamagotchi() {
@@ -100,5 +124,39 @@ public class MainViewModel extends ViewModel {
                 });
 
         return activeTamagotchiLiveData;
+    }
+
+    public void setActiveTamagotchiId(String activeTamagotchiId) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) return;
+        String userId = user.getUid();
+
+        db.collection("joueurs")
+                .document(userId)
+                .update("activeTamagotchiId", activeTamagotchiId)
+                .addOnSuccessListener(documentReference ->{
+                    String successMessage = "Tamagotchi actif maj";
+                    messageLiveData.postValue(successMessage);
+                })
+                .addOnFailureListener(e ->{
+                    String errorMessage = "Erreur de sauvegarde tamagotchi actif";
+                    messageLiveData.postValue(errorMessage);
+                });
+    }
+
+    public void deleteTamagotchi(String idTamagotchi){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("tamagotchis")
+                .document(idTamagotchi)
+                .delete()
+                .addOnSuccessListener(aVoid -> {
+                    // Succès de la suppression
+                    messageLiveData.postValue("Tamagotchi supprimé avec succès");
+                })
+                .addOnFailureListener(e -> {
+                    // Échec de la suppression
+                    messageLiveData.postValue("Erreur lors de la suppression du Tamagotchi");
+                });
     }
 }

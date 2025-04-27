@@ -2,7 +2,7 @@ package com.example.tamagotchi.view;
 
 /*
 -----------------------------
-    Date : 20/04/2025
+    Date : 27/04/2025
 
     Membres qui travaillent dessus : Marwan DENAGNON
 
@@ -10,6 +10,7 @@ package com.example.tamagotchi.view;
     Changement par rapport à la version précédente : Permet de faire lien entre le front end et la gestion des données, toutes la partie donnée est géré dans la class FirestoreData.java.
     Par exemple la méthode nourrir va être appeler quand l'utilisateur va cliquer sur le bouton "Nourrir"
     Changement par rapport à la version précédente : ajout d'un handler pour mettre à jour les données sur la bdd puis les charger dans la progressBar
+    Changement par rapport à la version précédente : supression es handler car grâce au modèle MVVM et aux LiveData que le ViewModel renvoie je peut mettre un Observer et avoir les donées modifiée constament.
 -----------------------------
 */
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_accueil2);
+        setContentView(R.layout.activity_main);
         progressSante = findViewById(R.id.progressMedicament);
         progressFaim = findViewById(R.id.progressNourriture);
         progressBonheur = findViewById(R.id.progressJouet);

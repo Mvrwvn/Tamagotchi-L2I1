@@ -40,16 +40,13 @@
             android:name=".view.ParametresActivity">
         </activity>
         <activity
-            android:name=".view.CreerMimichiActivity">
+            android:name=".view.CreerTamagotchiActivity">
         </activity>
         <activity
-            android:name=".view.ListeMimichiActivity">
+            android:name=".view.recyclerview.ListeTamagotchiActivity">
         </activity>
         <activity
-            android:name=".view.SupprimerMimichiActivity">
-        </activity>
-        <activity
-            android:name=".view.ModifierMimichiActivity">
+            android:name=".view.ModifierTamagotchiActivity">
         </activity>
     </application>
 

@@ -2,13 +2,15 @@ package com.example.tamagotchi.model;
 
 /*
 -----------------------------
-    Date : 20/04/2025
+    Date : 27/04/2025
 
     Membres qui travaillent dessus : Marwan DENAGNON
 
     Que fait le code ? : Fait la passerelle entre les données reçues en java et envoyé à Firebase pour l'authentification et pour le stockages des données sur FireStore
     avec un id de tamagotchi actif pour savoir sur quelle tamagotchis l'utilisateur va modifier les attributs dans le cas où il aurait plusieurs tamagotchis.
     Changement par rapport à la version précédente : Fusion du front end et du back end
+    Changement par rapport à la version précédente : suppression de l'attribut idTamagotchis qui était une liste sensé servir à savoir tous les tamagotchis que l'utilisateur avait créer
+    cette attribut est obsolète car grâce à la méthode whereEqualsTo de firestore nous pouvons directement obtenir tous les documents liés à un utilisateur précis
     -----------------------------
 */
 
@@ -25,17 +27,14 @@ import java.util.ArrayList;
 public class Joueur {
 
     private String email;
-    private ArrayList<String> idTamagotchis;
     private String activeTamagotchiId;
 
     // Constructeur vide requis par Firestore
     public Joueur() {
     }
 
-    public Joueur(String email,
-                  ArrayList<String> idTamagotchis, String activeTamagotchiId) {
+    public Joueur(String email, String activeTamagotchiId) {
         this.email = email;
-        this.idTamagotchis = idTamagotchis;
         this.activeTamagotchiId = activeTamagotchiId;
     }
 
@@ -47,14 +46,6 @@ public class Joueur {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public ArrayList<String> getIdTamagotchis() {
-        return idTamagotchis;
-    }
-
-    public void setIdTamagotchis(ArrayList<String> idTamagotchis) {
-        this.idTamagotchis = idTamagotchis;
     }
 
     public String getActiveTamagotchiId() {

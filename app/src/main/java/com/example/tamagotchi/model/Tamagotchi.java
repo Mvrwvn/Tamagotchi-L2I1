@@ -11,7 +11,9 @@ package com.example.tamagotchi.model;
 */
 import com.google.firebase.Timestamp;
 
-public class Tamagotchi{
+import java.io.Serializable;
+
+public class Tamagotchi implements Serializable {
 
     private String idTamagotchi;
     private String idJoueur;

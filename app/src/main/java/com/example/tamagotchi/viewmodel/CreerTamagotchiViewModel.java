@@ -1,19 +1,28 @@
 package com.example.tamagotchi.viewmodel;
 
+/*
+-----------------------------
+    Date : 27/04/2025
+
+    Membres qui travaillent dessus : Marwan DENAGNON
+
+    Que fait le code ? : Que fait le code ? : ViewModel sont but est de gérer les données entre les Model et la View ici CreerTamagotchiActivity
+    Va gérer toutes les données entre Firestore et l'application pour le CreerTamagotchiActivity
+-----------------------------
+*/
+
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.tamagotchi.model.Tamagotchi;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class CreerMimichiViewModel extends ViewModel {
+public class CreerTamagotchiViewModel extends ViewModel {
 
     private MutableLiveData<String> messageLiveData = new MutableLiveData<>();
 
@@ -29,7 +38,7 @@ public class CreerMimichiViewModel extends ViewModel {
 
         db.collection("joueurs")
                 .document(userId)
-                .update("activeTamagotchiId", activeTamagotchiId, "idTamagotchis", FieldValue.arrayUnion(activeTamagotchiId))
+                .update("activeTamagotchiId", activeTamagotchiId)
                 .addOnSuccessListener(documentReference ->
                         Log.d("Firestore", "Tamagotchi actif maj"))
                 .addOnFailureListener(e ->

@@ -95,9 +95,7 @@ public class InscriptionActivity extends AppCompatActivity {
                                                     .addOnSuccessListener(documentReference -> {
                                                         String newTamagotchiId = documentReference.getId();
                                                         Log.d("Firestore", "Tamagotchi sauvegardé avec ID : " + newTamagotchiId);
-                                                        ArrayList<String> tamagotchiIds = new ArrayList<>();
-                                                        tamagotchiIds.add(newTamagotchiId);
-                                                        Joueur joueur = new Joueur(email, tamagotchiIds, newTamagotchiId);
+                                                        Joueur joueur = new Joueur(email, newTamagotchiId);
                                                         db.collection("joueurs")
                                                                 .document(user.getUid())
                                                                 .set(joueur)
