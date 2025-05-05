@@ -24,29 +24,19 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ParametresActivity extends AppCompatActivity {
 
-    private Button listeMimichi, importerMimichi,exporterMimichi, deconnexion, creernouveauTamagotchi, reinitialiserMDP;
+    private Button listeMimichi, deconnexion, creernouveauTamagotchi, reinitialiserMDP;
     private TextView retourButton;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parametres);
         listeMimichi = findViewById(R.id.listeMimichi);
-        importerMimichi = findViewById(R.id.importerMimichi);
-        exporterMimichi = findViewById(R.id.exporterMimichi);
         deconnexion = findViewById(R.id.deconnexion);
         creernouveauTamagotchi = findViewById(R.id.creernouveauTamagotchi);
         reinitialiserMDP = findViewById(R.id.reinitialiserMDP);
         retourButton = findViewById(R.id.retourButton);
         listeMimichi.setOnClickListener(v -> {
             startActivity(new Intent(this, ListeTamagotchiActivity.class));
-        });
-
-        importerMimichi.setOnClickListener(v -> {
-            Toast.makeText(this, "En cours de développement", Toast.LENGTH_SHORT).show();
-        });
-
-        exporterMimichi.setOnClickListener(v -> {
-            Toast.makeText(this, "En cours de développement", Toast.LENGTH_SHORT).show();
         });
 
         deconnexion.setOnClickListener(v -> {

@@ -17,6 +17,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.os.Build;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +35,13 @@ public class AuthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_authv1);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            WindowInsetsController controller = getWindow().getDecorView().getWindowInsetsController();
+            if (controller != null) {
+                controller.hide(WindowInsets.Type.navigationBars());
+                controller.setSystemBarsBehavior(WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+            }
+        }
         emailInput = findViewById(R.id.editTextTextEmailAddress);
         passwordInput = findViewById(R.id.editTextNumberPassword);
     }

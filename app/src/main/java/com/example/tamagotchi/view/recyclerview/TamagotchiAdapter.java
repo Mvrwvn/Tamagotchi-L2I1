@@ -64,7 +64,7 @@ public class TamagotchiAdapter extends RecyclerView.Adapter<TamagotchiAdapter.Ta
     public void onBindViewHolder(@NonNull TamagotchiViewHolder holder, int position) {
         Tamagotchi tamagotchi = tamagotchiList.get(position);
         holder.nomTamagotchiTextView.setText(tamagotchi.getNomTamagotchi());
-        holder.vieTamagotchiTextView.setText("Point de vie : " + (int)tamagotchi.getStatsTamagotchi().getVie());
+        holder.vieTamagotchiTextView.setText( "Âge : " + tamagotchi.getAge() + " jours\n" + "Point de vie : " + (int)tamagotchi.getStatsTamagotchi().getVie());
         holder.optionsMenuButton.setOnClickListener(v -> {
             PopupMenu popup = new PopupMenu(v.getContext(), holder.optionsMenuButton);
             popup.getMenuInflater().inflate(R.menu.menu_tamagotchi_options, popup.getMenu());

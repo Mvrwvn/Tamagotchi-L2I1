@@ -15,14 +15,18 @@ package com.example.tamagotchi.view;
 */
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -45,11 +49,17 @@ public class MainActivity extends AppCompatActivity {
     private Tamagotchi activeTamagotchi;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        WindowInsetsController controller = getWindow().getDecorView().getWindowInsetsController();
+        if (controller != null) {
+            controller.hide(WindowInsets.Type.navigationBars());
+            controller.setSystemBarsBehavior(WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+        }
         progressSante = findViewById(R.id.progressMedicament);
         progressFaim = findViewById(R.id.progressNourriture);
         progressBonheur = findViewById(R.id.progressJouet);

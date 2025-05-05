@@ -1,12 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<!--
-     Date : 18 avril 2025
-     Membre qui travaille dessus : Yasmine DEHOUCHE.
-     Que fait le code XML? Ce layout XML représente la page d'accueil après inscription ou connexion, elle inclue tous les boutons pour intéragir avec le Mimichi ainsi qu'un bouton de paramètres
--->
-
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
+    <!-- Animation -->
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie"
         android:layout_width="0dp"
@@ -22,14 +14,25 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/tama1"
-        tools:ignore="MissingConstraints" />
+        app:lottie_rawRes="@raw/activity_main" />
 
+    <!-- Bouton de paramètres en haut à droite -->
+    <ImageView
+        android:id="@+id/imageViewIconeParametres"
+        android:layout_width="119dp"
+        android:layout_height="94dp"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:contentDescription="@string/parametres"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/iconeparametres" />
+
+    <!-- Boutons d'action en bas -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +44,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-    <GridLayout
+        <GridLayout
             android:id="@+id/gridActions"
             android:layout_width="216dp"
             android:layout_height="wrap_content"
@@ -50,7 +53,6 @@
             android:gravity="center"
             android:rowCount="2"
             android:useDefaultMargins="true">
-
             <FrameLayout
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -219,20 +221,6 @@
                     android:src="@drawable/sommeil" />
             </FrameLayout>
         </GridLayout>
-
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageViewIconeParametres"
-        android:layout_width="148dp"
-        android:layout_height="100dp"
-        android:clickable="true"
-        android:contentDescription="@string/parametres"
-        android:focusable="true"
-        app:srcCompat="@drawable/iconeparametres"
-        tools:ignore="MissingConstraints,VisualLintBounds"
-        tools:layout_editor_absoluteX="263dp"
-        tools:layout_editor_absoluteY="0dp" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

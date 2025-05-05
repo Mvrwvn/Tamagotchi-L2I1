@@ -12,6 +12,7 @@ package com.example.tamagotchi.model;
 import com.google.firebase.Timestamp;
 
 import java.io.Serializable;
+import java.util.concurrent.TimeUnit;
 
 public class Tamagotchi implements Serializable {
 
@@ -95,5 +96,13 @@ public class Tamagotchi implements Serializable {
 
     public void setInventaireTamagotchi(Inventaire inventaireTamagotchi) {
         this.inventaireTamagotchi = inventaireTamagotchi;
+    }
+
+    public long getAge() {
+        Timestamp creationTimestamp = dateNaissance;
+        long creationMillis = creationTimestamp.toDate().getTime(); // conversion en ms
+        long nowMillis = System.currentTimeMillis();
+        long diffMillis = nowMillis - creationMillis;
+        return TimeUnit.MILLISECONDS.toDays(diffMillis); // âge en jours
     }
 }
