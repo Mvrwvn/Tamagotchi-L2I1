@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id("de.mannodermaus.android-junit5") version "1.12.0.0"
 }
 
 android {
@@ -27,6 +28,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 }
 
 dependencies {
@@ -47,6 +54,8 @@ dependencies {
     implementation libs.firebase.auth
     implementation libs.coordinatorlayout
     testImplementation libs.junit
+    testImplementation libs.junit.jupiter
+    testImplementation libs.junit.jupiter
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
     apply plugin: 'com.google.gms.google-services'
