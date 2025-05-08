@@ -55,6 +55,8 @@ public class Tamagotchi{
         return nomTamagotchi;
     }
 
+    public Inventaire getInventaireTamagotchi(){ return inventaireTamagotchi;}
+
     public void setNomTamagotchi(String nomTamagotchi) {
         this.nomTamagotchi = nomTamagotchi;
     }
