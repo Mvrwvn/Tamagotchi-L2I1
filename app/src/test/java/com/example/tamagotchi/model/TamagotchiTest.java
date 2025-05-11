@@ -9,6 +9,15 @@ import org.junit.jupiter.api.Test;
 
 import java.time.Instant;
 
+/*
+-----------------------------
+    Date : 10/05/2025
+
+    Membres qui travaillent dessus : Lina Bouguettaya
+
+    Que fait le code ? : Test l'intégrité des getters et setters de Tamagotchi
+    -----------------------------
+*/
 class TamagotchiTest {
 
 

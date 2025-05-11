@@ -27,6 +27,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+/*
+-----------------------------
+    Date : 10/05/2025
+
+    Membres qui travaillent dessus : Lina BOUGUETTAYA
+
+    Que fait le code ? : Verfie l'intégrité de la creation d'un tamagotchi en base de données,
+    et de la mise à jour du tamagotchi actif.
+-----------------------------
+*/
+
 public class CreerTamagotchiViewModelTest {
     private static Context appContext;
     private static Tamagotchi testTamagotchi;
@@ -38,12 +49,14 @@ public class CreerTamagotchiViewModelTest {
 
     @BeforeClass
     public static void setUpClass() {
+        // Création d'un context pour l'execution des tests, et initialisation des données.
         appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         TestUtils.resetTamagotchis();
     }
 
     @Test
     public void testAjouterTamagotchi() {
+        //Connexion de l'utilisateur de test avant execution.
         Joueur.connexion(appContext, "blabla@example.com", "bleble");
         CreerTamagotchiViewModel viewModel = new CreerTamagotchiViewModel();
         Tamagotchi testTamagotchi = new Tamagotchi(
@@ -57,13 +70,16 @@ public class CreerTamagotchiViewModelTest {
             new Inventaire()
         );
 
+        // On s'assure qu'un seul tamagotchi existe avant insertion
         List<Tamagotchi> tamagotchis = getTamagotchis();
         assertEquals(1, tamagotchis.size());
 
+        // On insère le tamagotchi bidon, puis on verifie qu'il existe bien 2 tamagotchis maintenant.
         viewModel.ajouterTamagotchi(testTamagotchi);
         tamagotchis = getTamagotchis();
         assertEquals(2, tamagotchis.size());
 
+        // On reset les données en s'assurant qu'on est bien revenus à 1 seul tamagotchi.
         TestUtils.resetTamagotchis();
         tamagotchis = getTamagotchis();
         assertEquals(1, tamagotchis.size());
@@ -71,17 +87,21 @@ public class CreerTamagotchiViewModelTest {
 
     @Test
     public void testSetActiveTamagotchiId() {
+        //Connexion de l'utilisateur de test avant execution..
         Joueur.connexion(appContext, "blabla@example.com", "bleble");
 
+        // On verifie que blybly est actif de base
         Joueur joueur = getJoueurTest();
         assertEquals(tamagotchiBlyblyId, joueur.getActiveTamagotchiId());
 
+        // On modifie l'id du tamagotchi actif avec une valeur factice, puis on revérifie.
         String fauxActiveId = "fauxActiveId";
 
         CreerTamagotchiViewModel.setActiveTamagotchiId(fauxActiveId);
         joueur = getJoueurTest();
         assertEquals(fauxActiveId, joueur.getActiveTamagotchiId());
 
+        // On remets l'identifiant de blybly, et on reverifie une dernière fois.
         CreerTamagotchiViewModel.setActiveTamagotchiId(tamagotchiBlyblyId);
         joueur = getJoueurTest();
         assertEquals(tamagotchiBlyblyId, joueur.getActiveTamagotchiId());

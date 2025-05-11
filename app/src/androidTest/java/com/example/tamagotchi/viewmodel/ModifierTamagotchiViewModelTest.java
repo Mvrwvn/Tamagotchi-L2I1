@@ -21,6 +21,15 @@ import org.junit.Test;
 
 import java.util.concurrent.ExecutionException;
 
+/*
+-----------------------------
+    Date : 10/05/2025
+
+    Membres qui travaillent dessus : Lina BOUGUETTAYA
+
+    Que fait le code ? : Verfie l'intégrité de la modification du nom et du genre d'un tamagotchi.
+-----------------------------
+*/
 public class ModifierTamagotchiViewModelTest {
     private static Context appContext;
 
@@ -29,12 +38,14 @@ public class ModifierTamagotchiViewModelTest {
 
     @BeforeClass
     public static void setUpClass() {
+        // Création d'un context pour l'execution des tests, et initialisation des données.
         appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         TestUtils.resetTamagotchis();
     }
 
     @Test
     public void testUpdateTamagotchi() {
+        //Connexion de l'utilisateur de test avant execution.
         Joueur.connexion(appContext, "blabla@example.com", "bleble");
 
         ModifierTamagotchiViewModel viewModel = new ModifierTamagotchiViewModel();
@@ -45,11 +56,13 @@ public class ModifierTamagotchiViewModelTest {
         String nomTamagotchiModifie = "blyblyTest";
         String genreTamagotchi = "Mâle";
 
+        // On modifie le nom du tamagotchi, et on verifie que le nom a bien changé.
         viewModel.updateTamagotchi(tamagotchiId, nomTamagotchiModifie, genreTamagotchi);
 
         Tamagotchi tamagotchi = getTamagotchi(tamagotchiId);
         assertEquals(nomTamagotchiModifie, tamagotchi.getNomTamagotchi());
 
+        // On remets le nom du tamagotchi, et on verifie que le nom a bien changé.
         viewModel.updateTamagotchi(tamagotchiId, nomTamagotchiOriginal, genreTamagotchi);
         tamagotchi = getTamagotchi(tamagotchiId);
         assertEquals(nomTamagotchiOriginal, tamagotchi.getNomTamagotchi());

@@ -5,6 +5,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/*
+-----------------------------
+    Date : 10/05/2025
+
+    Membres qui travaillent dessus : Lina Bouguettaya
+
+    Que fait le code ? : Test l'intégrité des getters et setters de Inventaire
+    -----------------------------
+*/
 class InventaireTest {
 
     private Inventaire inventaire;

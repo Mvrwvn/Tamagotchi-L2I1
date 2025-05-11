@@ -27,6 +27,16 @@ import org.junit.Test;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+/*
+-----------------------------
+    Date : 10/05/2025
+
+    Membres qui travaillent dessus : Lina BOUGUETTAYA
+
+    Que fait le code ? : Verfie l'intégrité du listing, la mise à jour de l'actif, et la suppression
+    des tamagotchis.
+-----------------------------
+*/
 public class ListeTamagotchiViewModelTest {
     private static Context appContext;
     private static Tamagotchi testTamagotchi;
@@ -38,6 +48,8 @@ public class ListeTamagotchiViewModelTest {
 
     @BeforeClass
     public static void setUpClass() {
+        /* Création d'un context pour l'execution des tests, et initialisation des données,
+         et préparation d'une donnée factice à utiliser. */
         appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         testTamagotchi = new Tamagotchi(
                 "testTamagotchiId",
@@ -54,57 +66,70 @@ public class ListeTamagotchiViewModelTest {
 
     @Test
     public void testGetUserTamagotchis() {
+        //Connexion de l'utilisateur de test avant execution.
         Joueur.connexion(appContext, "blabla@example.com", "bleble");
         ListeTamagotchiViewModel viewModel = new ListeTamagotchiViewModel();
 
         LiveData<List<Tamagotchi>> tamagotchisLiveData = viewModel.getUserTamagotchis();
         try {
+            /* On extrait la liste des tamagotchis en dehors de l'objet LiveData, et on vérfie
+            qu'on a bien qu'un seul tamagotchi, à savoir blybly. */
             List<Tamagotchi> tamagotchis = TestUtils.getOrAwaitValue(tamagotchisLiveData);
             assertNotNull(tamagotchisLiveData);
             assertEquals(1, tamagotchis.size());
             assertEquals(tamagotchiBlyblyId, tamagotchis.get(0).getIdTamagotchi());
             assertEquals("blybly", tamagotchis.get(0).getNomTamagotchi());
         } catch (InterruptedException e) {
+            // Le test échoue si la connexion à la base de données est coupée.
             fail("Tamagotchis LiveData non initialisée.");
             throw new RuntimeException(e);
         } finally {
+            // Se déconnecter dans tous les cas.
             FirebaseAuth.getInstance().signOut();
         }
     }
 
     @Test
     public void testGetActiveTamagotchi() {
+        //Connexion de l'utilisateur de test avant execution.
         Joueur.connexion(appContext, "blabla@example.com", "bleble");
         ListeTamagotchiViewModel viewModel = new ListeTamagotchiViewModel();
 
         LiveData<Tamagotchi> tamagotchiLiveData = viewModel.getActiveTamagotchi();
         try {
+            // On vérifie que le tamagotchi actif est blybly.
             Tamagotchi tamagotchi = TestUtils.getOrAwaitValue(tamagotchiLiveData);
             assertNotNull(tamagotchi);
             assertEquals(tamagotchiBlyblyId, tamagotchi.getIdTamagotchi());
             assertEquals("blybly", tamagotchi.getNomTamagotchi());
         } catch (InterruptedException e) {
+            // Le test échoue si la connexion à la base de données est coupée.
             fail("Tamagotchi LiveData non initialisée.");
             throw new RuntimeException(e);
         } finally {
+            // Se déconnecter dans tous les cas.
             FirebaseAuth.getInstance().signOut();
         }
     }
 
     @Test
     public void testSetActiveTamagotchiId() {
+        //Connexion de l'utilisateur de test avant execution.
         Joueur.connexion(appContext, "blabla@example.com", "bleble");
         ListeTamagotchiViewModel viewModel = new ListeTamagotchiViewModel();
 
+        // On verifie que blybly est actif de base
         Joueur joueur = getJoueurTest();
         assertEquals(tamagotchiBlyblyId, joueur.getActiveTamagotchiId());
 
+        // On modifie l'id du tamagotchi actif avec une valeur factice, puis on revérifie.
         String fauxActiveId = "fauxActiveId";
 
         viewModel.setActiveTamagotchiId(fauxActiveId);
         joueur = getJoueurTest();
         assertEquals(fauxActiveId, joueur.getActiveTamagotchiId());
 
+        // On remets l'identifiant de blybly, et on reverifie une dernière fois.
         viewModel.setActiveTamagotchiId(tamagotchiBlyblyId);
         joueur = getJoueurTest();
         assertEquals(tamagotchiBlyblyId, joueur.getActiveTamagotchiId());
@@ -112,28 +137,35 @@ public class ListeTamagotchiViewModelTest {
 
     @Test
     public void testDeleteTamagotchi() {
+        //Connexion de l'utilisateur de test avant execution.
         Joueur.connexion(appContext, "blabla@example.com", "bleble");
         ListeTamagotchiViewModel viewModel = new ListeTamagotchiViewModel();
 
+        // On créer un faux tamagotchi de test.
         ajouterTamagotchiTest();
         LiveData<List<Tamagotchi>> tamagotchisLiveData = viewModel.getUserTamagotchis();
         try {
+            // On vérifie qu'on a bien 2 tamagotchis à présent
             List<Tamagotchi> tamagotchis = TestUtils.getOrAwaitValue(tamagotchisLiveData);
             assertNotNull(tamagotchisLiveData);
             assertEquals(2, tamagotchis.size());
 
+            // On appelle à présent deleteTamagotchi, et on vérifie que le faux tamagotchi inséré n'existe plus.
             viewModel.deleteTamagotchi("testTamagotchiId");
 
             tamagotchisLiveData = viewModel.getUserTamagotchis();
             tamagotchis = TestUtils.getOrAwaitValue(tamagotchisLiveData);
 
             assertEquals(1, tamagotchis.size());
+            // S'assurer que le tamagotchi restant est bien blybly
             assertEquals(tamagotchiBlyblyId, tamagotchis.get(0).getIdTamagotchi());
             assertEquals("blybly", tamagotchis.get(0).getNomTamagotchi());
         } catch (InterruptedException e) {
+            // Le test échoue si la connexion à la base de données est coupée.
             fail("Tamagotchis LiveData non initialisée.");
             throw new RuntimeException(e);
         } finally {
+            // Se déconnecter dans tous les cas.
             FirebaseAuth.getInstance().signOut();
         }
     }

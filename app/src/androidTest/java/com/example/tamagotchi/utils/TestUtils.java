@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
     Membres qui travaillent dessus : Lina BOUGUETTAYA
 
     Que fait le code ? : Permet de récuperer la valeur des observables à des fins des tests
-    d'instrumentation.
+    d'instrumentation, et de reinitialiser les données pour les tests.
 -----------------------------
 */
 
