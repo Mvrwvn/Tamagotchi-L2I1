@@ -20,9 +20,13 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class Joueur {
 
@@ -56,8 +60,8 @@ public class Joueur {
         this.activeTamagotchiId = activeTamagotchiId;
     }
 
-    public static void connexion(Context context, String email, String password) {
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+    public static boolean connexion(Context context, String email, String password) {
+        Task<AuthResult> loginTask = FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnSuccessListener(authResult -> {
                     Toast.makeText(context, "Connexion réussie", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "Connexion OK");
@@ -66,10 +70,18 @@ public class Joueur {
                     Toast.makeText(context, "Erreur connexion : " + e.getMessage(), Toast.LENGTH_LONG).show();
                     Log.e(TAG, "Erreur connexion : ", e);
                 });
+        try {
+            Tasks.await(loginTask);
+            return true;
+        } catch (ExecutionException e) {
+            return false;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public static void renitialiserMotDePasse(Context context, String email) {
-        FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+    public static boolean renitialiserMotDePasse(Context context, String email) {
+        Task<Void> passwordResetEmailTask = FirebaseAuth.getInstance().sendPasswordResetEmail(email)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(context, "E-mail de réinitialisation envoyé", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "Email reset envoyé à : " + email);
@@ -78,6 +90,14 @@ public class Joueur {
                     Toast.makeText(context, "Erreur : " + e.getMessage(), Toast.LENGTH_LONG).show();
                     Log.e(TAG, "Erreur reset password : ", e);
                 });
+        try {
+            Tasks.await(passwordResetEmailTask);
+            return true;
+        } catch (ExecutionException e) {
+            return false;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

@@ -32,7 +32,7 @@ public class ModifierTamagotchiViewModel extends ViewModel {
                     messageLiveData.postValue(successMessage);
                 })
                 .addOnFailureListener(snap->{
-                    String errorMessage ="Erreur lors de la création du Mimichi.";
+                    String errorMessage ="Erreur lors de la modification du Mimichi.";
                     messageLiveData.postValue(errorMessage);
                 });
     }

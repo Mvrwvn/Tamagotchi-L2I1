@@ -84,6 +84,9 @@ public class MainViewModel extends ViewModel {
 
                                                 if (tamagotchiDoc != null && tamagotchiDoc.exists()) {
                                                     Tamagotchi tamagotchi = tamagotchiDoc.toObject(Tamagotchi.class);
+                                                    if (tamagotchi != null) {
+                                                        tamagotchi.setIdTamagotchi(tamagotchiDoc.getId());
+                                                    }
                                                     activeTamagotchiLiveData.postValue(tamagotchi);
                                                 } else {
                                                     activeTamagotchiLiveData.postValue(null); // Tamagotchi non trouvé

@@ -33,7 +33,12 @@ android {
         unitTests.all {
             useJUnitPlatform()
         }
+        useLibrary 'android.test.mock'
     }
+}
+
+configurations {
+    mockitoAgent
 }
 
 dependencies {
@@ -58,5 +63,8 @@ dependencies {
     testImplementation libs.junit.jupiter
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+    androidTestImplementation libs.runner
+    androidTestImplementation libs.espresso.core
+    androidTestImplementation libs.core.testing
     apply plugin: 'com.google.gms.google-services'
 }
