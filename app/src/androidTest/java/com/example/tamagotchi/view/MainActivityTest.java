@@ -15,6 +15,7 @@ import com.example.tamagotchi.model.Joueur;
 import com.example.tamagotchi.model.Tamagotchi;
 import com.example.tamagotchi.utils.TestUtils;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -26,12 +27,17 @@ public class MainActivityTest {
     @Rule
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
-
     @BeforeClass
     public static void setUpClass() {
         // Création d'un context pour l'execution des tests, et initialisation des données.
         appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         view = new View(appContext);
+        TestUtils.resetTamagotchis();
+    }
+
+    @AfterClass
+    public static void tearDownClass() {
+        TestUtils.setBlybly(80, 80);
         TestUtils.resetTamagotchis();
     }
 
