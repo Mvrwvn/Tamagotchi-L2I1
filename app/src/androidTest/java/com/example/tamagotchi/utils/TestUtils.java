@@ -6,6 +6,8 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
+import com.example.tamagotchi.model.Inventaire;
+import com.example.tamagotchi.model.Statistique;
 import com.example.tamagotchi.model.Tamagotchi;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -51,6 +53,40 @@ public class TestUtils {
         }
         //noinspection unchecked
         return (T) data[0];
+    }
+
+    public static Tamagotchi getBlybly() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        try {
+            Tamagotchi tamagotchi = Tasks.await(
+                    db.collection("tamagotchis").document(tamagotchiBlyblyId).get()
+            ).toObject(Tamagotchi.class);
+
+            if (tamagotchi == null) {
+                fail("Impossible de récuperer blybly de la base de données.");
+                throw new RuntimeException();
+            }
+
+            tamagotchi.setIdTamagotchi(tamagotchiBlyblyId);
+
+            return tamagotchi;
+        } catch (ExecutionException | InterruptedException e) {
+            fail("Impossible de récuperer blybly de la base de données.");
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void setBlybly(int inventaire, int statistique) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Tamagotchi blybly = getBlybly();
+
+        blybly.setInventaireTamagotchi(new Inventaire(inventaire, inventaire, inventaire, inventaire, inventaire, inventaire));
+        blybly.setStatsTamagotchi(new Statistique(statistique, statistique, statistique, statistique, statistique, statistique, statistique));
+
+        db.collection("tamagotchis")
+                .document(tamagotchiBlyblyId)
+                .set(blybly);
     }
 
     public static void resetTamagotchis() {

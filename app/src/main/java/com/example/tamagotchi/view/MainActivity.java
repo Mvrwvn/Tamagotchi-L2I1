@@ -14,6 +14,9 @@ package com.example.tamagotchi.view;
 -----------------------------
 */
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -46,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
     private final int DELAY = 10000; // 10 secondes
     private ImageView parametre;
     private MainViewModel mainViewModel;
+
+    public Tamagotchi getActiveTamagotchi() {
+        return activeTamagotchi;
+    }
+
     private Tamagotchi activeTamagotchi;
 
 
@@ -127,10 +135,13 @@ public class MainActivity extends AppCompatActivity {
     public void reposer(View v){
         int nbLits = activeTamagotchi.getInventaireTamagotchi().getNbLits();
         double energie = activeTamagotchi.getStatsTamagotchi().getEnergie();
-        activeTamagotchi.getInventaireTamagotchi().setNbLits(nbLits-1);
-        activeTamagotchi.getStatsTamagotchi().setEnergie(energie+1);
+        if (nbLits > 0 && energie<100) {
+            activeTamagotchi.getInventaireTamagotchi().setNbLits(max(nbLits-1, 0));
+            activeTamagotchi.getStatsTamagotchi().setEnergie(min(energie+1, 100));
+        }
+
         if (energie >= 0 && energie < 100) {
-            if (nbLits > 0) {
+            if (nbLits >= 0) {
                 mainViewModel.updateTamagotchi(activeTamagotchi);
             } else {
                 Toast.makeText(this, "Vous n'avez plus de lits", Toast.LENGTH_SHORT).show();
@@ -143,10 +154,13 @@ public class MainActivity extends AppCompatActivity {
     public void hydrater(View v){
         int nbBoissons = activeTamagotchi.getInventaireTamagotchi().getNbBoissons();
         double soif = activeTamagotchi.getStatsTamagotchi().getSoif();
-        activeTamagotchi.getInventaireTamagotchi().setNbBoissons(nbBoissons-1);
-        activeTamagotchi.getStatsTamagotchi().setSoif(soif+1);
+        if (nbBoissons > 0 && soif<100) {
+            activeTamagotchi.getInventaireTamagotchi().setNbBoissons(max(nbBoissons - 1, 0));
+            activeTamagotchi.getStatsTamagotchi().setSoif(min(soif + 1, 100));
+        }
+
         if (soif >= 0 && soif < 100) {
-            if (nbBoissons > 0) {
+            if (nbBoissons >= 0) {
                 mainViewModel.updateTamagotchi(activeTamagotchi);
             } else {
                 Toast.makeText(this, "Vous n'avez plus de boissons", Toast.LENGTH_SHORT).show();
@@ -159,10 +173,13 @@ public class MainActivity extends AppCompatActivity {
     public void brosser(View v){
         int nbSavons = activeTamagotchi.getInventaireTamagotchi().getNbSavons();
         double hygiene = activeTamagotchi.getStatsTamagotchi().getHygiene();
-        activeTamagotchi.getInventaireTamagotchi().setNbSavons(nbSavons-1);
-        activeTamagotchi.getStatsTamagotchi().setHygiene(hygiene+1);
+        if (nbSavons > 0 && hygiene<100) {
+            activeTamagotchi.getInventaireTamagotchi().setNbSavons(max(nbSavons - 1, 0));
+            activeTamagotchi.getStatsTamagotchi().setHygiene(min(hygiene + 1, 100));
+        }
+
         if (hygiene >= 0 && hygiene < 100) {
-            if (nbSavons > 0) {
+            if (nbSavons >= 0) {
                 mainViewModel.updateTamagotchi(activeTamagotchi);
             } else {
                 Toast.makeText(this, "Vous n'avez plus de savons", Toast.LENGTH_SHORT).show();
@@ -175,10 +192,13 @@ public class MainActivity extends AppCompatActivity {
     public void nourrir(View v) {
         int nbNourritures = activeTamagotchi.getInventaireTamagotchi().getNbNourritures();
         double faim = activeTamagotchi.getStatsTamagotchi().getFaim();
-        activeTamagotchi.getInventaireTamagotchi().setNbNourritures(nbNourritures-1);
-        activeTamagotchi.getStatsTamagotchi().setFaim(faim+1);
+        if (nbNourritures > 0 && faim<100) {
+            activeTamagotchi.getInventaireTamagotchi().setNbNourritures(max(nbNourritures - 1, 0));
+            activeTamagotchi.getStatsTamagotchi().setFaim(min(faim + 1, 100));
+        }
+
         if (faim >= 0 && faim < 100) {
-            if (nbNourritures > 0) {
+            if (nbNourritures >= 0) {
                 mainViewModel.updateTamagotchi(activeTamagotchi);
             } else {
                 Toast.makeText(this, "Vous n'avez plus de nourritures", Toast.LENGTH_SHORT).show();
@@ -191,10 +211,13 @@ public class MainActivity extends AppCompatActivity {
     public void soigner(View v) {
         int nbMedicaments = activeTamagotchi.getInventaireTamagotchi().getNbMedicaments();
         double sante = activeTamagotchi.getStatsTamagotchi().getSante();
-        activeTamagotchi.getInventaireTamagotchi().setNbMedicaments(nbMedicaments-1);
-        activeTamagotchi.getStatsTamagotchi().setSante(sante+1);
+        if (nbMedicaments > 0 && sante<100) {
+            activeTamagotchi.getInventaireTamagotchi().setNbMedicaments(max(nbMedicaments - 1, 0));
+            activeTamagotchi.getStatsTamagotchi().setSante(min(sante + 1, 100));
+        }
+
         if (sante >= 0 && sante < 100) {
-            if (nbMedicaments > 0) {
+            if (nbMedicaments >= 0) {
                 mainViewModel.updateTamagotchi(activeTamagotchi);
             } else {
                 Toast.makeText(this, "Vous n'avez plus de médicaments", Toast.LENGTH_SHORT).show();
@@ -207,10 +230,13 @@ public class MainActivity extends AppCompatActivity {
     public void jouer(View v){
         int nbJouets = activeTamagotchi.getInventaireTamagotchi().getNbJouets();
         double bonheur = activeTamagotchi.getStatsTamagotchi().getBonheur();
-        activeTamagotchi.getInventaireTamagotchi().setNbJouets(nbJouets-1);
-        activeTamagotchi.getStatsTamagotchi().setBonheur(bonheur+1);
+        if (nbJouets > 0 && bonheur<100) {
+            activeTamagotchi.getInventaireTamagotchi().setNbJouets(max(nbJouets - 1, 0));
+            activeTamagotchi.getStatsTamagotchi().setBonheur(min(bonheur + 1, 100));
+        }
+
         if (bonheur >= 0 && bonheur < 100) {
-            if (nbJouets > 0) {
+            if (nbJouets >= 0) {
                 mainViewModel.updateTamagotchi(activeTamagotchi);
             } else {
                 Toast.makeText(this, "Vous n'avez plus de jouets", Toast.LENGTH_SHORT).show();
