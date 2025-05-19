@@ -9,12 +9,19 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.example.tamagotchi.utils.TestUtils;
-
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+/*
+-----------------------------
+    Date : 19/05/2025
+
+    Membres qui travaillent dessus : Lina BOUGUETTAYA
+
+    Que fait le code ? : Verfie l'execution de la page inscription.
+-----------------------------
+*/
 public class InscriptionActivityTest {
     private static Context appContext;
     private static View view;

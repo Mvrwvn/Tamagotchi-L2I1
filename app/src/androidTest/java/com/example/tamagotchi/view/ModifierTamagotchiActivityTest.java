@@ -17,6 +17,15 @@ import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+/*
+-----------------------------
+    Date : 19/05/2025
+
+    Membres qui travaillent dessus : Lina BOUGUETTAYA
+
+    Que fait le code ? : Verfie l'execution de la page modification du tamagotchi
+-----------------------------
+*/
 public class ModifierTamagotchiActivityTest {
     private static Context appContext;
     private static View view;
@@ -31,7 +40,7 @@ public class ModifierTamagotchiActivityTest {
         appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         view = new View(appContext);
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
         TestUtils.resetTamagotchis();

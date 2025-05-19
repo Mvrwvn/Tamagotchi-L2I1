@@ -13,6 +13,15 @@ import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+/*
+-----------------------------
+    Date : 19/05/2025
+
+    Membres qui travaillent dessus : Lina BOUGUETTAYA
+
+    Que fait le code ? : Verfie l'execution de chargement.
+-----------------------------
+*/
 public class SplashActivityTest {
     private static Context appContext;
     private static View view;
